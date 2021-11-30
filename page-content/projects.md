@@ -12,7 +12,7 @@ Trata-se de um sistema de automação de pedidos integrado ao whatsapp.
 
 <h3 style="margin-bottom: 0;">Tech Blog</h3>
 
-<span><a href="https://github.com/Felipe-53/tech-blog-dev" target="_blank">Repositório</a></span>
+<span><a href="https://github.com/Felipe-53/tech-blog" target="_blank">Repositório</a></span>
 
 Trata-se de algo que eu queria fazer já há algum tempo e que mostrou-se ser a oportunidade perfeita para colocar a mão na massa em algumas tecnologias sensacionais, dentre elas:
 
