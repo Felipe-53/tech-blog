@@ -2,7 +2,7 @@
 
 ## About
 
-Personal web site and blog. I write about Full Stack development with JavaScript, TypeScript and all the amazing technologies bornt within this ecosystem. Still very much a work in progress. [Check it out!](https://www.example.com)
+Personal web site and blog. I write about Full Stack development with JavaScript, TypeScript and all the amazing technologies bornt within this ecosystem. Still very much a work in progress. [Check it out!](https://www.felipebarbosatech.com.br)
 
 ## Stack
 
