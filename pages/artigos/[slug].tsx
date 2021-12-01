@@ -10,11 +10,14 @@ interface Props  {
 }
 
 const Article: React.FC<Props> = ({ article }) => {
-  const { title } = article;
+  const { title, excerpt } = article;
 
   return (
     <>
-      <Meta title={title} />
+      <Meta
+        title={title}
+        description={excerpt}
+      />
       <BlogArticle article={article} />
    </>
   )
