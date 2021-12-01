@@ -32,7 +32,7 @@ Me encontre nas seguintes plataformas:
       target="_blank"
       rel="noreferrer"
     >
-      LikedIn
+      LinkedIn
     </a>
   </li>
 </ul>
