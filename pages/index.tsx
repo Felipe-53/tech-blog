@@ -11,7 +11,7 @@ const Home = ({ articles, categories }: InferGetStaticPropsType<typeof getStatic
     <>
       <Meta
         ogType="website"
-        ogImageUrl="https://tech-blog-assets.s3.sa-east-1.amazonaws.com/ts-js.png"
+        ogImageUrl="https://tech-blog-assets.s3.sa-east-1.amazonaws.com/ts-js-default.png"
       />
       <ContentWithSideBarWrapper content={(
         <HomeMain
