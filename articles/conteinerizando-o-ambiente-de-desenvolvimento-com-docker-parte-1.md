@@ -1,4 +1,4 @@
-_Resolvi dividir esse artigo em dois posts, um de teor mais teórico (este) e outro de mão no código. Dessa forma forma o leitor já familiarizado com os conceitos poderá ir direto ao post que trata do exemplo prático, cujo link estará disponível aqui assim que for concluído._
+_Resolvi dividir esse artigo em dois posts, um de teor mais teórico (este) e outro de mão no código. Dessa forma forma o leitor já familiarizado com os conceitos poderá ir direto ao post que trata do exemplo prático, [aqui](https://www.felipebarbosatech.com.br/artigos/conteinerizando-o-ambiente-de-desenvolvimento-com-docker-parte-2)._
 
 ## Funciona na minha máquina
 
