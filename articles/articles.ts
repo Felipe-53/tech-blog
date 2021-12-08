@@ -5,6 +5,23 @@ import { Article } from '../types/Article';
 
 const articles: Article[] = [
   {
+    id: '2',
+    title: 'Conteinerizando o ambiente de desenvolvimento com Docker - Parte 2',
+    excerpt: `Nessa segunda parte, mostro na prática como conteinerizar o ambiente de desenvolvimento de uma aplicação simples que usa um banco de dados Postgres, Node.js no backend, frontend em React e Nginx como reverse-proxy`,
+    created_at: '08/12/2021',
+    last_updated: '',
+    slug: 'conteinerizando-o-ambiente-de-desenvolvimento-com-docker-parte-2',
+    body: '',
+    categories: [
+      categories[0],
+    ],
+    author: {
+      name: 'Felipe Barbosa',
+      href: '/sobre'
+    }
+  },
+
+  {
     id: '1',
     title: 'Conteinerizando o ambiente de desenvolvimento com Docker - Parte 1',
     excerpt: `Nessa primeira de duas partes, apresento que tipo de problemas os conteiners resolvem no ambiente
