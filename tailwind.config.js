@@ -61,8 +61,15 @@ module.exports = {
               }
             },
 
+            code: {
+              color: theme('colors.gray.100')
+            },
+
+            strong: {
+              color: theme('colors.gray.100')
+            },
+
             blockquote: {
-              // backgroundColor: theme('colors.gray.500'),
               p: {
                 color: theme('colors.gray.100')
               }

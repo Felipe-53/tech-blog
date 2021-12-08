@@ -6,7 +6,7 @@ interface Props {
 }
 
 const BlogArticleBody: React.FC<Props> = ({ markdownContent }) => {
-  const html = marked(markdownContent)
+  const html = marked(markdownContent, { gfm: true })
 
   return (
     <div dangerouslySetInnerHTML={{

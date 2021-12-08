@@ -9,7 +9,7 @@ export async function getPageContentFromMdFile(extensionlessMdFile: PageName) {
   const basePath = path.join(base, 'page-content')
 
   const aboutMarkDown = fs.readFileSync(path.join(basePath, `${extensionlessMdFile}.md`)).toString('utf-8')
-  const html = marked(aboutMarkDown)
+  const html = marked(aboutMarkDown, { gfm: true })
 
   return html
 }
