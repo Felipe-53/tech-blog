@@ -1,4 +1,4 @@
-_Nessa segunda parte, mostro na prática como conteinerizar o ambiente de desenvolvimento de uma aplicação simples que usa um banco de dados Postgres, Node.js no backend, frontend em React e Nginx como reverse-proxy_
+_Nessa segunda parte, mostro na prática como conteinerizar o ambiente de desenvolvimento de uma aplicação simples que usa um banco de dados Postgres, Node.js no backend, frontend em React e Nginx como reverse-proxy. Veja a parte 1 [aqui](https://www.felipebarbosatech.com.br/artigos/conteinerizando-o-ambiente-de-desenvolvimento-com-docker-parte-1)_.
 
 ## A aplicação e a stack utilizada
 
@@ -46,7 +46,7 @@ Nesse projeto, usei a seguinte estrutura:
 
 Para fins de demonstração, os três diretórios estão sob um único controle de versão git. Na prática, é muito melhor que **cada projeto tenha seu próprio controle de versão**. Observe também que existe um diretório dedicado exclusivamente à construção do ambiente de desenvolvimento, o `dev-env`. Isso porque, de fato, toda lógica e instruções contidas nele não pertencem nem ao frontend nem ao backend, mas à orquestração do ambiente de desenvolvimento. É nessa pasta que viverá o arquivo `docker-compose.yaml` através do qual será feita a orquestração de todos os conteiners de uma maneira simples e prática. Vejamos construir as imagens para o frontend e backend.
 
-## Dockerfile
+### Dockerfile
 
 Na raíz de ambos os projetos, criamos o arquivo dev.Dockerfile. O prefixo 'dev' serve para diferenciá-lo do Dockerfile de produção, que é diferente (não abordado nesse artigo, provavelmente no futuro escreverei a respeito).
 
@@ -163,7 +163,7 @@ server {
 
 Outra observação a ser feita aqui é o uso de hostnames diferentes do tradicional `localhost`. Isso porque, como veremos em seguida, o Docker Compose cria um rede interna onde é atribuído a cada serviço o hostname que corresponde ao nome do mesmo.
 
-### Docker Compose - orquestrando os containeres
+## Docker Compose - orquestrando os containeres
 
 O setup do ambiente de desenvolvimento encontra seu clímax e seu desfecho com o Docker Compose. Trata-se de uma ferramenta que serve para "amarrar" ou orquestrar conteiners de uma forma simples e prática. Tão simples, na verdade, que o único passo necessário é escrever um arquivo `.yaml` que descreve como os conteineres devem se comportar e interagir entre si.
 
@@ -304,7 +304,7 @@ server {
 }
 ```
 
-### Rodando o projeto
+## Rodando o projeto
 
 Tudo que é preciso para inicializar o projeto é ir na pasta `dev-env` e digitar no terminal:
 
@@ -316,6 +316,6 @@ A opção `--build` pode ser usada se for necessário reconstruir alguma das ima
 
 O ambiente está agora plenamente configurado e é possível agora desenvolver localmente e ver as mudanças acontecerem em tempo real nos conteiners, graças aos Bind Mounts. A única dependência para reproduzir todo o ambiente de desenvolvimento agora é Docker.
 
-### Conclusão
+## Conclusão
 
 Pode parecer trabalhoso à primeira vista o setup do ambiente dev com Docker. Mas é um trabalho que se tem uma única vez. Agora tudo que é preciso para construir o ambiente é puxar os repositórios do github e rodar um comando 😍
