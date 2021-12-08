@@ -2,17 +2,24 @@ import type { InferGetStaticPropsType } from 'next'
 import React from 'react'
 import ContentWithSideBarWrapper from '../components/containers/ContentWithSideBarWrapper/ContentWithSideBarWrapper'
 import HomeMain from '../components/HomeMain/HomeMain'
+import Meta from '../components/Layout/Meta/Meta'
 import { getArticles } from '../utils/articleUtils'
 import { getArticleCategories } from '../utils/categoriesUtils'
 
 const Home = ({ articles, categories }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <ContentWithSideBarWrapper content={(
-      <HomeMain
-        articles={articles}
-        categories={categories}
+    <>
+      <Meta
+        ogType="website"
+        ogImageUrl="https://tech-blog-assets.s3.sa-east-1.amazonaws.com/ts-js.png"
       />
-    )} />
+      <ContentWithSideBarWrapper content={(
+        <HomeMain
+          articles={articles}
+          categories={categories}
+        />
+      )} />
+    </>
   )
 }
 
