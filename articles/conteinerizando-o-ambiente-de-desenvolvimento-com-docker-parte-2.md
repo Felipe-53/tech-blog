@@ -1,5 +1,3 @@
-## Conteinerizando o ambiente de desenvolvimento com Docker - parte 2
-
 _Nessa segunda parte, mostro na prática como conteinerizar o ambiente de desenvolvimento de uma aplicação simples que usa um banco de dados Postgres, Node.js no backend, frontend em React e Nginx como reverse-proxy_
 
 ## A aplicação e a stack utilizada
