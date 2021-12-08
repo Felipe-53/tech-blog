@@ -8,6 +8,7 @@ export interface Article {
   last_updated: string,
   slug: string,
   body: string,
+  og_image_url?: string,
   categories: Category[],
   author: {
     name: string,

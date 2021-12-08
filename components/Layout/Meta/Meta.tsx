@@ -5,9 +5,10 @@ interface Props {
   title?: string,
   keywords?: string,
   description?: string
+  ogImageUrl?: string
 }
 
-const Meta: React.FC<Props> = ({ title, description, keywords }) => {
+const Meta: React.FC<Props> = ({ title, description, keywords, ogImageUrl }) => {
   const indexTitle = 'Felipe Barbosa'
 
   if (title) {
@@ -29,6 +30,14 @@ const Meta: React.FC<Props> = ({ title, description, keywords }) => {
         name="keywords"
         content={keywords}
       />
+      {
+        ogImageUrl?
+        <meta
+          property="og:image"
+          content={ogImageUrl}
+        /> 
+        : null
+      }
       <link rel="icon" href="/favicon.ico" />
       <title>{title}</title>
     </Head>
