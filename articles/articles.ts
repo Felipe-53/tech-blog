@@ -15,7 +15,7 @@ const articles: Article[] = [
     categories: [
       categories[0],
     ],
-    og_image_url: 'https://tech-blog-assets.s3.sa-east-1.amazonaws.com/docker.png',
+    og_image_url: 'https://tech-blog-assets.s3.sa-east-1.amazonaws.com/schema.png',
     author: {
       name: 'Felipe Barbosa',
       href: '/sobre'
@@ -34,7 +34,7 @@ const articles: Article[] = [
     categories: [
       categories[0],
     ],
-    og_image_url: 'https://tech-blog-assets.s3.sa-east-1.amazonaws.com/schema.png',
+    og_image_url: 'https://tech-blog-assets.s3.sa-east-1.amazonaws.com/docker.png',
     author: {
       name: 'Felipe Barbosa',
       href: '/sobre'
