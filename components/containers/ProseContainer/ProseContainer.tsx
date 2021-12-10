@@ -5,7 +5,7 @@ interface Props {
   positioningClasses?: string
 }
 
-export const proseContainerBaseTailwindClass = 'reading-padding prose prose-lg prose-dark mx-auto my-8';
+export const proseContainerBaseTailwindClass = 'w-full reading-padding prose prose-lg prose-dark mx-auto my-8';
 
 const ProseContainer: React.FC<Props> = ({ children, className: inputClassname, positioningClasses }) => {
   let className = proseContainerBaseTailwindClass;
