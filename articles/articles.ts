@@ -12,8 +12,10 @@ const articles: Article[] = [
     last_updated: '',
     slug: 'como-fazer-deploy-de-um-bot-no-telegram-com-aws-lambda',
     body: '',
-    categories: [],
-    og_image_url: '',
+    categories: [
+      categories[5], categories[6]
+    ],
+    og_image_url: 'https://tech-blog-assets.s3.sa-east-1.amazonaws.com/articles-assets/telegram.jpg',
     author: {
       name: 'Felipe Barbosa',
       href: '/sobre'
