@@ -7,7 +7,7 @@ const articles: Article[] = [
   {
     id: '3',
     title: 'Como fazer deploy de um bot do Telegram com AWS Lambda',
-    excerpt: 'Serveless functions (FaaS) são uma maneira de distribuir software sem gerenciar qualquer infraestrutura. Nesse artigo mostro como usar esse serviço da AWS (Lambda) para fazer o deploy de um bot no Telegram',
+    excerpt: 'Serveless functions (FaaS) são uma maneira de distribuir software sem gerenciar qualquer infraestrutura. Nesse artigo mostro como usar o AWS Lambda para fazer o deploy de um bot no Telegram usando Node.js e TypeScript com custo zero 😱',
     created_at: '16/12/2021',
     last_updated: '',
     slug: 'como-fazer-deploy-de-um-bot-no-telegram-com-aws-lambda',
