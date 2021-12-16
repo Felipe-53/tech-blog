@@ -43,7 +43,7 @@ const articles: Article[] = [
     excerpt: `Nessa primeira de duas partes, apresento que tipo de problemas os conteiners resolvem no ambiente
     de desenvolvimento e quais benefícios se obtém através de seu uso`,
     created_at: '29/11/2021',
-    last_updated: '',
+    last_updated: '16/12/2021',
     slug: 'conteinerizando-o-ambiente-de-desenvolvimento-com-docker-parte-1',
     body: '',
     categories: [

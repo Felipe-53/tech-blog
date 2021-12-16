@@ -4,7 +4,9 @@ _Resolvi dividir esse artigo em dois posts, um de teor mais teórico (este) e ou
 
 Em um mundo ideal, o ambiente de desenvolvimento seria idêntico ao ambiente de produção. Por “ambiente” entende-se todo o aparato de software que faz com que uma aplicação funcione de maneira adequada. Isso inclui desde o sistema operacional que a aplicação habita, ao runtime das linguagens utilizadas, até serviços como banco de dados, web servers, etc. Se fosse possível reproduzir localmente o ambiente de produção, eliminaria-se a possibilidade de bugs relacionados a divergências dessa natureza.
 
-O problema é que enquanto em produção uma aplicação roda em um ambiente controlado, em desenvolvimento o projeto roda na máquina local do desenvolvedor. E é improvável (senão impossível), que o desenvolvedor consiga reproduzir localmente de forma fiel o aparato de software usado em produção.
+O problema é que enquanto em produção uma aplicação roda em um ambiente controlado, em desenvolvimento o projeto roda na máquina local do desenvolvedor **\***. E é improvável (senão impossível), que o desenvolvedor consiga reproduzir localmente de forma fiel o aparato de software usado em produção.
+
+**\*** _Ou em um **servidor remoto**. Nesse caso, o setup do ambiente só precisa ser feito uma vez. Porém o problema persiste se esse ambiente precisar ser replicado em mais máquinas ou servidores. Portanto, também nesse caso a discussão que se segue continua a fazer sentido._
 
 No meu caso pessoal, pouco tempo depois que comecei a desenvolver, ao tomar ciência de que em produção meu código (backend) seria invariavelmente executado no contexto de um servidor linux, me propus de imediato adotá-lo na minha máquina local. Até hoje uso Ubuntu no meu computador, o que acabou se mostrando uma escolha muito acertada, porque essa familiarização com o OS me ajudou bastante na hora de fazer os primeiros deploys (bastante manuais). Mas isso estava longe de resolver todos os problemas, como deve ficar evidente nas próximas linhas.
 
