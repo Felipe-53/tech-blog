@@ -13,7 +13,7 @@ const articles: Article[] = [
     slug: 'como-fazer-deploy-de-um-bot-no-telegram-com-aws-lambda',
     body: '',
     categories: [
-      categories[5], categories[6]
+      categories[4], categories[5], categories[6]
     ],
     og_image_url: 'https://tech-blog-assets.s3.sa-east-1.amazonaws.com/articles-assets/telegram.jpg',
     author: {
