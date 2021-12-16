@@ -5,6 +5,21 @@ import { Article } from '../types/Article';
 
 const articles: Article[] = [
   {
+    id: '3',
+    title: 'Como fazer deploy de um bot do Telegram com AWS Lambda',
+    excerpt: 'Serveless functions (FaaS) são uma maneira de distribuir software sem gerenciar qualquer infraestrutura. Nesse artigo mostro como usar esse serviço da AWS (Lambda) para fazer o deploy de um bot no Telegram',
+    created_at: '16/12/2021',
+    last_updated: '',
+    slug: 'como-fazer-deploy-de-um-bot-no-telegram-com-aws-lambda',
+    body: '',
+    categories: [],
+    og_image_url: '',
+    author: {
+      name: 'Felipe Barbosa',
+      href: '/sobre'
+    }
+  },
+  {
     id: '2',
     title: 'Conteinerizando o ambiente de desenvolvimento com Docker - Parte 2',
     excerpt: `Nessa segunda parte, mostro na prática como conteinerizar o ambiente de desenvolvimento de uma aplicação simples que usa um banco de dados Postgres, Node.js no backend, frontend em React e Nginx como reverse-proxy`,
