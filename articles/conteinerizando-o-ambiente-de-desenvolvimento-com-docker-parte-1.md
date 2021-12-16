@@ -20,4 +20,4 @@ Diante dessas características, containers são a solução perfeita para elimin
 
 ## Exemplo prático
 
-No próximo post, vou mostrar na prática como isso funciona com Docker e Docker Compose, conteinerizando uma aplicação web simples com React no frontend, Node.js no backend, um banco de dados Postgres e Nginx como reverse-proxy.
+Na [segunda parte](/artigos/conteinerizando-o-ambiente-de-desenvolvimento-com-docker-parte-2), mostro na prática como isso funciona com Docker e Docker Compose, conteinerizando uma aplicação web simples com React no frontend, Node.js no backend, um banco de dados Postgres e Nginx como reverse-proxy.
