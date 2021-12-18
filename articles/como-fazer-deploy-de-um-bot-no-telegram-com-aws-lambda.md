@@ -1,26 +1,20 @@
+### Como funciona um Bot no Telegram
+
+No contexto do Telegram, um robô é uma conta/usuário que é capaz de receber, processar e enviar mensagens (e algumas outras ações) de forma programática, sem interação humana. Por trás dos panos, isso é feito através da comunicação entre os servidores do Telegram e um servidor web gerenciado pelo indivíduo ou entidade responsável por esse robô, comuinicação que se dá através da [API de robôs do Telegram](https://core.telegram.org/bots/api).
+
+Qualquer ação realizada por um robô (a ação mais comum, natualemnte, é o envio de mensagens para usuários) se traduz em uma requisição feita a essa API, contanto que a mesma atenda aos critérios definidos na documentação da API. Por outro lado, existem ações que partem de uma fonte externa ao robô, mas dizem respeito a ele diretamente. O evento mais comum é, mais uma vez, o envio de mensagem por parte de um usuário ao robô. É evidente a necessidade de um mecanismo que possibilite que Telegram possa notificar o serviço por trás desse robô do acontecimento desse evento. Isso é feito através de um mecanismo chamado Webhook.
+
+Webhook nada mais é do que uma URL forncida a um serviço externo no intuito de ser chamada por ele afim de notificar do acontecimento de algum evento. No caso do Telegram, é assim que são comunicados aos robôs eventos ocorridos dentro da plataforma que dizem respeito a esse robô.
+
+Diante dessas explicações, vê-se que para implementar e gerenciar um bot no Telegram, é nessário termos um serviço exposto na internet que possa ser notificado de acontecimentos na plataformas (através de webhooks) e que possar reagir a iniciar ações (através de chamadas na API do Telegram). Uma abordagem possível nessa caso seria a de "rodar" esse serviço em um servidor na nuvem. Porém a forma mais tradicional de se fazer isso implicaria num grande disperdício de recursos, enquanto esse servidor estivesse ocioso.
+
+A proposta desse artigo é mostrar como fazer isso com uma ferramenta chamada _Serverless Functions_, que se adequam perfeitamente a esse caso de uso.
+
 ### Serveless Functions
 
 Serveless functions (FaaS) são uma maneira de distribuir software sem gerenciar qualquer infraestrutura. A designação "serveless" pode ser enganadora, porque afinal de contas nosso código precisa ser executado em _alguma_ infraestrutura, o ponto em questão é que o gerenciamento dessa infraestrutura é completamente abstraído do usuário.
 
-FaaS são uma das formas mais antigas de se conseguir isso (a AWS introduziu seu serviço, Lambda, no final de 2014) e uma das abstrações mais completas também: tudo o que é fornecido ao provedor é o código do que será executado. Essa abstração tem um custo, porém: apenas algumas opções de runtime estão disponíveis e em versões específicas. Existem maneiras de superar essa limitação, mas que estão fora do escopo deste artigo. Existem também outras soluções serveless baseadas em containers, que eliminam toda essa limitação, pois o código que será executado vem de uma imagem fornecida e completamente controlada pelo usuário. Destaco aqui a [AWS App Runner](https://aws.amazon.com/apprunner/) e [Google Cloud Run](https://cloud.google.com/run), duas soluções/servicos fantásticos. Em termos de custo, entretanto, FaaS ainda são mais atrativas, isso se o serviço ou funcionalidade que se está tentando implementar e distribuir for simples o suficiente para "caber" dentro do contexto da execução de uma função - como é no caso de um bot para plataformas como o Telegram: o bot é basicamente um webservice que é notificado quando mensagens (e outros eventos) são enviadas para o mesmo, e que pode também disparar mensagem através de chamadas de API. É sobre isso que vamos falar no próximo tópico.
-
-### Telegram Bot
-
-#### Como funciona
-
-O Telegram tem uma API aberta para a criação e gerenciamento de bots dentro de sua plataforma. Funciona da seguinte maneira: o Telegram notifica um endpoint fornecido por você sobre quaisquer atualizações (mensagens e alguns outros eventos) enviadas ao seu robô. Essas notificações vêm na forma de uma requisição HTTP, método POST, para uma url previamente informada ao Telegram por você. Nessa requisição, estarão contidos todos os dados relativos à atualização em questão: no caso de uma mensagem, por exemplo, nome do usuário, horário, texto, etc., virão no `body` da requisição, formato JSON. Esse tipo de sistema de comunicação chama-se Webhook e é bastante usado para comunicação entre servidores (backend). Seu servidor pode então processar essa atualização da maneira que bem entender, podendo inclusive responder ao usuário com outra mensagem, através de uma chamada à API do Telegram.
-
-#### Autenticação
-
-A autenticação para chamadas na API do Telegram é feita através de tokens: cada bot criado recebe um token único que o identifica. Então em cada requisição, é necessário passar esse token da url, da seguinte forma:
-
-```
-https://api.telegram.org/bot<token>/METHOD_NAME
-```
-
-Uma referência completa à API do Telegram pode ser encontrada [aqui](https://core.telegram.org/bots/api). À primeira vista, pode parecer grande e não-intuitiva, mas uma vez familiarizado com a mesma, a documentação se mostra bastante precisa e completa. Eu irei destacar sessões específicas da documentação à medida que se mostrar pertinente.
-
-A forma de autenticar as chamadas ao webhook (que fica aberto na internet, para que Telegram possa acessá-lo) fica a cargo do usuário. Como somos nós que fornecemos a url a ser chamada pelo Telegram, podemos incluir na mesma uma query string com o token do nosso robô. Como esse token só é de conhecimento nosso e do Telegram, a presença do mesmo na url garante que de fato é o Telegram e não um serviço malicioso.
+FaaS são uma das formas mais antigas de se conseguir isso (a AWS introduziu seu serviço, Lambda, no final de 2014) e uma das abstrações mais completas também: tudo o que é fornecido ao provedor é o código do que será executado. Essa abstração tem um custo, porém: apenas algumas opções de runtime estão disponíveis e em versões específicas. Existem maneiras de superar essa limitação, mas que estão fora do escopo deste artigo. Existem também outras soluções serveless baseadas em containers, que eliminam toda essa limitação, pois o código que será executado vem de uma imagem fornecida e completamente controlada pelo usuário. Destaco aqui a [AWS App Runner](https://aws.amazon.com/apprunner/) e [Google Cloud Run](https://cloud.google.com/run), duas soluções/servicos fantásticos. Em termos de custo, entretanto, FaaS ainda são mais atrativas, isso se o serviço ou funcionalidade que se está tentando implementar e distribuir for simples o suficiente para "caber" dentro do contexto da execução de uma função - como é no caso de um bot no Telegram: como vimos, tudo que é necessário é expor uma URL para receber notificações sobre eventos e fazer chamadas na API para realizar ações. Vamos ver como podemos fazer isso utilizando o produto FaaS da AWS: Lambda.
 
 ### A função Lambda
 
