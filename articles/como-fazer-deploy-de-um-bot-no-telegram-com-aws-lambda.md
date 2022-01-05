@@ -1,14 +1,14 @@
 ### Como funciona um Bot no Telegram
 
-No contexto do Telegram, um robô é uma conta/usuário que é capaz de receber, processar e enviar mensagens (e algumas outras ações) de forma programática, sem interação humana. Por trás dos panos, isso é feito através da comunicação entre os servidores do Telegram e um servidor web gerenciado pelo indivíduo ou entidade responsável por esse robô, comuinicação que se dá através da [API de robôs do Telegram](https://core.telegram.org/bots/api).
+No contexto do Telegram, um robô é uma conta/usuário que é capaz de receber, processar e enviar mensagens (e algumas outras ações) de forma programática, sem interação humana. Por trás dos panos, isso é feito através da comunicação entre os servidores do Telegram e um servidor web gerenciado pelo indivíduo ou entidade responsável por esse robô, comunicação que se dá através da [API de robôs do Telegram](https://core.telegram.org/bots/api).
 
-Qualquer ação realizada por um robô (a ação mais comum, natualemnte, é o envio de mensagens para usuários) se traduz em uma requisição feita a essa API, contanto que a mesma atenda aos critérios definidos na documentação da API. Por outro lado, existem ações que partem de uma fonte externa ao robô, mas dizem respeito a ele diretamente. O evento mais comum é, mais uma vez, o envio de mensagem por parte de um usuário ao robô. É evidente a necessidade de um mecanismo que possibilite que Telegram possa notificar o serviço por trás desse robô do acontecimento desse evento. Isso é feito através de um mecanismo chamado Webhook.
+Qualquer ação realizada por um robô (a ação mais comum, atualmente, é o envio de mensagens para usuários) se traduz em uma requisição feita a essa API, contanto que a mesma atenda aos critérios definidos na documentação da mesma. Por outro lado, existem ações que partem de uma fonte externa ao robô, mas dizem respeito a ele diretamente. O evento mais comum é, mais uma vez, o envio de mensagem - mas dessa vez, por parte de um usuário, endereçada ao robô. É evidente a necessidade de um mecanismo que possibilite que Telegram possa notificar o serviço por trás desse robô do acontecimento desse evento. Isso é feito através de um mecanismo chamado Webhook.
 
-Webhook nada mais é do que uma URL forncida a um serviço externo no intuito de ser chamada por ele afim de notificar do acontecimento de algum evento. No caso do Telegram, é assim que são comunicados aos robôs eventos ocorridos dentro da plataforma que dizem respeito a esse robô.
+Em termos simples, **webhook nada mais é do que uma URL fornecida a um serviço externo no intuito de ser chamada por ele a fim de notificar do acontecimento de algum evento.** No caso do Telegram, é assim que são comunicados aos robôs eventos ocorridos dentro da plataforma que dizem respeito ao mesmo.
 
-Diante dessas explicações, vê-se que para implementar e gerenciar um bot no Telegram, é nessário termos um serviço exposto na internet que possa ser notificado de acontecimentos na plataformas (através de webhooks) e que possar reagir a iniciar ações (através de chamadas na API do Telegram). Uma abordagem possível nessa caso seria a de "rodar" esse serviço em um servidor na nuvem. Porém a forma mais tradicional de se fazer isso implicaria num grande disperdício de recursos, enquanto esse servidor estivesse ocioso.
+Diante dessas explicações, vê-se que para implementar e gerenciar um bot no Telegram, é necessário termos um serviço exposto na internet que possa ser notificado de acontecimentos na plataformas (através de webhooks) e que possa reagir a iniciar ações (através de chamadas na API do Telegram). Uma abordagem possível nesse caso seria a de manter esse serviço em pé em um servidor à espera de requisições. Porém essa solução geraria um grande desperdício de recursos quando o nosso servidor não estivesse processando requisições.
 
-A proposta desse artigo é mostrar como fazer isso com uma ferramenta chamada _Serverless Functions_, que se adequam perfeitamente a esse caso de uso.
+A proposta desse artigo é mostrar como fazer isso com uma solução chamada _Serverless Functions_, que se adequa perfeitamente a esse caso de uso.
 
 ### Serveless Functions
 
@@ -103,7 +103,7 @@ async function sendMessageTo(message: string, chat_id: number) {
 
 Tudo que precisamos fazer agora é subir o código para a AWS. Uma das maneiras de fazer isso (a mais simples) é comprimir a pasta que contém nosso projeto e fazer o upload da mesma através do console da AWS. Veja que é necessário incluir a pasta `node_modules`, que é onde estão nossas dependências.
 
-Vê-se que esse é um método bastante manual e moroso, mas é também o mais simples. Penso em escrever um artigo sobre como construir uma pipeline CI/DC para funções Lambda no futuro, mas foge ao escopo desse projeto.
+Vê-se que esse é um método bastante manual e moroso, mas é também o mais simples. Penso em escrever um artigo sobre como construir uma pipeline CI/DC para funções Lambda no futuro, mas foge ao escopo deste projeto.
 
 Note-se também que como se trata de um projeto TypeScript é necessário transpilá-lo antes de fazer o upload. Para evitar em parte o trabalho manual, criei o seguinte script que transpila e comprime o projeto:
 
@@ -117,7 +117,7 @@ Esse script cria o arquivo `index.js` e comprime nosso projeto na pasta `handler
 
 ### Adicionando um _trigger_ à função
 
-Uma função pode ser acionada por uma variedade imensa de eventos. No nosso caso, estamos interessados em invocá-la através da chamada de uma URL, nosso webhook. Para tanto, é necessário integrar nossa função Lambda com um serviço chamado API Gateway, que provê uma URL pública que direciona o tráfego para o nosso backend, nesse caso, nossa função. Esse é um processo um tanto moroso de descrever com palavras e imagens, portanto pretendo fazer um vídeo explicando com fazer isso passo-a-passo. A intenção aqui é a de dar uma visão geral do processo e, com sorte, o leitor conseguirá informações adicionais consultando a documentação. Nesse meio tempo, porém, fico à disposição para dar mais detalhes através do [e-mail](/sobre#me-encontre).
+Uma função pode ser acionada por uma variedade imensa de eventos. No nosso caso, estamos interessados em invocá-la através da chamada de uma URL, nosso webhook. Para tanto, é necessário integrar nossa função Lambda com um serviço chamado **API Gateway**, que provê uma URL pública que direciona o tráfego para o nosso backend, nesse caso, nossa função. Esse é um processo um tanto moroso de descrever com palavras e imagens, portanto pretendo fazer um vídeo explicando com fazer isso passo-a-passo. A intenção aqui é a de dar uma visão geral do processo e, com sorte, o leitor conseguirá informações adicionais consultando a documentação. Nesse meio tempo, porém, fico à disposição para dar mais detalhes através do [e-mail](/sobre#me-encontre).
 
 ### Criando o robô e passando ao Telegram nosso webhook
 
@@ -127,7 +127,7 @@ No Telegram se cria um robô... Através de um robô! Basta falar com o @botfath
 
 #### Informando o Telegram sobre nosso webhook
 
-De posse do token, informamos ao Telegram da nossa URL (obtida através da integração do Lambda com o API Gateway) através de uma requisição ao endpoint `/setWebhook`. Para saber se o processo foi bem sucedido, podemos também consultar o `/getWebhookInfo`. Com esse propósito, criei uma pasta chamada `webhook-config`, que contém scripts para as duas finalidades. Mais uma vez fazemos uso de variáveis de ambiente para armazenar o `token` bem comom nossa `url`. Nesse caso, porém, armazenamos essa informação no arquivo `.env`. Segue o código e os scripts:
+Os servidores do Telegram precisam saber qual URL devem chamar afim de notificar nosso serviço sobre um evento. O processo para fazer isso é simples. De posse do token, informamos ao Telegram da nossa URL (obtida através da integração do Lambda com o API Gateway) através de uma requisição ao endpoint `/setWebhook`. Para saber se o processo foi bem sucedido, podemos também consultar o `/getWebhookInfo`. Com esse propósito, criei uma pasta chamada `webhook-config`, que contém scripts para as duas finalidades. Mais uma vez fazemos uso de variáveis de ambiente para armazenar o `token` bem como nossa `url`. Nesse caso, porém, armazenamos essa informação no arquivo `.env`. Segue o código e os scripts:
 
 ```typescript
 import assert from "assert";
