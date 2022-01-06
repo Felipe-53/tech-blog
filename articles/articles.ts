@@ -15,7 +15,7 @@ const articles: Article[] = [
     categories: [
       categories[4], categories[5], categories[6]
     ],
-    og_image_url: 'https://tech-blog-assets.s3.sa-east-1.amazonaws.com/articles-assets/telegram.jpg',
+    og_image_url: 'https://tech-blog-assets.s3.sa-east-1.amazonaws.com/telegram-bot-article.jpg',
     author: {
       name: 'Felipe Barbosa',
       href: '/sobre'
