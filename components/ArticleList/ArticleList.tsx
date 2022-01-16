@@ -2,8 +2,6 @@ import React from 'react'
 import { Article } from '../../types/Article'
 import ArticlePresentation from '../ArticlePresentation/ArticlePresentation'
 import { Category } from '../../types/Category'
-import MainHeading from '../../components/typographic/MainHeading/MainHeading'
-
 interface Props {
   articles: Article[],
   chosenCategory: Category | null
@@ -60,10 +58,6 @@ const ArticleList: React.FC<Props> = ({ articles, chosenCategory }) => {
 
   return (
     <div className="flex flex-col mb-16">
-      <MainHeading className="text-center mb-8">
-        Artigos
-      </MainHeading>
-
       {render}      
     </div>    
   )

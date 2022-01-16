@@ -4,6 +4,7 @@ import Categories from '../Categories/Categories'
 import { Category } from '../../types/Category'
 import Introduction from '../Introduction/Introduction'
 import { Article } from '../../types/Article'
+import MainHeading from '../../components/typographic/MainHeading/MainHeading'
 
 interface Props {
   articles: Article[],
@@ -24,6 +25,10 @@ const HomeMain: React.FC<Props> = ({ articles, categories, positioningClasses })
       `}
     >
       <Introduction />
+
+      <MainHeading className="text-center">
+        Artigos
+      </MainHeading>
 
       <Categories
         categories={categories}
