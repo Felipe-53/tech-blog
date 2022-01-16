@@ -38,7 +38,7 @@ Esses conteineres serão orquestrados usando o docker-compose, como será mostra
 
 Nesse projeto, usei a seguinte estrutura:
 
-```
+```bash
 ├── backend
 ├── dev-env
 └── frontend
@@ -54,7 +54,7 @@ Vamos ver como fica o Dockerfile do backend e a estrutura do projeto.
 
 #### **Backend - folder structure**
 
-```
+```bash
 ├── dev.Dockerfile
 ├── package.json
 ├── package-lock.json
@@ -96,7 +96,7 @@ Outra observação se refere a algumas linhas de código que têm o intuito de f
 
 #### **Frontend - folder structure**
 
-```
+```bash
 ├── dev.Dockerfile
 ├── next.config.js
 ├── next-env.d.ts
@@ -247,13 +247,13 @@ A imagem do banco é construída a partir da imagem oficial do Postgres. Aqui de
 
 Outro ponto a ser ressaltado é que o Docker Compose cria uma rede interna onde cada serviço ganha um hostname que corresponde ao seu nome, como já foi dito. O ORM prisma usado no backend se conecta ao banco através de URL de conexão. O formato geral desta url é o que segue:
 
-```
+```bash
 postgresql://<USERNAME>:<PASSWORD>@<HOSTNAME>:<PORT>/<DATABASE>?schema=<SCHEMA>
 ```
 
 No contexto do Docker Compose essa url fica, portanto, da seguinte forma:
 
-```
+```text
 postgresql://postgres:postgres@db:5432/database?schema=public
 ```
 
@@ -308,7 +308,7 @@ server {
 
 Tudo que é preciso para inicializar o projeto é ir na pasta `dev-env` e digitar no terminal:
 
-```
+```bash
 docker-compose up
 ```
 
