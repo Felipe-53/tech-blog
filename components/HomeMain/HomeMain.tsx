@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ArticleList from '../ArticleList/ArticleList'
 import Categories from '../Categories/Categories'
 import { Category } from '../../types/Category'
@@ -14,6 +14,11 @@ interface Props {
 
 const HomeMain: React.FC<Props> = ({ articles, categories, positioningClasses }) => {
   const [chosenCategory, set_chosenCategory] = useState<Category | null>(null)
+  const [currentPage, set_currentPage] = useState(1)
+
+  useEffect(() => {
+    set_currentPage(1)
+  }, [chosenCategory])
 
   return (
     <div 
@@ -26,7 +31,7 @@ const HomeMain: React.FC<Props> = ({ articles, categories, positioningClasses })
     >
       <Introduction />
 
-      <MainHeading className="text-center">
+      <MainHeading id="artigos" className="text-center">
         Artigos
       </MainHeading>
 
@@ -39,6 +44,7 @@ const HomeMain: React.FC<Props> = ({ articles, categories, positioningClasses })
       <ArticleList
         articles={articles}
         chosenCategory={chosenCategory}
+        currentPageState={[currentPage, set_currentPage]}
       />
     </div>
   )

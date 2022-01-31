@@ -1,10 +1,11 @@
 import React from 'react'
 
 interface Props {
-  className?: string
+  className?: string,
+  id?: string
 }
 
-const MainHeading: React.FC<Props> = ({ className, children }) => {
+const MainHeading: React.FC<Props> = ({ id, className, children }) => {
   let tailwindClassname = 'text-3xl font-bold text-darkfont'
 
   if (className) {
@@ -12,7 +13,7 @@ const MainHeading: React.FC<Props> = ({ className, children }) => {
   }
 
   return (
-    <h2 className={tailwindClassname}>
+    <h2 id={id} className={tailwindClassname}>
       {children}
     </h2>
   )

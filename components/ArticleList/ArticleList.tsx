@@ -6,13 +6,14 @@ import buildPaginationManager from '../../utils/pagination'
 import Pagination from '../Pagination/Pagination'
 interface Props {
   articles: Article[],
-  chosenCategory: Category | null
+  chosenCategory: Category | null,
+  currentPageState: [number, React.Dispatch<React.SetStateAction<number>>]
 }
 
 const ARTICLES_PER_PEGE = 2
 
-const ArticleList: React.FC<Props> = ({ articles, chosenCategory }) => {
-  const [currentPage, set_currentPage] = useState(1)
+const ArticleList: React.FC<Props> = ({ articles, chosenCategory, currentPageState }) => {
+  const [currentPage, set_currentPage] = currentPageState
 
   let filteredArticles;
   if (!chosenCategory) {
@@ -40,7 +41,7 @@ const ArticleList: React.FC<Props> = ({ articles, chosenCategory }) => {
   let render;
   if (filteredArticles.length === 0) {
     render = (
-      <p className="text-lg text-darkfont">
+      <p className="text-lg text-darkfont my-8">
         Sem artigos nessa categoria 😔
       </p>
     )
@@ -69,20 +70,18 @@ const ArticleList: React.FC<Props> = ({ articles, chosenCategory }) => {
             })}
         </div>
 
-        <div className="flex">
-          <Pagination
-            className="w-full my-4"
-            pages={pages}
-            currentPageState={[currentPage, set_currentPage]}
-          />
-        </div>
+        <Pagination
+          className="w-full mt-12 p-2 rounded-md"
+          pages={pages}
+          currentPageState={[currentPage, set_currentPage]}
+        />
       </>
     )
 
   }
 
   return (
-    <div className="flex flex-col mb-16">
+    <div className="flex flex-col mb-16  min-h-[700px]">
       {render}      
     </div>    
   )
