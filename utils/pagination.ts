@@ -16,8 +16,6 @@ function buildPaginationManager<T>({
   let numberOfPages = Math.floor(numberOfItems / itemsPerPage)
   if (remainder) numberOfPages++
 
-  console.log(numberOfPages, 'odiwej')
-
   function getCurrentPageItems() {
     if (currentPage === numberOfPages && remainder) {
       return items.slice(
