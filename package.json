@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.4.1",
@@ -17,14 +18,17 @@
     "react-icons": "^4.3.1"
   },
   "devDependencies": {
+    "@types/jest": "^27.4.0",
     "@types/marked": "^4.0.0",
     "@types/node": "16.11.6",
     "@types/react": "17.0.34",
     "autoprefixer": "^10.4.0",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.2",
+    "jest": "^27.4.7",
     "postcss": "^8.3.11",
     "tailwindcss": "^2.2.19",
+    "ts-jest": "^27.1.3",
     "typescript": "4.4.4"
   }
 }
