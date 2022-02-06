@@ -20,15 +20,16 @@ beforeEach(() => {
   })
 })
 
-test.only('Should return the correct number of pages', () => {
+test('Should return the correct number of pages', () => {
   manager.setItems(generateList(10))
   manager.setItemsPerPage(3)
-
   expect(manager.getNumberOfPages()).toBe(4)
 
   manager.setItemsPerPage(2)
-
   expect(manager.getNumberOfPages()).toBe(5)
+
+  manager.setItems(generateList(13))
+  expect(manager.getNumberOfPages()).toBe(7)
 })
 
 
