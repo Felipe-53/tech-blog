@@ -3,10 +3,7 @@ class PaginationManager<T> {
   private items: T[]
   private itemsPerPage: number
   private currentPage: number
-  private currentIndex: number
-  private remainder: number
-  private numberOfItems: number
-  private numberOfPages: number
+  private numberOfPages!: number
   private setPage: (page: number) => void
 
   constructor({
@@ -22,25 +19,23 @@ class PaginationManager<T> {
     this.currentPage = currentPage,
     this.setPage = setPage
 
-    this.numberOfItems = this.items.length
-    this.currentIndex = currentPage - 1
-    this.remainder = this.numberOfItems % this.itemsPerPage
-    
-    this.numberOfPages = Math.floor(this.numberOfItems / this.itemsPerPage)
-    if (this.remainder) this.numberOfPages++
+    this.updateNumberOfPages()
   }
 
   getCurrentPageItems() {
-    if (this.currentPage === this.numberOfPages && this.remainder) {
+    const currentIndex = this.currentPage - 1
+    const remainder = this.items.length % this.itemsPerPage
+
+    if (this.currentPage === this.numberOfPages && remainder) {
       return this.items.slice(
-        this.currentIndex * this.itemsPerPage,
-        this.currentIndex * this.itemsPerPage + this.remainder
+        currentIndex * this.itemsPerPage,
+        currentIndex * this.itemsPerPage + remainder
       )
     }
 
     return this.items.slice(
-      this.currentIndex * this.itemsPerPage,
-      this.currentIndex * this.itemsPerPage + this.itemsPerPage
+      currentIndex * this.itemsPerPage,
+      currentIndex * this.itemsPerPage + this.itemsPerPage
     )
   }
 
@@ -53,7 +48,7 @@ class PaginationManager<T> {
   }
 
   getNumberOfPages() {
-    return this.getPages().length
+    return this.numberOfPages
   }
 
   getCurrentPage() {
@@ -62,6 +57,7 @@ class PaginationManager<T> {
 
   setItems(items: T[]) {
     this.items = items
+    this.updateNumberOfPages()
   }
 
   setItemsPerPage(itemsPerPage: number) {
@@ -69,6 +65,7 @@ class PaginationManager<T> {
       throw Error(`Items per page (${itemsPerPage}) greater than number of items ${this.items.length}`)
     }
     this.itemsPerPage = itemsPerPage
+    this.updateNumberOfPages()
   }
 
   setCurrentPage(page: number) {
@@ -77,51 +74,13 @@ class PaginationManager<T> {
     }
     this.setPage(page)
   }
-}
 
-
-function buildPaginationManager<T>({
-  items,
-  itemsPerPage,
-  currentPage
-}: {
-  items: T[],
-  itemsPerPage: number,
-  currentPage: number
-}) {
-  const currentIndex = currentPage - 1
-
-  const numberOfItems = items.length
-  const remainder = numberOfItems % itemsPerPage
-  
-  let numberOfPages = Math.floor(numberOfItems / itemsPerPage)
-  if (remainder) numberOfPages++
-
-  function getCurrentPageItems() {
-    if (currentPage === numberOfPages && remainder) {
-      return items.slice(
-        currentIndex * itemsPerPage,
-        currentIndex * itemsPerPage + remainder
-      )
-    }
-
-    return items.slice(
-      currentIndex * itemsPerPage,
-      currentIndex * itemsPerPage + itemsPerPage
-    )
-  }
-
-  function getPages() {
-    const pages = []
-    for (let i = 1; i <= numberOfPages; i++) {
-      pages.push(i)
-    }
-    return pages
-  }
-
-  return {
-    getCurrentPageItems,
-    getPages
+  private updateNumberOfPages() {
+    const numberOfItems = this.items.length
+    const remainder = numberOfItems % this.itemsPerPage
+    
+    this.numberOfPages = Math.floor(numberOfItems / this.itemsPerPage)
+    if (remainder) this.numberOfPages++
   }
 }
 
