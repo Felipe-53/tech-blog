@@ -57,14 +57,13 @@ class PaginationManager<T> {
 
   setItems(items: T[]) {
     this.items = items
+    this.setCurrentPage(1)
     this.updateNumberOfPages()
   }
 
   setItemsPerPage(itemsPerPage: number) {
-    if (itemsPerPage > this.items.length) {
-      throw Error(`Items per page (${itemsPerPage}) greater than number of items ${this.items.length}`)
-    }
     this.itemsPerPage = itemsPerPage
+    this.setCurrentPage(1)
     this.updateNumberOfPages()
   }
 
@@ -72,7 +71,17 @@ class PaginationManager<T> {
     if (!(page >= 1 && page <= this.numberOfPages)) {
       throw Error(`Page should be between 1 and ${this.numberOfPages}`)
     }
-    this.setPage(page)
+
+    const previousCurrentPage = this.currentPage
+    try {
+      this.setPage(page)
+      this.currentPage = page
+    } catch (err) {
+      // rollback to previous state if possible
+      this.currentPage = previousCurrentPage
+      this.setPage(previousCurrentPage)
+      throw err
+    }
   }
 
   private updateNumberOfPages() {
