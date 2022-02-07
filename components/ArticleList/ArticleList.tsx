@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { Article } from '../../types/Article'
 import ArticlePresentation from '../ArticlePresentation/ArticlePresentation'
 import { Category } from '../../types/Category'
-import buildPaginationManager from '../../utils/pagination'
+import { PaginationManager } from '../../utils/pagination'
 import Pagination from '../Pagination/Pagination'
 interface Props {
   articles: Article[],
@@ -15,7 +15,7 @@ const ARTICLES_PER_PEGE = 2
 const ArticleList: React.FC<Props> = ({ articles, chosenCategory, currentPageState }) => {
   const [currentPage, set_currentPage] = currentPageState
 
-  let filteredArticles;
+  let filteredArticles: Article[];
   if (!chosenCategory) {
     filteredArticles = articles;
   } else {
@@ -29,14 +29,15 @@ const ArticleList: React.FC<Props> = ({ articles, chosenCategory, currentPageSta
     })
   }
 
-  const { getCurrentPageItems, getPages } = buildPaginationManager<Article>({
+  const manager = new PaginationManager<Article>({
     items: filteredArticles,
-    currentPage: currentPage,
-    itemsPerPage: ARTICLES_PER_PEGE
+    currentPage,
+    itemsPerPage: 3,
+    setPage: set_currentPage
   })
 
-  const pageArticles = getCurrentPageItems()
-  const pages = getPages()
+  const pageArticles = manager.getCurrentPageItems()
+  const pages = manager.getPages()
 
   let render;
   if (filteredArticles.length === 0) {

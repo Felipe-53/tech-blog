@@ -29,7 +29,8 @@ const Pagination: React.FC<Props> = ({ pages, currentPageState, className }) => 
 
             return (
               <a
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation()
                   router.push('/#artigos')
                   set_currentPage(page)
                 }}
@@ -72,7 +73,8 @@ const ArrowBtn: React.FC<ArrowBtnProps> = ({ direction, disabled, set_currentPag
     left: (
       <AiOutlineLeft
         className={`${baseStyles} ${disabled? disabledText : ''}`}
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation()
           if (disabled) return
           router.push('/#artigos')
           set_currentPage(current => current - 1)
@@ -83,7 +85,8 @@ const ArrowBtn: React.FC<ArrowBtnProps> = ({ direction, disabled, set_currentPag
     right: (
       <AiOutlineRight
         className={`${baseStyles} ${disabled? disabledText : ''}`}
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation()
           if (disabled) return
           router.push('/#artigos')
           set_currentPage(current => current + 1)
