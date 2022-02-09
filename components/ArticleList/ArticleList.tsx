@@ -10,7 +10,7 @@ interface Props {
   currentPageState: [number, React.Dispatch<React.SetStateAction<number>>]
 }
 
-const ARTICLES_PER_PEGE = 2
+const ARTICLES_PER_PEGE = 3
 
 const ArticleList: React.FC<Props> = ({ articles, chosenCategory, currentPageState }) => {
   const [currentPage, set_currentPage] = currentPageState
@@ -42,14 +42,16 @@ const ArticleList: React.FC<Props> = ({ articles, chosenCategory, currentPageSta
   let render;
   if (filteredArticles.length === 0) {
     render = (
-      <p className="text-lg text-darkfont my-8">
-        Sem artigos nessa categoria 😔
-      </p>
+      <div className='min-h-[900px]'>
+        <p className="text-lg text-darkfont my-8">
+          Sem artigos nessa categoria 😔
+        </p>
+      </div>
     )
   } else {
     render = (
       <>
-        <div className="flex flex-col gap-12 min-h-[700px]">
+        <div className="flex flex-col gap-12 min-h-[900px]">
           {pageArticles.map((article, index) => {
               const { id, title, excerpt, created_at, last_updated, slug, 
                 author, categories, body } = article;
