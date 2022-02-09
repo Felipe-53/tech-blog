@@ -32,7 +32,7 @@ const ArticleList: React.FC<Props> = ({ articles, chosenCategory, currentPageSta
   const manager = new PaginationManager<Article>({
     items: filteredArticles,
     currentPage,
-    itemsPerPage: 3,
+    itemsPerPage: ARTICLES_PER_PEGE,
     setPage: set_currentPage
   })
 
@@ -49,7 +49,7 @@ const ArticleList: React.FC<Props> = ({ articles, chosenCategory, currentPageSta
   } else {
     render = (
       <>
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-12 min-h-[700px]">
           {pageArticles.map((article, index) => {
               const { id, title, excerpt, created_at, last_updated, slug, 
                 author, categories, body } = article;
@@ -82,7 +82,7 @@ const ArticleList: React.FC<Props> = ({ articles, chosenCategory, currentPageSta
   }
 
   return (
-    <div className="flex flex-col mb-16  min-h-[700px]">
+    <div className="flex flex-col mb-16">
       {render}      
     </div>    
   )

@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai'
 interface Props {
   pages: number[],
@@ -8,7 +7,6 @@ interface Props {
 
 const Pagination: React.FC<Props> = ({ pages, currentPageState, className }) => {
   const [currentPage, set_currentPage] = currentPageState
-  const router = useRouter()
 
   return (
     <div className={`flex justify-between items-center select-none ${className}`}>
@@ -29,7 +27,6 @@ const Pagination: React.FC<Props> = ({ pages, currentPageState, className }) => 
                 tabIndex={0}
                 onClick={(e) => {
                   e.stopPropagation()
-                  router.push('/#artigos')
                   set_currentPage(page)
                 }}
                 onKeyDown={e => {
@@ -66,7 +63,6 @@ interface ArrowBtnProps {
 }
 
 const ArrowBtn: React.FC<ArrowBtnProps> = ({ direction, disabled, set_currentPage }) => {
-  const router = useRouter()
 
   const baseStyles = 'text-3xl text-primary hover:cursor-pointer'
   const disabledText = 'text-gray-500'
@@ -78,7 +74,6 @@ const ArrowBtn: React.FC<ArrowBtnProps> = ({ direction, disabled, set_currentPag
     // @ts-ignore
     if (e.key !== undefined && e.key !== 'Enter') return
     if (disabled) return
-    router.push('/#artigos')
     if (direction === 'left') {
       set_currentPage(current => current - 1)
     } else {
