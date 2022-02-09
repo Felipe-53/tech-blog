@@ -1,8 +1,5 @@
-import React from 'react'
 import { useRouter } from 'next/router'
-import { AiOutlineRight, AiOutlineLeft, AiFillCaretRight, AiFillCaretLeft } from 'react-icons/ai'
-import { BsArrowRight } from 'react-icons/bs'
-
+import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai'
 interface Props {
   pages: number[],
   currentPageState: [number, React.Dispatch<React.SetStateAction<number>>]
@@ -29,9 +26,14 @@ const Pagination: React.FC<Props> = ({ pages, currentPageState, className }) => 
 
             return (
               <a
+                tabIndex={0}
                 onClick={(e) => {
                   e.stopPropagation()
                   router.push('/#artigos')
+                  set_currentPage(page)
+                }}
+                onKeyDown={e => {
+                  if (e.key !== 'Enter') return
                   set_currentPage(page)
                 }}
                 key={page}
@@ -69,28 +71,37 @@ const ArrowBtn: React.FC<ArrowBtnProps> = ({ direction, disabled, set_currentPag
   const baseStyles = 'text-3xl text-primary hover:cursor-pointer'
   const disabledText = 'text-gray-500'
 
+  const className = `${baseStyles} ${disabled? disabledText : ''}` 
+
+  function selectHandler(e: React.MouseEvent | React.KeyboardEvent) {
+    e.stopPropagation()
+    // @ts-ignore
+    if (e.key !== undefined && e.key !== 'Enter') return
+    if (disabled) return
+    router.push('/#artigos')
+    if (direction === 'left') {
+      set_currentPage(current => current - 1)
+    } else {
+      set_currentPage(current => current + 1)
+    }
+  }
+
   const map = {
     left: (
       <AiOutlineLeft
-        className={`${baseStyles} ${disabled? disabledText : ''}`}
-        onClick={(e) => {
-          e.stopPropagation()
-          if (disabled) return
-          router.push('/#artigos')
-          set_currentPage(current => current - 1)
-        }}
+        tabIndex={0}
+        className={className}
+        onClick={selectHandler}
+        onKeyDown={selectHandler}
       />
     ),
 
     right: (
       <AiOutlineRight
-        className={`${baseStyles} ${disabled? disabledText : ''}`}
-        onClick={(e) => {
-          e.stopPropagation()
-          if (disabled) return
-          router.push('/#artigos')
-          set_currentPage(current => current + 1)
-        }}
+        tabIndex={0}
+        className={className}
+        onClick={selectHandler}
+        onKeyDown={selectHandler}
       />
     )
   }
