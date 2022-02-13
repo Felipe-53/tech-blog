@@ -5,6 +5,7 @@ import { Category } from '../../types/Category'
 import Introduction from '../Introduction/Introduction'
 import { Article } from '../../types/Article'
 import MainHeading from '../../components/typographic/MainHeading/MainHeading'
+import TechNotes from '../TechNotes/TechNotes'
 
 interface Props {
   articles: Article[],
@@ -45,6 +46,10 @@ const HomeMain: React.FC<Props> = ({ articles, categories, positioningClasses })
         articles={articles}
         chosenCategory={chosenCategory}
         currentPageState={[currentPage, set_currentPage]}
+      />
+
+      <TechNotes
+
       />
     </div>
   )
