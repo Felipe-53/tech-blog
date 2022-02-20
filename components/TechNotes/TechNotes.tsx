@@ -1,9 +1,15 @@
 import React from 'react'
+import { TechNote } from '../../types/TechNote'
+import { getFormattedDate } from '../../use-cases/getFormattedDate'
 import Divider from '../decorative/Divider/Divider'
 import TechNotePresentation from '../TechNotePresentation/TechNotePresentation'
 import MainHeading from '../typographic/MainHeading/MainHeading'
 
-const TechNotes: React.FC = ({}) => {
+interface Props {
+  techNotes: TechNote[]
+}
+
+const TechNotes: React.FC<Props> = ({ techNotes }) => {
   return (
     <div className="w-full">
       <div className="mb-10">
@@ -15,18 +21,19 @@ const TechNotes: React.FC = ({}) => {
       </div>
 
       <div className="flex flex-col gap-6 mb-28">
-        <TechNotePresentation
-          title="Separation of Concerns em Resp APIs"
-          date="13 Fev"
-        />
-        <TechNotePresentation
-          title="Separation of Concerns em Resp APIs"
-          date="13 Fev"
-        />
-        <TechNotePresentation
-          title="Separation of Concerns em Resp APIs"
-          date="13 Fev"
-        />
+        {
+          techNotes.map(techNote => {
+            const { id, title, categories, created_at} = techNote
+            return (
+              <TechNotePresentation
+                key={id}
+                title={title}
+                date={getFormattedDate(created_at)}
+                categories={categories}
+              />
+            )
+          })
+        }
       </div>
 
     </div>

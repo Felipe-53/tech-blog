@@ -6,14 +6,16 @@ import Introduction from '../Introduction/Introduction'
 import { Article } from '../../types/Article'
 import MainHeading from '../../components/typographic/MainHeading/MainHeading'
 import TechNotes from '../TechNotes/TechNotes'
+import { TechNote } from '../../types/TechNote'
 
 interface Props {
-  articles: Article[],
-  categories: Category[],
+  articles: Article[]
+  categories: Category[]
+  techNotes: TechNote[]
   positioningClasses?: string
 }
 
-const HomeMain: React.FC<Props> = ({ articles, categories, positioningClasses }) => {
+const HomeMain: React.FC<Props> = ({ articles, categories, techNotes, positioningClasses }) => {
   const [chosenCategory, set_chosenCategory] = useState<Category | null>(null)
   const [currentPage, set_currentPage] = useState(1)
 
@@ -49,7 +51,7 @@ const HomeMain: React.FC<Props> = ({ articles, categories, positioningClasses })
       />
 
       <TechNotes
-
+        techNotes={techNotes}
       />
     </div>
   )
