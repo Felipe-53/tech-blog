@@ -33,9 +33,6 @@ export const getStaticProps = async () => {
   let response = await fetch(`${baseUrl}/tech-notes`)
   const techNotes: TechNote[] = await response.json()
 
-  response = await fetch(`${baseUrl}/tech-notes`)
-  const techNotesCategories: TechNoteCategory = await response.json()
-
   const articles = await getArticles()
   const categories = await getArticleCategories()
 
