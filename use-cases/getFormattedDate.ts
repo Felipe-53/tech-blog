@@ -14,7 +14,7 @@ export function getFormattedDate(date: string | Date) {
 
   let dateNumber = String(dateObj.getDate())
   if (dateNumber.length === 1) {
-    dateNumber += '0'
+    dateNumber = '0' + dateNumber
   }
 
   const monthName = months[dateObj.getMonth()]
