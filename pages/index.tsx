@@ -30,7 +30,21 @@ export const getStaticProps = async () => {
   const baseUrl = process.env.API_URL
   if (!baseUrl) throw new Error('env API_URL not defined')
 
-  let response = await fetch(`${baseUrl}/tech-notes`)
+  const response = await fetch(`${baseUrl}/tech-notes`, {
+    headers: {
+      'Authorization': `Bearer ${process.env.TOKEN}`
+    }
+  })
+
+  if (!response.ok) {
+    const responseData = {
+      url: response.url,
+      status: response.status,
+      payload: await response.json()
+    }
+    throw Error(`Not ok response: \n ${JSON.stringify(responseData)}`)
+  }
+
   const techNotes: TechNote[] = await response.json()
 
   const articles = await getArticles()
