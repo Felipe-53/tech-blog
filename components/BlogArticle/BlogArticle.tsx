@@ -4,9 +4,10 @@ import BlogArticleHeader from './BlogArticleHeader/BlogArticleHeader';
 import BlogArticleBody from './BlogArticleBody/BlogArticleBody';
 import ProseContainer from '../containers/ProseContainer/ProseContainer';
 import ContentWithSideBarWrapper from '../containers/ContentWithSideBarWrapper/ContentWithSideBarWrapper';
+import { TechNote } from '../../types/TechNote';
 
 interface Props  {
-  article: Article
+  article: Article | TechNote
 }
 
 const BlogArticle: React.FC<Props> = ({ article }) => {

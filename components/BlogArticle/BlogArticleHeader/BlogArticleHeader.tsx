@@ -1,10 +1,10 @@
 import React from 'react'
 import { Article } from '../../../types/Article'
 import Link from 'next/link'
-import Category from '../../Categories/Category/Category';
+import { TechNote } from '../../../types/TechNote';
 
 interface Props  {
-  article: Article
+  article: Article | TechNote
 }
 
 const BlogArticleHeader: React.FC<Props> = ({ article }) => {
