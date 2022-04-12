@@ -23,11 +23,12 @@ const TechNotes: React.FC<Props> = ({ techNotes }) => {
       <div className="flex flex-col gap-6 mb-28">
         {
           techNotes.map(techNote => {
-            const { id, title, categories, created_at} = techNote
+            const { id, slug, title, categories, created_at} = techNote
             return (
               <TechNotePresentation
                 key={id}
                 title={title}
+                slug={slug}
                 date={getFormattedDate(created_at)}
                 categories={categories}
               />
