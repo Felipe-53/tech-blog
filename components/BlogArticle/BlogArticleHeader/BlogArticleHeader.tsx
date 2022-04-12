@@ -2,6 +2,7 @@ import React from 'react'
 import { Article } from '../../../types/Article'
 import Link from 'next/link'
 import { TechNote } from '../../../types/TechNote';
+import parseDatetime from '../../../utils/parseDatetime';
 
 interface Props  {
   article: Article | TechNote
@@ -9,6 +10,8 @@ interface Props  {
 
 const BlogArticleHeader: React.FC<Props> = ({ article }) => {
   const { author, created_at, categories } = article;
+
+  const date = parseDatetime(created_at).toLocaleDateString('pt-br')
 
   return (
     <div className="mb-8">
@@ -31,7 +34,7 @@ const BlogArticleHeader: React.FC<Props> = ({ article }) => {
             {author.name}
           </a>
         </Link>,
-        <span> {created_at}</span>
+        <span>{" "}{date}</span>
       </p>
 
       <div className="flex gap-4">
