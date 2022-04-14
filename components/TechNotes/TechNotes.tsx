@@ -14,7 +14,7 @@ const TechNotes: React.FC<Props> = ({ techNotes }) => {
     <div className="w-full">
       <div className="mb-10">
         <MainHeading className="text-center">Tech Notes</MainHeading>
-        <p className="text-darkfont text-lg text-center mb-2">
+        <p className="text-darkfont text-lg text-center mt-2 mb-4">
           Posts concisos sobre problemas, soluções e dicas do dia-a-dia
         </p>
         <Divider />

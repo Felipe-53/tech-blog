@@ -20,7 +20,7 @@ const TechNotePresentation: React.FC<Props> = ({ title, date, categories, slug }
       <a
         tabIndex={0}
         className="
-          flex justify-between px-6 py-3
+          flex justify-between px-6 py-4
           hover:bg-gray-700 hover:rounded-md
           focus:bg-gray-700 focus:rounded-md
           cursor-pointer inde
