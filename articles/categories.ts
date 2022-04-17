@@ -20,5 +20,9 @@ export const categories: Category[] = [
   {
     id: '5',
     name: 'Serverless'
+  },
+  {
+    id: '6',
+    name: 'Databases'
   }
 ]

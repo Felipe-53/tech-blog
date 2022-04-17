@@ -5,6 +5,23 @@ import { Article } from '../types/Article';
 
 const articles: Article[] = [
   {
+    id: '4',
+    title: 'Database Transactions',
+    excerpt: 'Transações são uma funcionalidade que torna o armazenamento e manipulação de dados em um banco SQL robusto e confiável - e ao mesmo tempo em que é essencial, trata-se também de um conceito bastante simples de ser entendido',
+    created_at: '17/04/2022',
+    last_updated: '17/04/2022',
+    slug: 'database-transactions',
+    body: '',
+    categories: [
+      categories[5]
+    ],
+    og_image_url: 'https://tech-blog-assets.s3.sa-east-1.amazonaws.com/articles-assets/database-transactions.jpg',
+    author: {
+      name: 'Felipe Barbosa',
+      href: '/sobre'
+    }
+  },
+  {
     id: '3',
     title: 'Como fazer deploy de um bot do Telegram com AWS Lambda',
     excerpt: 'Serveless functions (FaaS) são uma maneira de distribuir software sem gerenciar qualquer infraestrutura. Nesse artigo mostro como usar o AWS Lambda para fazer o deploy de um bot no Telegram usando Node.js e TypeScript com custo zero 😱',
