@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import NavBar from './NavBar/NavBar'
 import Meta from './Meta/Meta'
+import Script from 'next/script'
 
 const Layout: React.FC = function Layout({ children }) {
   const [openMenu, set_openMenu] = useState(false);
@@ -8,6 +9,25 @@ const Layout: React.FC = function Layout({ children }) {
   return (
     <>
       <Meta />
+
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-K6EL68YNHZ`}
+      />
+
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+      >
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-K6EL68YNHZ');
+        `}
+      </Script>
+
       <div
         className="flex flex-col min-h-screen bg-gray-800"
         onClick={() => set_openMenu(false)}
