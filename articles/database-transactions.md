@@ -32,6 +32,8 @@ Se um usuário desejasse transferir uma quantia para outro, precisaríamos atual
   UPDATE conta SET saldo = saldo + 100.00 WHERE nome = 'Bob';
 ```
 
+_Usaremos o campo_ `nome` _como filtro de seleção a fim de facilitar o entendimento. Numa aplicação real, usaríamos uma chave primária ou campo com restrição de unicidade._
+
 Tudo bastante simples. Mas o que aconteceria se, durante essa operação, conseguíssemos atualizar o saldo de uma conta, mas não da outra? Isto é, o que acontece se apenas _uma_ das ações for bem sucedida? Claramente algo inaceitável. E um cenário como esses pode acontecer por uma infinidade de razões: perda de conexão com o banco, erro na query, etc. O que precisamos aqui é de uma maneira de garantir que as duas ações sejam realizadas ou a operação como um todo falhe. E é exatamente pra isso que servem as _transactions_.
 
 No Postgres, uma transação é iniciada e concluída com os comandos `BEGIN` e `COMMIT`, respectivamente. Todas as ações ou comandos que estiverem entre eles serão executados de forma completa ou não terão nenhum efeito. Isso quer dizer que se algum passo intermediário falhar, os dados possivelmente alterados no caminho são restaurados para o estado inicial em que se encontravam antes de a transação ser iniciada. Usando esse recurso no nosso exemplo, teríamos:
