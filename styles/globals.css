@@ -4,6 +4,6 @@
 
 @layer components {
   .reading-padding {
-    @apply px-6;
+    @apply px-12;
   }
 }
