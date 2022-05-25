@@ -5,6 +5,23 @@ import { Article } from '../types/Article';
 
 const articles: Article[] = [
   {
+    id: '5',
+    title: 'Um Panorama do ESM no Node.js',
+    excerpt: 'ESM (ECMAScript Modules) é a maneira oficial normatizada de trabalhar com módulos no JavaScript. Nesse artigo, discuto um pouco da história do ESM no Node.js, como habilitá-lo no runtime, quais as implicações disso e o que esperar para o futuro',
+    created_at: '23/05/2022',
+    last_updated: '23/05/2022',
+    slug: 'um-panorama-do-esm-no-nodejs',
+    body: '',
+    categories: [
+      categories[6]
+    ],
+    og_image_url: 'https://tech-blog-assets.s3.sa-east-1.amazonaws.com/articles-assets/node.jpg',
+    author: {
+      name: 'Felipe Barbosa',
+      href: '/sobre'
+    }
+  },
+  {
     id: '4',
     title: 'Database Transactions',
     excerpt: 'Transações são uma funcionalidade que torna o armazenamento e manipulação de dados em um banco SQL robusto e confiável - e ao mesmo tempo em que é essencial, trata-se também de um conceito bastante simples de ser entendido',
