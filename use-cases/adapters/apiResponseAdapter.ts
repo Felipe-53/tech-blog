@@ -2,8 +2,6 @@ import { APIResponseDTO } from "../../types/APIResponseDTO";
 import { TechNote } from "../../types/TechNote";
 
 function apiResponseAdapter(response: APIResponseDTO): TechNote {
-  console.log(response)
-
   return {
     id: response.id,
     title: response.title,
