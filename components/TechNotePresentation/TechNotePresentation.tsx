@@ -6,7 +6,7 @@ interface Props {
   date: string
   slug: string
   categories: {
-    id: number
+    id: string
     name: string
   }[]
 }
