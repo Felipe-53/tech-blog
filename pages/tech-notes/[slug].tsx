@@ -4,6 +4,8 @@ import { TechNote } from '../../types/TechNote'
 import BlogArticle from '../../components/BlogArticle/BlogArticle';
 import Meta from '../../components/Layout/Meta/Meta';
 import fetchJson from '../../utils/fetchJson';
+import { APIResponseDTO } from '../../types/APIResponseDTO';
+import { apiResponseAdapter } from '../../use-cases/adapters/apiResponseAdapter';
 
 interface Props  {
   techNote: TechNote
@@ -24,12 +26,14 @@ const TechNote: React.FC<Props> = ({ techNote }) => {
 }
 
 export const getStaticProps = async ({ params }: {params: {slug: string}}) => {
-  const techNote = await fetchJson<TechNote>('/tech-note', {
+  const response = await fetchJson<APIResponseDTO>('/post', {
     method: 'GET',
     queryString: {
       slug: params.slug
     }
   })
+
+  const techNote = apiResponseAdapter(response)
 
   return {
     props: {
@@ -39,7 +43,9 @@ export const getStaticProps = async ({ params }: {params: {slug: string}}) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const techNotes = await fetchJson<TechNote[]>('/tech-notes')
+  const response = await fetchJson<APIResponseDTO[]>('/post')
+
+  const techNotes = response.map(res => apiResponseAdapter(res))
 
   return {
     paths: techNotes.map(techNote => {

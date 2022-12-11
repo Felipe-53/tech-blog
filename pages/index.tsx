@@ -3,10 +3,13 @@ import React from 'react'
 import ContentWithSideBarWrapper from '../components/containers/ContentWithSideBarWrapper/ContentWithSideBarWrapper'
 import HomeMain from '../components/HomeMain/HomeMain'
 import Meta from '../components/Layout/Meta/Meta'
+import { APIResponseDTO } from '../types/APIResponseDTO'
 import { TechNote } from '../types/TechNote'
 import { TechNoteCategory } from '../types/TechNoteCategory'
+import { apiResponseAdapter } from '../use-cases/adapters/apiResponseAdapter'
 import { getArticles } from '../utils/articleUtils'
 import { getArticleCategories } from '../utils/categoriesUtils'
+import fetchJson from '../utils/fetchJson'
 
 const Home = ({ articles, categories, techNotes }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -30,22 +33,8 @@ export const getStaticProps = async () => {
   const baseUrl = process.env.API_URL
   if (!baseUrl) throw new Error('env API_URL not defined')
 
-  const response = await fetch(`${baseUrl}/tech-notes`, {
-    headers: {
-      'Authorization': `Bearer ${process.env.TOKEN}`
-    }
-  })
-
-  if (!response.ok) {
-    const responseData = {
-      url: response.url,
-      status: response.status,
-      payload: await response.json()
-    }
-    throw Error(`Not ok response: \n ${JSON.stringify(responseData)}`)
-  }
-
-  const techNotes: TechNote[] = await response.json()
+  const response = await fetchJson<APIResponseDTO[]>('/post')
+  const techNotes = response.map(res => apiResponseAdapter(res))
 
   const articles = await getArticles()
   const categories = await getArticleCategories()

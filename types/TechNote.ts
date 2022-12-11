@@ -1,5 +1,5 @@
 interface TechNote {
-  id: number
+  id: string
   title: string
   body: string
   slug: string
@@ -10,7 +10,7 @@ interface TechNote {
   }
   created_at: string
   categories: {
-    id: number
+    id: string
     name: string
   }[]
 }
