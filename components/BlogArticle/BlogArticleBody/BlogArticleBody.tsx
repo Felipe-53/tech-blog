@@ -1,13 +1,13 @@
-import React from 'react'
-import {marked } from 'marked'
-import hljs from 'highlight.js'
+import React from "react"
+import { marked } from "marked"
+import hljs from "highlight.js"
 
 marked.setOptions({
   highlight: (code, lang) => {
     return hljs.highlight(code, {
-      language: lang
+      language: lang,
     }).value
-  }
+  },
 })
 
 interface Props {
@@ -18,11 +18,12 @@ const BlogArticleBody: React.FC<Props> = ({ markdownContent }) => {
   const html = marked(markdownContent, { gfm: true })
 
   return (
-    <div dangerouslySetInnerHTML={{
-      __html: html
-    }} className="">
-      
-    </div>
+    <div
+      dangerouslySetInnerHTML={{
+        __html: html,
+      }}
+      className=""
+    ></div>
   )
 }
 

@@ -1,12 +1,12 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react"
+import Link from "next/link"
 
 interface Props {
-  isOpen: boolean,
+  isOpen: boolean
   set_openMenu: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const NavBarContent: React.FC<Props> = ({isOpen, set_openMenu}) => {
+const NavBarContent: React.FC<Props> = ({ isOpen, set_openMenu }) => {
   /* To animate the transition, add 'transition-transform'
   at the end of the string. The problem is that it introduces
   a small layout bug when changing from lg to smaller screen size. */
@@ -27,7 +27,7 @@ const NavBarContent: React.FC<Props> = ({isOpen, set_openMenu}) => {
   `
 
   if (isOpen) {
-    tailwindClassname = tailwindClassname.replace('translate-x-full', '')
+    tailwindClassname = tailwindClassname.replace("translate-x-full", "")
   }
 
   const onClickHandler: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
@@ -35,24 +35,31 @@ const NavBarContent: React.FC<Props> = ({isOpen, set_openMenu}) => {
   }
 
   return (
-    <ul
-      onClick={e => e.stopPropagation()}
-      className={tailwindClassname}>
-      <NavBarLink onClick={onClickHandler} href="/">Principal</NavBarLink>
-      <NavBarLink onClick={onClickHandler} href="/sobre">Sobre</NavBarLink>  
-      <NavBarLink onClick={onClickHandler} href="/projetos">Projetos</NavBarLink>
-      <NavBarLink onClick={onClickHandler} href="/sobre#me-encontre">Contato</NavBarLink>  
+    <ul onClick={(e) => e.stopPropagation()} className={tailwindClassname}>
+      <NavBarLink onClick={onClickHandler} href="/">
+        Principal
+      </NavBarLink>
+      <NavBarLink onClick={onClickHandler} href="/sobre">
+        Sobre
+      </NavBarLink>
+      <NavBarLink onClick={onClickHandler} href="/projetos">
+        Projetos
+      </NavBarLink>
+      <NavBarLink onClick={onClickHandler} href="/sobre#me-encontre">
+        Contato
+      </NavBarLink>
     </ul>
   )
 }
 
-const NavBarLink: React.FC<{href: string, onClick: React.MouseEventHandler<HTMLAnchorElement>}> = ({ href, children, onClick }) => {
+const NavBarLink: React.FC<{
+  href: string
+  onClick: React.MouseEventHandler<HTMLAnchorElement>
+}> = ({ href, children, onClick }) => {
   return (
     <li>
       <Link href={href}>
-        <a
-          onClick={onClick}
-          className="text-lg hover:text-secondary">
+        <a onClick={onClick} className="text-lg hover:text-secondary">
           {children}
         </a>
       </Link>

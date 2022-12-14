@@ -1,18 +1,23 @@
-import React from 'react'
-import { Category } from '../../../types/Category'
-
+import React from "react"
+import { Category } from "../../../types/Category"
 
 interface CategoryProps {
-  category: Category,
-  set_chosenCategory: React.Dispatch<React.SetStateAction<Category | null>>,
-  variant?: 'small' | 'normal',
-  inlineStyles?: object,
+  category: Category
+  set_chosenCategory: React.Dispatch<React.SetStateAction<Category | null>>
+  variant?: "small" | "normal"
+  inlineStyles?: object
   chosen: boolean
 }
 
-const Category: React.FC<CategoryProps> = ({ category, variant, inlineStyles, set_chosenCategory, chosen }) => {
+const Category: React.FC<CategoryProps> = ({
+  category,
+  variant,
+  inlineStyles,
+  set_chosenCategory,
+  chosen,
+}) => {
   function toggleCurrentCategory() {
-    chosen? set_chosenCategory(null) : set_chosenCategory(category);
+    chosen ? set_chosenCategory(null) : set_chosenCategory(category)
   }
 
   let tailwindBaseClass = `
@@ -30,14 +35,14 @@ const Category: React.FC<CategoryProps> = ({ category, variant, inlineStyles, se
     <button
       style={inlineStyles}
       className={tailwindBaseClass}
-      onKeyDown={event => {
-        if (event.key === 'Escape') {
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
           set_chosenCategory(null)
         }
       }}
-      onClick={e => {
-        e.stopPropagation();
-        toggleCurrentCategory();
+      onClick={(e) => {
+        e.stopPropagation()
+        toggleCurrentCategory()
       }}
     >
       {category.name}

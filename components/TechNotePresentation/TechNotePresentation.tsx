@@ -1,5 +1,5 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react"
+import Link from "next/link"
 
 interface Props {
   title: string
@@ -11,12 +11,14 @@ interface Props {
   }[]
 }
 
-const TechNotePresentation: React.FC<Props> = ({ title, date, categories, slug }) => {
+const TechNotePresentation: React.FC<Props> = ({
+  title,
+  date,
+  categories,
+  slug,
+}) => {
   return (
-    <Link
-      href={`/tech-notes/${slug}`}
-      passHref={true}
-    >
+    <Link href={`/tech-notes/${slug}`} passHref={true}>
       <a
         tabIndex={0}
         className="
@@ -27,30 +29,20 @@ const TechNotePresentation: React.FC<Props> = ({ title, date, categories, slug }
         "
       >
         <div className="flex flex-col gap-2">
-          <h5 className="text-darkfont text-xl">
-            {title}
-          </h5>
+          <h5 className="text-darkfont text-xl">{title}</h5>
 
           <div className=" text-sm flex gap-3 text-darkfont">
-            {
-              categories.map(cat => {
-                return (
-                  <span
-                    key={cat.id}
-                    className="bg-primary rounded-md py-1 px-2"
-                  >
-                    {cat.name}
-                  </span>
-                )
-              })
-            }
+            {categories.map((cat) => {
+              return (
+                <span key={cat.id} className="bg-primary rounded-md py-1 px-2">
+                  {cat.name}
+                </span>
+              )
+            })}
           </div>
         </div>
-        
 
-        <span className="text-gray-300 text-lg self-center">
-          {date}
-        </span>
+        <span className="text-gray-300 text-lg self-center">{date}</span>
       </a>
     </Link>
   )

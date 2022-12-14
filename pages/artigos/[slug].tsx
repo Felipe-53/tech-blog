@@ -1,36 +1,36 @@
-import React from 'react'
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { getArticleFromSlug, getArticles } from '../../utils/articleUtils';
-import { Article } from '../../types/Article'
-import BlogArticle from '../../components/BlogArticle/BlogArticle';
-import Meta from '../../components/Layout/Meta/Meta';
+import React from "react"
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next"
+import { getArticleFromSlug, getArticles } from "../../utils/articleUtils"
+import { Article } from "../../types/Article"
+import BlogArticle from "../../components/BlogArticle/BlogArticle"
+import Meta from "../../components/Layout/Meta/Meta"
 
-interface Props  {
+interface Props {
   article: Article
 }
 
 const Article: React.FC<Props> = ({ article }) => {
-  const { title, excerpt, og_image_url } = article;
+  const { title, excerpt, og_image_url } = article
 
   return (
     <>
-      <Meta
-        title={title}
-        description={excerpt}
-        ogImageUrl={og_image_url}
-      />
+      <Meta title={title} description={excerpt} ogImageUrl={og_image_url} />
       <BlogArticle article={article} />
-   </>
+    </>
   )
 }
 
-export const getStaticProps = async ({ params }: {params: {slug: string}}) => {
+export const getStaticProps = async ({
+  params,
+}: {
+  params: { slug: string }
+}) => {
   const article = await getArticleFromSlug(params.slug)
 
   return {
     props: {
-      article: article
-    }
+      article: article,
+    },
   }
 }
 
@@ -38,12 +38,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await getArticles()
 
   return {
-    paths: articles.map(article => {
+    paths: articles.map((article) => {
       return {
-        params: { slug: article.slug }
+        params: { slug: article.slug },
       }
     }),
-    fallback: false
+    fallback: false,
   }
 }
 

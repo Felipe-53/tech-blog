@@ -1,11 +1,12 @@
-import React from 'react'
-import Divider from '../decorative/Divider/Divider'
-import ExternalLink from '../ExternalLink/ExternalLink'
-import SmallHeading from '../typographic/SmallHeading/SmallHeading'
+import React from "react"
+import Divider from "../decorative/Divider/Divider"
+import ExternalLink from "../ExternalLink/ExternalLink"
+import SmallHeading from "../typographic/SmallHeading/SmallHeading"
 
 function SideBar() {
   return (
-    <div className="
+    <div
+      className="
       py-8 col-start-5 col-end-6 bg-gray-700
       flex flex-col items-center gap-12
       lg:py-4"
@@ -34,16 +35,12 @@ function SideBar() {
       <Spot title="Lendo">
         <ul>
           <li>
-            <ExternalLink
-              href="https://www.typescriptlang.org/docs/handbook/intro.html"
-            >
+            <ExternalLink href="https://www.typescriptlang.org/docs/handbook/intro.html">
               The TypeScript Handbook
             </ExternalLink>
           </li>
           <li>
-            <ExternalLink
-              href="https://www.nodejsdesignpatterns.com/"
-            >
+            <ExternalLink href="https://www.nodejsdesignpatterns.com/">
               Node.js Design Patterns
             </ExternalLink>
           </li>
@@ -62,9 +59,7 @@ const Spot: React.FC<SpotProps> = ({ title, children }) => {
     <div className="w-4/5">
       <SmallHeading>{title}</SmallHeading>
       <Divider />
-      <div className="text-lg text-darkfont mt-2">
-        {children}
-      </div>
+      <div className="text-lg text-darkfont mt-2">{children}</div>
     </div>
   )
 }

@@ -1,4 +1,3 @@
-
 class PaginationManager<T> {
   private items: T[]
   private itemsPerPage: number
@@ -7,17 +6,20 @@ class PaginationManager<T> {
   private setPage: (page: number) => void
 
   constructor({
-    items, itemsPerPage, currentPage, setPage
-  }:{
-    items: T[],
-    itemsPerPage: number,
-    currentPage: number,
+    items,
+    itemsPerPage,
+    currentPage,
+    setPage,
+  }: {
+    items: T[]
+    itemsPerPage: number
+    currentPage: number
     setPage: (page: number) => void
   }) {
-    this.items = items,
-    this.itemsPerPage = itemsPerPage,
-    this.currentPage = currentPage,
-    this.setPage = setPage
+    ;(this.items = items),
+      (this.itemsPerPage = itemsPerPage),
+      (this.currentPage = currentPage),
+      (this.setPage = setPage)
 
     this.updateNumberOfPages()
   }
@@ -87,7 +89,7 @@ class PaginationManager<T> {
   private updateNumberOfPages() {
     const numberOfItems = this.items.length
     const remainder = numberOfItems % this.itemsPerPage
-    
+
     this.numberOfPages = Math.floor(numberOfItems / this.itemsPerPage)
     if (remainder) this.numberOfPages++
   }

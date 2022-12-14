@@ -1,28 +1,29 @@
-import React from 'react'
+import React from "react"
 
 interface Props {
-  className?: string,
+  className?: string
   positioningClasses?: string
 }
 
-export const proseContainerBaseTailwindClass = 'w-full reading-padding prose prose-lg prose-dark mx-auto my-8';
+export const proseContainerBaseTailwindClass =
+  "w-full reading-padding prose prose-lg prose-dark mx-auto my-8"
 
-const ProseContainer: React.FC<Props> = ({ children, className: inputClassname, positioningClasses }) => {
-  let className = proseContainerBaseTailwindClass;
-  
+const ProseContainer: React.FC<Props> = ({
+  children,
+  className: inputClassname,
+  positioningClasses,
+}) => {
+  let className = proseContainerBaseTailwindClass
+
   if (inputClassname) {
-    className += ' ' + inputClassname;
+    className += " " + inputClassname
   }
 
   if (positioningClasses) {
-    className += ' ' + positioningClasses;
+    className += " " + positioningClasses
   }
 
-  return (
-    <div className={className}>
-      {children}
-    </div>
-  )
+  return <div className={className}>{children}</div>
 }
 
 export default ProseContainer

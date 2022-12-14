@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import NavBar from './NavBar/NavBar'
-import Meta from './Meta/Meta'
+import React, { useState } from "react"
+import NavBar from "./NavBar/NavBar"
+import Meta from "./Meta/Meta"
 
 const Layout: React.FC = function Layout({ children }) {
-  const [openMenu, set_openMenu] = useState(false);
+  const [openMenu, set_openMenu] = useState(false)
 
   return (
     <>
@@ -12,14 +12,9 @@ const Layout: React.FC = function Layout({ children }) {
         className="flex flex-col min-h-screen bg-gray-800"
         onClick={() => set_openMenu(false)}
       >
-        <NavBar
-          openMenu={openMenu}
-          set_openMenu={set_openMenu}
-        />
+        <NavBar openMenu={openMenu} set_openMenu={set_openMenu} />
 
-        <main className="w-full">
-          {children}
-        </main>
+        <main className="w-full">{children}</main>
 
         <footer className="mt-auto text-darkfont bg-primary">
           <div className="flex items-center justify-evenly h-12">

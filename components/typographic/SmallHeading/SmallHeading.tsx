@@ -1,21 +1,17 @@
-import React from 'react'
+import React from "react"
 
 interface Props {
   className?: string
 }
 
 const SmallHeading: React.FC<Props> = ({ className, children }) => {
-  let tailwindClassname = 'text-darkfont text-xl font-medium'
+  let tailwindClassname = "text-darkfont text-xl font-medium"
 
   if (className) {
-    tailwindClassname += ' ' + className;
+    tailwindClassname += " " + className
   }
 
-  return (
-    <h4 className={tailwindClassname}>
-      {children}
-    </h4>
-  )
+  return <h4 className={tailwindClassname}>{children}</h4>
 }
 
 export default SmallHeading

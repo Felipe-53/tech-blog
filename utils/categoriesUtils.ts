@@ -1,4 +1,4 @@
-import { categories } from '../articles/categories'
+import { categories } from "../articles/categories"
 
 async function getArticleCategories() {
   return categories

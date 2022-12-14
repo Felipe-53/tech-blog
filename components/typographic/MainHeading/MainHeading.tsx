@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react"
 
 interface Props {
-  className?: string,
+  className?: string
   id?: string
 }
 
 const MainHeading: React.FC<Props> = ({ id, className, children }) => {
-  let tailwindClassname = 'text-3xl font-bold text-darkfont'
+  let tailwindClassname = "text-3xl font-bold text-darkfont"
 
   if (className) {
-    tailwindClassname += ' ' + className;
+    tailwindClassname += " " + className
   }
 
   return (

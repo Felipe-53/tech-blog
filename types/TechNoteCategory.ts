@@ -1,4 +1,4 @@
 export interface TechNoteCategory {
-  id: number,
+  id: number
   name: string
 }
