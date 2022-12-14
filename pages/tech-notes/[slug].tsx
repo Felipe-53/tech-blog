@@ -26,12 +26,7 @@ const TechNote: React.FC<Props> = ({ techNote }) => {
 }
 
 export const getStaticProps = async ({ params }: {params: {slug: string}}) => {
-  const response = await fetchJson<APIResponseDTO>('/post', {
-    method: 'GET',
-    queryString: {
-      slug: params.slug
-    }
-  })
+  const response = await fetchJson<APIResponseDTO>(`/post/${params.slug}`)
 
   const techNote = apiResponseAdapter(response)
 
