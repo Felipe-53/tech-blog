@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const proseContainerBaseTailwindClass =
-  "w-full reading-padding prose prose-lg prose-dark mx-auto my-8"
+  "w-full reading-padding text-slate-100 prose prose-lg prose-invert mx-auto my-8"
 
 const ProseContainer: React.FC<Props> = ({
   children,

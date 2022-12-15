@@ -1,3 +1,6 @@
+const defaultTheme = require("tailwindcss/defaultTheme")
+const colors = require("tailwindcss/colors")
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -6,14 +9,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#4F46E5",
-        secondary: "#EC4899",
-        darkfont: "#F3F4F6",
+        primary: colors.indigo[600],
+        secondary: colors.pink[500],
+        darkfont: colors.gray[100],
         javascript: "#F0DB4F",
         typescript: "#007acc",
       },
 
-      typography: (theme) => ({
+      typography: ({ theme }) => ({
         DEFAULT: {
           css: {
             // default is 65ch, modified here to match
@@ -21,8 +24,9 @@ module.exports = {
             // the site
             maxWidth: "768px",
             a: {
+              color: theme("colors.primary"),
               textDecoration: "none",
-              fontWeight: "inherit",
+              fontWeight: defaultTheme.fontWeight.semibold,
               "&:hover": {
                 color: "#EC4899",
               },
@@ -30,58 +34,7 @@ module.exports = {
             },
           },
         },
-        dark: {
-          css: {
-            color: theme("colors.gray.100"),
-
-            h4: {
-              color: theme("colors.gray.100"),
-            },
-
-            h3: {
-              color: theme("colors.gray.100"),
-            },
-
-            h2: {
-              color: theme("colors.gray.100"),
-            },
-
-            h1: {
-              color: theme("colors.gray.100"),
-            },
-
-            a: {
-              color: "#4F46E5",
-            },
-
-            pre: {
-              backgroundColor: theme("colors.gray.700"),
-              code: {
-                color: theme("colors.gray.100"),
-              },
-            },
-
-            code: {
-              color: theme("colors.gray.100"),
-            },
-
-            strong: {
-              color: theme("colors.gray.100"),
-            },
-
-            blockquote: {
-              p: {
-                color: theme("colors.gray.100"),
-              },
-            },
-          },
-        },
       }),
-    },
-  },
-  variants: {
-    extend: {
-      typography: ["dark"],
     },
   },
   plugins: [require("@tailwindcss/typography")],
