@@ -20,9 +20,8 @@ module.exports = {
         DEFAULT: {
           css: {
             // default is 65ch, modified here to match
-            // the max-w-screen-md applied to the rest of
-            // the site
-            maxWidth: "768px",
+            // the max-w-screen-md applied to the rest of the site
+            maxWidth: defaultTheme.screens.md,
             a: {
               color: theme("colors.primary"),
               textDecoration: "none",
@@ -30,7 +29,6 @@ module.exports = {
               "&:hover": {
                 color: "#EC4899",
               },
-              // TODO: match site link styles
             },
           },
         },
