@@ -7,7 +7,7 @@ function apiResponseAdapter(response: APIResponseDTO): TechNote {
     title: response.title,
     author: {
       name: response.author.name,
-      href: "./about",
+      href: "/sobre",
     },
     body: response.body,
     og_image_url: response.ogImageUrl,
