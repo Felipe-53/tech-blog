@@ -58,13 +58,13 @@ const NavBarLink: React.FC<{
 }> = ({ href, children, onClick }) => {
   return (
     <li>
-      <Link href={href}>
-        <a onClick={onClick} className="text-lg hover:text-secondary">
-          {children}
-        </a>
+      <Link href={href} onClick={onClick} className="text-lg hover:text-secondary">
+
+        {children}
+
       </Link>
     </li>
-  )
+  );
 }
 
 export default NavBarContent

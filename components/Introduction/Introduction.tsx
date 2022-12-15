@@ -25,16 +25,18 @@ const Introduction: React.FC = () => {
             <span className="text-javascript">JavaScript</span>,{" "}
             <span className="text-typescript">TypeScript</span> e todas as
             tecnologias fantásticas produzidas nesse ecossistema.
-            <Link href="/sobre">
-              <a className="text-lg text-primary font-semibold hover:text-secondary">
+            <Link
+              href="/sobre"
+              className="text-lg text-primary font-semibold hover:text-secondary">
+              
                 &nbsp;Mais sobre →
-              </a>
+              
             </Link>
           </p>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Introduction

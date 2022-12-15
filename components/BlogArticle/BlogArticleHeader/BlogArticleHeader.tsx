@@ -31,15 +31,15 @@ const BlogArticleHeader: React.FC<Props> = ({ article }) => {
         }}
       >
         <span>Por </span>
-        <Link href={author.href}>
-          <a
-            className="text-primary hover:text-secondary"
-            style={{
-              textDecoration: "none",
-            }}
-          >
-            {author.name}
-          </a>
+        <Link
+          href={author.href}
+          className="text-primary hover:text-secondary"
+          style={{
+            textDecoration: "none",
+          }}>
+
+          {author.name}
+
         </Link>
         ,<span> {date}</span>
       </p>
@@ -57,7 +57,7 @@ const BlogArticleHeader: React.FC<Props> = ({ article }) => {
         })}
       </div>
     </div>
-  )
+  );
 }
 
 export default BlogArticleHeader
