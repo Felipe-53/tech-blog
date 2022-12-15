@@ -27,7 +27,7 @@ module.exports = {
               textDecoration: "none",
               fontWeight: defaultTheme.fontWeight.semibold,
               "&:hover": {
-                color: "#EC4899",
+                color: theme("colors.secondary"),
               },
             },
           },
