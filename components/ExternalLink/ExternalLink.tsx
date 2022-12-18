@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react"
 
 interface Props {
-  href: string,
+  href: string
 }
 
 const ExternalLink: React.FC<Props> = ({ href, children }) => {

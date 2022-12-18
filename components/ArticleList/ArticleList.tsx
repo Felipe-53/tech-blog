@@ -1,19 +1,29 @@
-import React from 'react'
-import { Article } from '../../types/Article'
-import ArticlePresentation from '../ArticlePresentation/ArticlePresentation'
-import { Category } from '../../types/Category'
+import React, { useMemo, useState } from "react"
+import { Article } from "../../types/Article"
+import ArticlePresentation from "../ArticlePresentation/ArticlePresentation"
+import { Category } from "../../types/Category"
+import { PaginationManager } from "../../utils/pagination"
+import Pagination from "../Pagination/Pagination"
 interface Props {
-  articles: Article[],
+  articles: Article[]
   chosenCategory: Category | null
+  currentPageState: [number, React.Dispatch<React.SetStateAction<number>>]
 }
 
-const ArticleList: React.FC<Props> = ({ articles, chosenCategory }) => {
+const ARTICLES_PER_PEGE = 3
 
-  let filteredArticles;
+const ArticleList: React.FC<Props> = ({
+  articles,
+  chosenCategory,
+  currentPageState,
+}) => {
+  const [currentPage, set_currentPage] = currentPageState
+
+  let filteredArticles: Article[]
   if (!chosenCategory) {
-    filteredArticles = articles;
+    filteredArticles = articles
   } else {
-    filteredArticles = articles.filter(art => {
+    filteredArticles = articles.filter((art) => {
       for (const category of art.categories) {
         if (category.id === chosenCategory.id) {
           return true
@@ -23,19 +33,41 @@ const ArticleList: React.FC<Props> = ({ articles, chosenCategory }) => {
     })
   }
 
-  let render;
+  const manager = new PaginationManager<Article>({
+    items: filteredArticles,
+    currentPage,
+    itemsPerPage: ARTICLES_PER_PEGE,
+    setPage: set_currentPage,
+  })
+
+  const pageArticles = manager.getCurrentPageItems()
+  const pages = manager.getPages()
+
+  let render
   if (filteredArticles.length === 0) {
     render = (
-      <p className="text-lg text-darkfont">
-        Sem artigos nessa categoria 😔
-      </p>
+      <div className="min-h-[900px]">
+        <p className="text-lg text-darkfont my-8">
+          Sem artigos nessa categoria 😔
+        </p>
+      </div>
     )
   } else {
     render = (
-      <div className="flex flex-col gap-12">
-        {filteredArticles.map((article, index) => {
-            const { id, title, excerpt, created_at, last_updated, slug, 
-              author, categories, body } = article;
+      <>
+        <div className="flex flex-col gap-12 min-h-[900px]">
+          {pageArticles.map((article, index) => {
+            const {
+              id,
+              title,
+              excerpt,
+              created_at,
+              last_updated,
+              slug,
+              author,
+              categories,
+              body,
+            } = article
             return (
               <ArticlePresentation
                 key={id}
@@ -52,15 +84,18 @@ const ArticleList: React.FC<Props> = ({ articles, chosenCategory }) => {
               />
             )
           })}
-      </div>
+        </div>
+
+        <Pagination
+          className="w-full mt-12 p-2 rounded-md"
+          pages={pages}
+          currentPageState={[currentPage, set_currentPage]}
+        />
+      </>
     )
   }
 
-  return (
-    <div className="flex flex-col mb-16">
-      {render}      
-    </div>    
-  )
+  return <div className="flex flex-col mb-16">{render}</div>
 }
 
 export default ArticleList

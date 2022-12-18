@@ -1,17 +1,21 @@
-import React from 'react'
-import CategoryFC from './Category/Category'
-import { Category } from '../../types/Category'
+import React from "react"
+import CategoryFC from "./Category/Category"
+import { Category } from "../../types/Category"
 
 interface Props {
-  categories: Category[],
-  chosenCategory: Category | null,
+  categories: Category[]
+  chosenCategory: Category | null
   set_chosenCategory: React.Dispatch<React.SetStateAction<Category | null>>
 }
 
-const Categories: React.FC<Props> = ({ categories, set_chosenCategory, chosenCategory }) => {
+const Categories: React.FC<Props> = ({
+  categories,
+  set_chosenCategory,
+  chosenCategory,
+}) => {
   return (
     <div className="flex gap-8 flex-wrap justify-around">
-      {categories.map(cat => {
+      {categories.map((cat) => {
         return (
           <CategoryFC
             key={cat.id}

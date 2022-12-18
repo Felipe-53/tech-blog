@@ -28,47 +28,47 @@ A função Lambda espera receber um arquivo chamado `index.js` que exporta uma f
 const handler: APIGatewayProxyHandler = async (event, context) => {
   // Handling Authentication
   try {
-    assert(event.queryStringParameters?.token);
+    assert(event.queryStringParameters?.token)
   } catch {
     return buildResponse({
       statusCode: 401,
       message: "Unauthorized",
-    });
+    })
   }
-  const queryStringToken = event.queryStringParameters.token;
+  const queryStringToken = event.queryStringParameters.token
 
   try {
-    assert(queryStringToken === botToken);
+    assert(queryStringToken === botToken)
   } catch {
     return buildResponse({
       statusCode: 403,
       message: "Forbidden",
-    });
+    })
   }
 
-  assert(event.body, "Empty request body");
-  const body = JSON.parse(event.body);
+  assert(event.body, "Empty request body")
+  const body = JSON.parse(event.body)
 
   // Take a look at the Telegram Bot Api to know more!
   // https://core.telegram.org/bots/api#update
-  const chatId = body.message.chat.id;
-  assert(typeof chatId === "number");
+  const chatId = body.message.chat.id
+  assert(typeof chatId === "number")
 
-  const responseData = await sendMessageTo("Hello, there!", chatId);
+  const responseData = await sendMessageTo("Hello, there!", chatId)
   try {
     // Again, check Telegram Bot Api:
     // https://core.telegram.org/bots/api#making-requests
     // "The response contains a JSON object, which always has a Boolean field 'ok'"
-    assert(responseData.ok === true);
+    assert(responseData.ok === true)
   } catch {
-    console.warn("Unsuccessful request", "Reponse:", "\n", responseData);
+    console.warn("Unsuccessful request", "Reponse:", "\n", responseData)
   }
 
   return buildResponse({
     statusCode: 200,
     message: "ok",
-  });
-};
+  })
+}
 ```
 
 A função `handler` recebe dois argumentos no momento de sua invocação pela AWS. Basicamente, como se pode imaginar, eles contêm informações sobre o evento que ocasionou o disparo da função e o contexto. É possível ver exatamente os dados que são passados na [documentação](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html), mas o TypeScript pode nos dar uma grande força aqui. Instalando a lib @types/aws-lambda, temos ajuda de _intellisense_ para os tipos dos argumentos, bem como do formato da resposta.
@@ -92,10 +92,10 @@ async function sendMessageTo(message: string, chat_id: number) {
       text: message,
       chat_id,
     },
-  });
+  })
 
   // the response payload
-  return response.data;
+  return response.data
 }
 ```
 
@@ -130,13 +130,13 @@ No Telegram se cria um robô... Através de um robô! Basta falar com o @botfath
 Os servidores do Telegram precisam saber qual URL devem chamar afim de notificar nosso serviço sobre um evento. O processo para fazer isso é simples. De posse do token, informamos ao Telegram da nossa URL (obtida através da integração do Lambda com o API Gateway) através de uma requisição ao endpoint `/setWebhook`. Para saber se o processo foi bem sucedido, podemos também consultar o `/getWebhookInfo`. Com esse propósito, criei uma pasta chamada `webhook-config`, que contém scripts para as duas finalidades. Mais uma vez fazemos uso de variáveis de ambiente para armazenar o `token` bem como nossa `url`. Nesse caso, porém, armazenamos essa informação no arquivo `.env`. Segue o código e os scripts:
 
 ```typescript
-import assert from "assert";
-import axios from "axios";
-import { config } from "dotenv";
+import assert from "assert"
+import axios from "axios"
+import { config } from "dotenv"
 
-const result = config();
+const result = config()
 if (result.error) {
-  throw Error("failed to load .env file");
+  throw Error("failed to load .env file")
 }
 
 async function setWebhook() {
@@ -146,60 +146,60 @@ async function setWebhook() {
     data: {
       url: `${getWebhookUrl()}?token=${getToken()}`,
     },
-  });
+  })
 
-  console.log(resp.data);
+  console.log(resp.data)
 }
 
 async function getWebhookInfo() {
   const resp = await axios({
     url: buildTelegramUrlEndpoint("getWebhookInfo"),
     method: "GET",
-  });
+  })
 
-  console.log(resp.data);
+  console.log(resp.data)
 }
 
 const map = {
   setWebhook,
   getWebhookInfo,
-};
+}
 
 async function main() {
-  const option = process.argv[2];
+  const option = process.argv[2]
   if (!option) {
-    throw Error("Command line argument not provided");
+    throw Error("Command line argument not provided")
   }
-  assert(option === "setWebhook" || option === "getWebhookInfo");
+  assert(option === "setWebhook" || option === "getWebhookInfo")
 
-  await map[option]();
+  await map[option]()
 }
 
 function getToken() {
   if (!process.env.TOKEN) {
-    throw Error("Failed to load TOKEN key from environment");
+    throw Error("Failed to load TOKEN key from environment")
   }
-  const botToken = process.env.TOKEN;
-  return botToken;
+  const botToken = process.env.TOKEN
+  return botToken
 }
 
 function getWebhookUrl() {
   if (!process.env.WEBHOOK_URL) {
-    throw Error("Failed to load WEBHOOK_URL key from environment");
+    throw Error("Failed to load WEBHOOK_URL key from environment")
   }
-  const webhookUrl = process.env.WEBHOOK_URL;
-  return webhookUrl;
+  const webhookUrl = process.env.WEBHOOK_URL
+  return webhookUrl
 }
 
 function buildTelegramUrlEndpoint(endpoint: string) {
-  const token = getToken();
-  return `https://api.telegram.org/bot${token}/${endpoint}`;
+  const token = getToken()
+  return `https://api.telegram.org/bot${token}/${endpoint}`
 }
 
 main().catch((err) => {
-  console.log(err);
-  process.exit(1);
-});
+  console.log(err)
+  process.exit(1)
+})
 ```
 
 ```JSON
