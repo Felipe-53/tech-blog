@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai"
 interface Props {
   pages: number[]
@@ -29,7 +30,8 @@ const Pagination: React.FC<Props> = ({
             textColor = "border border-2 border-secondary"
 
           return (
-            <a
+            <Link
+              href={"/#artigos"}
               tabIndex={0}
               onClick={(e) => {
                 e.stopPropagation()
@@ -47,7 +49,7 @@ const Pagination: React.FC<Props> = ({
                 `}
             >
               {page}
-            </a>
+            </Link>
           )
         })}
 
@@ -109,7 +111,7 @@ const ArrowBtn: React.FC<ArrowBtnProps> = ({
     ),
   }
 
-  return map[direction]
+  return <Link href={"/#artigos"}>{map[direction]}</Link>
 }
 
 export default Pagination
