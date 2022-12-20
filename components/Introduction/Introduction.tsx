@@ -1,7 +1,7 @@
 import React from "react"
 import img from "../../public/myself.jpg"
-import Image from "next/legacy/image";
-import Link from "next/link"
+import Image from "next/legacy/image"
+import { SiteLink } from "../SiteLink/SiteLink"
 
 const Introduction: React.FC = () => {
   return (
@@ -25,18 +25,14 @@ const Introduction: React.FC = () => {
             <span className="text-javascript">JavaScript</span>,{" "}
             <span className="text-typescript">TypeScript</span> e todas as
             tecnologias fantásticas produzidas nesse ecossistema.
-            <Link
-              href="/sobre"
-              className="text-lg text-primary font-semibold hover:text-secondary">
-              
-                &nbsp;Mais sobre →
-              
-            </Link>
+            <SiteLink href="/sobre" className="text-lg">
+              &nbsp;Mais sobre →
+            </SiteLink>
           </p>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default Introduction

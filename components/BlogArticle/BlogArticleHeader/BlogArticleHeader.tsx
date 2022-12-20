@@ -1,8 +1,8 @@
 import React from "react"
 import { Article } from "../../../types/Article"
-import Link from "next/link"
 import { TechNote } from "../../../types/TechNote"
 import parseDatetime from "../../../utils/parseDatetime"
+import { SiteLink } from "../../SiteLink/SiteLink"
 
 interface Props {
   article: Article | TechNote
@@ -31,17 +31,8 @@ const BlogArticleHeader: React.FC<Props> = ({ article }) => {
         }}
       >
         <span>Por </span>
-        <Link
-          href={author.href}
-          className="text-primary hover:text-secondary"
-          style={{
-            textDecoration: "none",
-          }}>
-
-          {author.name}
-
-        </Link>
-        ,<span> {date}</span>
+        <SiteLink href={author.href}>{author.name}</SiteLink>,
+        <span> {date}</span>
       </p>
 
       <div className="flex gap-4">
@@ -57,7 +48,7 @@ const BlogArticleHeader: React.FC<Props> = ({ article }) => {
         })}
       </div>
     </div>
-  );
+  )
 }
 
 export default BlogArticleHeader
