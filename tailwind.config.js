@@ -9,11 +9,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.indigo[600],
-        secondary: colors.pink[500],
+        primary: colors.indigo[800],
+        secondary: colors.amber[400],
         darkfont: colors.gray[100],
         javascript: "#F0DB4F",
-        typescript: "#007acc",
+        typescript: "#007ACC",
       },
 
       typography: ({ theme }) => ({
@@ -23,7 +23,7 @@ module.exports = {
             // the max-w-screen-md applied to the rest of the site
             maxWidth: defaultTheme.screens.md,
             a: {
-              color: theme("colors.primary"),
+              color: theme("colors.secondary"),
               textDecoration: "none",
               fontWeight: defaultTheme.fontWeight.semibold,
               "&:hover": {
