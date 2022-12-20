@@ -11,7 +11,7 @@ const NavBarContent: React.FC<Props> = ({ isOpen, set_openMenu }) => {
   at the end of the string. The problem is that it introduces
   a small layout bug when changing from lg to smaller screen size. */
   let tailwindClassname = `
-    transform text-lg text-darkfont
+    transform text-lg text-darkfont font-semibold
     lg:pt-0
     lg:translate-x-0 lg:transition-none
     lg:visible
@@ -58,13 +58,15 @@ const NavBarLink: React.FC<{
 }> = ({ href, children, onClick }) => {
   return (
     <li>
-      <Link href={href} onClick={onClick} className="text-lg hover:text-secondary">
-
+      <Link
+        href={href}
+        onClick={onClick}
+        className="text-lg hover:text-secondary"
+      >
         {children}
-
       </Link>
     </li>
-  );
+  )
 }
 
 export default NavBarContent
