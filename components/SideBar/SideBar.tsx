@@ -46,7 +46,7 @@ const Spot: React.FC<SpotProps> = ({ title, children }) => {
   return (
     <div className="w-4/5">
       <SmallHeading>{title}</SmallHeading>
-      <Divider color="secondary" />
+      <Divider />
       <div className="text-lg text-darkfont mt-2">
         <SideBarList>{children}</SideBarList>
       </div>
