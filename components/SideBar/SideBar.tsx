@@ -11,40 +11,28 @@ function SideBar() {
       flex flex-col items-center gap-12
       lg:py-4"
     >
-      <Spot title="Desenvolvendo">
-        <a
-          href="https://www.instagram.com/agilizze.app/"
-          target="_blank"
-          rel="noreferrer"
-          className="hover:text-secondary"
-        >
-          ➡️ Agilzze App
-        </a>
-      </Spot>
-
       <Spot title="Estudando">
-        <ul>
-          <li>Docker</li>
-          <li>Typescript</li>
-          <li>Next.js</li>
-          <li>Tailwind CSS</li>
-          <li>Firebase</li>
-        </ul>
+        <>Docker</>
+        <>Typescript</>
+        <>Next.js</>
+        <>Tailwind CSS</>
+        <>Firebase</>
       </Spot>
 
       <Spot title="Lendo">
-        <ul>
-          <li>
-            <ExternalLink href="https://www.typescriptlang.org/docs/handbook/intro.html">
-              The TypeScript Handbook
-            </ExternalLink>
-          </li>
-          <li>
-            <ExternalLink href="https://www.nodejsdesignpatterns.com/">
-              Node.js Design Patterns
-            </ExternalLink>
-          </li>
-        </ul>
+        <ExternalLink href="https://www.typescriptlang.org/docs/handbook/intro.html">
+          The TypeScript Handbook
+        </ExternalLink>
+
+        <ExternalLink href="https://www.nodejsdesignpatterns.com/">
+          Node.js Design Patterns
+        </ExternalLink>
+      </Spot>
+
+      <Spot title="Desenvolvendo">
+        <ExternalLink href="https://www.instagram.com/agilizze.app/">
+          Agilzze App
+        </ExternalLink>
       </Spot>
     </div>
   )
@@ -58,9 +46,21 @@ const Spot: React.FC<SpotProps> = ({ title, children }) => {
   return (
     <div className="w-4/5">
       <SmallHeading>{title}</SmallHeading>
-      <Divider />
-      <div className="text-lg text-darkfont mt-2">{children}</div>
+      <Divider color="secondary" />
+      <div className="text-lg text-darkfont mt-2">
+        <SideBarList>{children}</SideBarList>
+      </div>
     </div>
+  )
+}
+
+const SideBarList: React.FC = ({ children }) => {
+  return (
+    <ul className="flex flex-col gap-2">
+      {React.Children.map(children, (child) => {
+        return <li>{child}</li>
+      })}
+    </ul>
   )
 }
 

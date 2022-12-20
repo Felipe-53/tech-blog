@@ -39,4 +39,4 @@ Me encontre nas seguintes plataformas:
 
 Ou fale comigo diretamente através do email:
 
-*felipeandresb97@gmail.com*
+felipeandresb97@gmail.com

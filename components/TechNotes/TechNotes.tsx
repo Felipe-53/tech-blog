@@ -17,7 +17,7 @@ const TechNotes: React.FC<Props> = ({ techNotes }) => {
         <p className="text-darkfont text-lg text-center mt-2 mb-4">
           Posts concisos sobre problemas, soluções e dicas do dia-a-dia
         </p>
-        <Divider />
+        <Divider color="secondary" />
       </div>
 
       <div className="flex flex-col gap-6 mb-28">

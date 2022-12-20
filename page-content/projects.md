@@ -4,7 +4,7 @@ Alguns dos projetos que construí, do mais recente para o mais antigo.
 
 <h3 style="margin-bottom: 0;">Agilizze</h3>
 
-<a class="text-primary" href="https://www.instagram.com/agilizze.app" target="_blank">Instagram</a>
+<a href="https://www.instagram.com/agilizze.app" target="_blank">Instagram</a>
 
 Esse é o projeto principal no qual estou trabalhando atualmente. Ainda em de desenvolvimento, é sem dúvida o mais complexo que já empreendi.
 
@@ -30,7 +30,7 @@ Nesse projeto eu aprendi/consolidei as seguintes habilidades:
 
 - Compreenção e consumo de API de terceiro (API do Telegram);
 - Meu primeiro contato com Webhook (endpoint do backend que tem o propósito de ser chamado quando da acorrência de algum evento externo);
-- Primeiro contato com **<a class="text-primary" href="https://ngrok.com/" target="_blank">ngrok</a>**, ferramenta que disponibiliza uma url pública que redireciona o tráfego para servidor local.
+- Primeiro contato com **<a href="https://ngrok.com/" target="_blank">ngrok</a>**, ferramenta que disponibiliza uma url pública que redireciona o tráfego para servidor local.
 
 Feito em Python, na época minha linguagem de preferência para backend (atualmentente Node.js).
 

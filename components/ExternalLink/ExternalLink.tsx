@@ -10,7 +10,7 @@ const ExternalLink: React.FC<Props> = ({ href, children }) => {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="text-darkfont text-lg hover:text-secondary"
+      className="text-darkfont hover:text-secondary active:text-secondary focus:text-secondary font-bold text-lg"
     >
       {children}
     </a>
