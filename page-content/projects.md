@@ -2,13 +2,34 @@
 
 Alguns dos projetos que construí, do mais recente para o mais antigo.
 
-<h3 style="margin-bottom: 0;">Agilizze</h3>
+<h3 style="margin-bottom: 0;">Tech Blog CMS API</h3>
+<a href="https://github.com/Felipe-53/tech-blog-cms-api" target="_blank">Instagram</a>
 
+API de gerenciamento de conteúdo do Blog. Construído com testes, SOLID e DDD em mente.
+Juntei a necessidade de ter um Headless CMS para o site com a vontade de explorar boas práticas de arquitetura de sofware, além de incorporar pipelines de CI/CD. O projeto conta com:
+
+- Testes;
+- SOLID;
+- DDD;
+- CI pipeline usando Github Actions;
+- Deploy em ambiente Serverless (Lambda).
+
+<h3 style="margin-bottom: 0;">Agilizze</h3>
 <a href="https://www.instagram.com/agilizze.app" target="_blank">Instagram</a>
 
-Esse é o projeto principal no qual estou trabalhando atualmente. Ainda em de desenvolvimento, é sem dúvida o mais complexo que já empreendi.
+Sistema de automação de pedidos integrado ao Whatsapp. Conta com uma plataforma de gestão de pedidos para empresas e um aplicativo web para clientes. É sem dúvida o projeto full stack mais complexo que já empreendi. Aqui tive a oportunidade de utilizar:
 
-Trata-se de um sistema de automação de pedidos integrado ao whatsapp.
+Backend:
+
+- Docker
+- Web Sockets
+- Fastify (Node.js Framework)
+- Prisma (Node.js ORM)
+
+Frontend:
+
+- React
+- Material UI (Design System)
 
 <h3 style="margin-bottom: 0;">Tech Blog</h3>
 
