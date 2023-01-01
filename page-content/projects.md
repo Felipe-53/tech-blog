@@ -3,7 +3,7 @@
 Alguns dos projetos que construí, do mais recente para o mais antigo.
 
 <h3 style="margin-bottom: 0;">Tech Blog CMS API</h3>
-<a href="https://github.com/Felipe-53/tech-blog-cms-api" target="_blank">Instagram</a>
+<a href="https://github.com/Felipe-53/tech-blog-cms-api" target="_blank">Repositório</a>
 
 API de gerenciamento de conteúdo do Blog. Construído com testes, SOLID e DDD em mente.
 Juntei a necessidade de ter um Headless CMS para o site com a vontade de explorar boas práticas de arquitetura de sofware, além de incorporar pipelines de CI/CD. O projeto conta com:
