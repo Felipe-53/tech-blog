@@ -9,7 +9,7 @@ function SideBar() {
       className="
       h-full
       py-8 bg-gray-700
-      flex flex-col items-center gap-12
+      flex flex-col items-center gap-14
       lg:py-4"
     >
       <Spot title="Estudando">
@@ -57,7 +57,7 @@ const Spot: React.FC<SpotProps> = ({ title, children }) => {
 
 const SideBarList: React.FC = ({ children }) => {
   return (
-    <ul className="flex flex-col gap-2">
+    <ul className="flex flex-col gap-3">
       {React.Children.map(children, (child) => {
         return <li>{child}</li>
       })}
