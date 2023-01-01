@@ -10,16 +10,16 @@ const ContentWithSideBarWrapper: React.FC<Props> = ({ content }) => {
     <div
       className={`
       w-full
-      lg:grid lg:grid-cols-10
+      lg:grid lg:grid-cols-4
     `}
       style={{
         // 100vw - (navbar height + footer height)
         minHeight: "calc(100vh - 6.5rem)",
       }}
     >
-      <div className="col-start-1 col-end-8">{content}</div>
+      <div className="col-start-1 col-end-4">{content}</div>
 
-      <div className="col-start-8 col-end-11 h-full">
+      <div className="col-start-4 col-end-5 h-full">
         <SideBar />
       </div>
     </div>
