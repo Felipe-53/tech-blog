@@ -5,6 +5,23 @@ import { Article } from "../types/Article"
 
 const articles: Article[] = [
   {
+    id: "6",
+    title: "Minha lista de Tecnologias para 2023",
+    excerpt:
+      "Quais tecnologias estão na sua mira em 2023? 🤔\nResolvi trazer minha lista de ferramentas, estudos, abordagens e conceitos sobre os quais pretendo me debruçar em 2023 - e por que eu acho que cada uma faz sentido",
+    created_at: "01/01/2023",
+    last_updated: "01/01/2023",
+    slug: "minha-lista-de-tecnologias-para-2023",
+    body: "",
+    categories: [categories[7]],
+    og_image_url:
+      "https://tech-blog-assets.s3.sa-east-1.amazonaws.com/tech-notes-assets/list-image.jpg",
+    author: {
+      name: "Felipe Barbosa",
+      href: "/sobre",
+    },
+  },
+  {
     id: "5",
     title: "Um Panorama do ESM no Node.js",
     excerpt:

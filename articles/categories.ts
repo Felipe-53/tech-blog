@@ -29,4 +29,8 @@ export const categories: Category[] = [
     id: "7",
     name: "Node.js",
   },
+  {
+    id: "8",
+    name: "Perspectiva",
+  },
 ]
