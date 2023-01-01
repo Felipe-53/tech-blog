@@ -16,7 +16,7 @@ const BlogArticle: React.FC<Props> = ({ article }) => {
   return (
     <ContentWithSideBarWrapper
       content={
-        <ProseContainer className="col-start-1 col-end-5">
+        <ProseContainer>
           <BlogArticleHeader article={article} />
 
           <BlogArticleBody markdownContent={body} />

@@ -7,7 +7,8 @@ function SideBar() {
   return (
     <div
       className="
-      py-8 col-start-5 col-end-6 bg-gray-700
+      h-full
+      py-8 bg-gray-700
       flex flex-col items-center gap-12
       lg:py-4"
     >
