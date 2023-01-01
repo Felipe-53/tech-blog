@@ -7,19 +7,23 @@ function SideBar() {
   return (
     <div
       className="
-      py-8 col-start-5 col-end-6 bg-gray-700
-      flex flex-col items-center gap-12
+      h-full
+      py-8 bg-gray-700
+      flex flex-col items-center gap-14
       lg:py-4"
     >
       <Spot title="Estudando">
+        <>Arquitetura e Design de Sofware</>
+        <>SOLID</>
         <>Docker</>
-        <>Typescript</>
-        <>Next.js</>
-        <>Tailwind CSS</>
-        <>Firebase</>
+        <>Microsserviços</>
+        <>AWS</>
+        <>TypeScript</>
       </Spot>
 
       <Spot title="Lendo">
+        <ExternalLink href="https://solidbook.io/">SOLID Handbook</ExternalLink>
+
         <ExternalLink href="https://www.typescriptlang.org/docs/handbook/intro.html">
           The TypeScript Handbook
         </ExternalLink>
@@ -30,8 +34,8 @@ function SideBar() {
       </Spot>
 
       <Spot title="Desenvolvendo">
-        <ExternalLink href="https://www.instagram.com/agilizze.app/">
-          Agilzze App
+        <ExternalLink href="https://github.com/Felipe-53/tech-blog-cms-api">
+          Tech Blog CMS API
         </ExternalLink>
       </Spot>
     </div>
@@ -56,7 +60,7 @@ const Spot: React.FC<SpotProps> = ({ title, children }) => {
 
 const SideBarList: React.FC = ({ children }) => {
   return (
-    <ul className="flex flex-col gap-2">
+    <ul className="flex flex-col gap-3">
       {React.Children.map(children, (child) => {
         return <li>{child}</li>
       })}

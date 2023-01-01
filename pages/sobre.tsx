@@ -5,15 +5,13 @@ import ContentWithSideBarWrapper from "../components/containers/ContentWithSideB
 import { getPageContentFromMdFile } from "../utils/getPageContent"
 
 const about = ({ html }: { html: string }) => {
-  interface Props {
-    positioningClasses?: string
-  }
+  interface Props {}
 
-  const AboutWrapper: React.FC<Props> = ({ positioningClasses }) => {
+  const AboutWrapper: React.FC<Props> = ({}) => {
     return (
       <div
         dangerouslySetInnerHTML={{ __html: html }}
-        className={proseContainerBaseTailwindClass + " " + positioningClasses}
+        className={proseContainerBaseTailwindClass}
       ></div>
     )
   }

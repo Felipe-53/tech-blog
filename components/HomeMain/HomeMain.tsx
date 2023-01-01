@@ -12,15 +12,9 @@ interface Props {
   articles: Article[]
   categories: Category[]
   techNotes: TechNote[]
-  positioningClasses?: string
 }
 
-const HomeMain: React.FC<Props> = ({
-  articles,
-  categories,
-  techNotes,
-  positioningClasses,
-}) => {
+const HomeMain: React.FC<Props> = ({ articles, categories, techNotes }) => {
   const [chosenCategory, set_chosenCategory] = useState<Category | null>(null)
   const [currentPage, set_currentPage] = useState(1)
 
@@ -32,9 +26,7 @@ const HomeMain: React.FC<Props> = ({
     <div
       onClick={() => set_chosenCategory(null)}
       className={`max-w-screen-md mx-auto reading-padding
-      col-start-1 col-end-5
       flex flex-col gap-14 items-center
-      ${positioningClasses}
       `}
     >
       <Introduction />

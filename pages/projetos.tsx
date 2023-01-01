@@ -6,29 +6,18 @@ import { getPageContentFromMdFile } from "../utils/getPageContent"
 
 interface ProjectsWrapperProps {
   html: string
-  positioningClasses?: string
 }
 
 interface ProjectsProps {
   html: string
 }
 
-const ProjectsWrapper: React.FC<ProjectsWrapperProps> = ({
-  html,
-  positioningClasses,
-}) => {
-  let className
-  if (positioningClasses) {
-    className = proseContainerBaseTailwindClass + " " + positioningClasses
-  } else {
-    className = proseContainerBaseTailwindClass
-  }
-
+const ProjectsWrapper: React.FC<ProjectsWrapperProps> = ({ html }) => {
   return (
     <>
       <Meta title="Projetos" />
       <div
-        className={className}
+        className={proseContainerBaseTailwindClass}
         dangerouslySetInnerHTML={{ __html: html }}
       ></div>
     </>
