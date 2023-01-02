@@ -16,7 +16,7 @@ const TechNote: React.FC<Props> = ({ techNote }) => {
 
   return (
     <>
-      <Meta title={title} ogImageUrl={og_image_url} />
+      <Meta title={title} ogImageUrl={og_image_url} ogType="article" />
       <BlogArticle article={techNote} />
     </>
   )

@@ -31,10 +31,9 @@ const Meta: React.FC<Props> = ({
       <meta name="theme-color" content="#000000" />
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      {ogImageUrl ? (
-        <meta name="image" property="og:image" content={ogImageUrl} />
-      ) : null}
-      {ogType ? <meta property="og:type" content={ogType} /> : null}
+      <meta property="og:type" content={ogType} />
+      <meta property="og:description" content={description} />
+      <meta name="image" property="og:image" content={ogImageUrl} />
       <link rel="icon" href="/favicon.ico" />
       <title>{title}</title>
     </Head>
@@ -46,6 +45,9 @@ Meta.defaultProps = {
     "desenvolvimento web, javascript, typescript, node.js, react, programação",
   description:
     "Site pessoal e blog sobre desenvolvimento Full Stack com JavaScript, TypeScript e todas as tecnologias fantásticas produzidas nesse ecossistema",
+  ogType: "website",
+  ogImageUrl:
+    "https://tech-blog-assets.s3.sa-east-1.amazonaws.com/js-ts-ok.png",
 }
 
 export default Meta

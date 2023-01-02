@@ -14,7 +14,12 @@ const Article: React.FC<Props> = ({ article }) => {
 
   return (
     <>
-      <Meta title={title} description={excerpt} ogImageUrl={og_image_url} />
+      <Meta
+        title={title}
+        description={excerpt}
+        ogType="article"
+        ogImageUrl={og_image_url}
+      />
       <BlogArticle article={article} />
     </>
   )
