@@ -35,11 +35,11 @@ const HomeMain: React.FC<Props> = ({ articles, categories, techNotes }) => {
         Artigos
       </MainHeading>
 
-      <Categories
+      {/* <Categories
         categories={categories}
         chosenCategory={chosenCategory}
         set_chosenCategory={set_chosenCategory}
-      />
+      /> */}
 
       <ArticleList
         articles={articles}
