@@ -8,6 +8,7 @@ import TechNotes from "../TechNotes/TechNotes"
 import { TechNote } from "../../types/TechNote"
 import Category from "../Categories/Category/Category"
 import Divider from "../decorative/Divider/Divider"
+import CategoryTag from "../CategoryTag/CategoryTag"
 
 interface Props {
   articles: Article[]
@@ -48,9 +49,9 @@ const HomeMain: React.FC<Props> = ({ articles, categoryState, techNotes }) => {
         <span className="flex items-center">
           <span className="font-semibold mr-2">Tags:</span>
 
-          <span className="bg-primary rounded-md py-1 px-3">
+          <CategoryTag>
             {chosenCategory ? chosenCategory.name : "Todas"}
-          </span>
+          </CategoryTag>
         </span>
 
         {chosenCategory ? (
