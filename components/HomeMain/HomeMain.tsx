@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react"
 import ArticleList from "../ArticleList/ArticleList"
-import Categories from "../Categories/Categories"
 import Introduction from "../Introduction/Introduction"
 import { Article } from "../../types/Article"
 import MainHeading from "../../components/typographic/MainHeading/MainHeading"
 import TechNotes from "../TechNotes/TechNotes"
 import { TechNote } from "../../types/TechNote"
-import Category from "../Categories/Category/Category"
-import Divider from "../decorative/Divider/Divider"
+import { Category } from "../../types/Category"
 import CategoryTag from "../CategoryTag/CategoryTag"
 
 interface Props {

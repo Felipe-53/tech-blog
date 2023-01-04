@@ -3,7 +3,6 @@ import { Article } from "../../types/Article"
 import BlogArticleHeader from "./BlogArticleHeader/BlogArticleHeader"
 import BlogArticleBody from "./BlogArticleBody/BlogArticleBody"
 import ProseContainer from "../containers/ProseContainer/ProseContainer"
-import ContentWithSideBarWrapper from "../containers/ContentWithSideBarWrapper/ContentWithSideBarWrapper"
 import { TechNote } from "../../types/TechNote"
 
 interface Props {
