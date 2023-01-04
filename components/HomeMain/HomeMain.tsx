@@ -35,25 +35,35 @@ const HomeMain: React.FC<Props> = ({ articles, categoryState, techNotes }) => {
     >
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,1,0"
       />
+
       <Introduction />
 
       <MainHeading id="artigos" className="text-center">
         Artigos
       </MainHeading>
 
-      <div className="px-4 w-full flex justify-between text-lg -mb-8 text-darkfont">
-        <span>
-          <span className="mr-4">Tags:</span>
+      <div className="w-full flex justify-between text-lg -mb-8 text-darkfont">
+        <span className="flex items-center">
+          <span className="font-semibold mr-2">Tags:</span>
 
           <span className="bg-primary rounded-md py-1 px-3">
             {chosenCategory ? chosenCategory.name : "Todas"}
           </span>
         </span>
+
         {chosenCategory ? (
-          <button onClick={() => set_chosenCategory(null)}>
-            <span className="material-symbols-outlined">delete</span>
+          <button
+            className="flex items-center font-semibold hover:text-secondary"
+            onClick={() => set_chosenCategory(null)}
+          >
+            <span
+              style={{ fontSize: "2rem" }}
+              className="material-symbols-outlined"
+            >
+              backspace
+            </span>
           </button>
         ) : null}
       </div>
