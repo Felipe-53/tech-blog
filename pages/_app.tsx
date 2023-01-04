@@ -15,7 +15,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const categoryState = useState<Category | null>(null)
   const [_, set_chosenCategory] = categoryState
 
-  function handleRouteChange() {
+  function handleRouteChange(url: string) {
+    if (url === "/") return
     set_chosenCategory(null)
   }
 

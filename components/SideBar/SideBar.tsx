@@ -30,7 +30,7 @@ const SideBar: React.FC<SideBarProps> = ({ categories, categoryState }) => {
             <CategoryLink
               onClick={() => set_chosenCategory(cat)}
               key={cat.id}
-              href="/#artigos"
+              href="/"
             >
               {cat.name}
             </CategoryLink>
