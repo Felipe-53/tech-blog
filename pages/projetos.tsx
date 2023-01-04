@@ -1,6 +1,5 @@
 import React from "react"
 import Meta from "../components/Layout/Meta/Meta"
-import ContentWithSideBarWrapper from "../components/containers/ContentWithSideBarWrapper/ContentWithSideBarWrapper"
 import { proseContainerBaseTailwindClass } from "../components/containers/ProseContainer/ProseContainer"
 import { getPageContentFromMdFile } from "../utils/getPageContent"
 
@@ -25,7 +24,7 @@ const ProjectsWrapper: React.FC<ProjectsWrapperProps> = ({ html }) => {
 }
 
 const projetos: React.FC<ProjectsProps> = ({ html }) => {
-  return <ContentWithSideBarWrapper content={<ProjectsWrapper html={html} />} />
+  return <ProjectsWrapper html={html} />
 }
 
 export const getStaticProps = async () => {

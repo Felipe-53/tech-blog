@@ -14,15 +14,11 @@ const BlogArticle: React.FC<Props> = ({ article }) => {
   const { body } = article
 
   return (
-    <ContentWithSideBarWrapper
-      content={
-        <ProseContainer>
-          <BlogArticleHeader article={article} />
+    <ProseContainer>
+      <BlogArticleHeader article={article} />
 
-          <BlogArticleBody markdownContent={body} />
-        </ProseContainer>
-      }
-    />
+      <BlogArticleBody markdownContent={body} />
+    </ProseContainer>
   )
 }
 

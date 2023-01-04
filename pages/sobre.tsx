@@ -1,7 +1,6 @@
 import React from "react"
 import Meta from "../components/Layout/Meta/Meta"
 import { proseContainerBaseTailwindClass } from "../components/containers/ProseContainer/ProseContainer"
-import ContentWithSideBarWrapper from "../components/containers/ContentWithSideBarWrapper/ContentWithSideBarWrapper"
 import { getPageContentFromMdFile } from "../utils/getPageContent"
 
 const about = ({ html }: { html: string }) => {
@@ -19,7 +18,7 @@ const about = ({ html }: { html: string }) => {
   return (
     <>
       <Meta title="Sobre" />
-      <ContentWithSideBarWrapper content={<AboutWrapper />} />
+      <AboutWrapper />
     </>
   )
 }
