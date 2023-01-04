@@ -3,6 +3,7 @@ import Link, { LinkProps } from "next/link"
 
 interface SiteLinkProsp extends LinkProps {
   className?: string
+  onClick?: React.MouseEventHandler
 }
 
 export const CategoryLink: React.FC<SiteLinkProsp> = (props) => {
