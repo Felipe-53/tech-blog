@@ -12,10 +12,14 @@ interface Props {
   articles: Article[]
   categories: Category[]
   techNotes: TechNote[]
+  categoryState: [
+    Category | null,
+    React.Dispatch<React.SetStateAction<Category | null>>
+  ]
 }
 
-const HomeMain: React.FC<Props> = ({ articles, categories, techNotes }) => {
-  const [chosenCategory, set_chosenCategory] = useState<Category | null>(null)
+const HomeMain: React.FC<Props> = ({ articles, categoryState, techNotes }) => {
+  const [chosenCategory, set_chosenCategory] = categoryState
   const [currentPage, set_currentPage] = useState(1)
 
   useEffect(() => {

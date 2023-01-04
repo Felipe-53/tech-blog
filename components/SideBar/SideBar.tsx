@@ -1,9 +1,21 @@
 import React from "react"
+import { Category } from "../../types/Category"
+import { CategoryLink } from "../CategoryLink/CategoryLink"
 import Divider from "../decorative/Divider/Divider"
 import ExternalLink from "../ExternalLink/ExternalLink"
 import SmallHeading from "../typographic/SmallHeading/SmallHeading"
 
-function SideBar() {
+interface SideBarProps {
+  categories?: Category[]
+  categoryState: [
+    Category | null,
+    React.Dispatch<React.SetStateAction<Category | null>>
+  ]
+}
+
+const SideBar: React.FC<SideBarProps> = ({ categories, categoryState }) => {
+  const [_, set_chosenCategory] = categoryState
+
   return (
     <div
       className="
@@ -12,31 +24,18 @@ function SideBar() {
       flex flex-col items-center gap-14
       lg:py-4"
     >
-      <Spot title="Estudando">
-        <>Arquitetura e Design de Sofware</>
-        <>SOLID</>
-        <>Docker</>
-        <>Microsserviços</>
-        <>AWS</>
-        <>TypeScript</>
-      </Spot>
-
-      <Spot title="Lendo">
-        <ExternalLink href="https://solidbook.io/">SOLID Handbook</ExternalLink>
-
-        <ExternalLink href="https://www.typescriptlang.org/docs/handbook/intro.html">
-          The TypeScript Handbook
-        </ExternalLink>
-
-        <ExternalLink href="https://www.nodejsdesignpatterns.com/">
-          Node.js Design Patterns
-        </ExternalLink>
-      </Spot>
-
-      <Spot title="Desenvolvendo">
-        <ExternalLink href="https://github.com/Felipe-53/tech-blog-cms-api">
-          Tech Blog CMS API
-        </ExternalLink>
+      <Spot title="Tags">
+        {categories?.map((cat) => {
+          return (
+            <CategoryLink
+              onClick={() => set_chosenCategory(cat)}
+              key={cat.id}
+              href="/#artigos"
+            >
+              {cat.name}
+            </CategoryLink>
+          )
+        })}
       </Spot>
     </div>
   )

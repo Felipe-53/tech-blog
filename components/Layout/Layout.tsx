@@ -4,15 +4,19 @@ import Meta from "./Meta/Meta"
 import Script from "next/script"
 import SideBar from "../SideBar/SideBar"
 import { Category } from "../../types/Category"
-import { getArticleCategories } from "../../utils/categoriesUtils"
 
 interface LayoutProps {
-  categories?: Category[]
+  categories: Category[]
+  categoryState: [
+    Category | null,
+    React.Dispatch<React.SetStateAction<Category | null>>
+  ]
 }
 
 const Layout: React.FC<LayoutProps> = function Layout({
   children,
   categories,
+  categoryState,
 }) {
   const [openMenu, set_openMenu] = useState(false)
 
@@ -55,7 +59,7 @@ const Layout: React.FC<LayoutProps> = function Layout({
             <div className="col-start-1 col-end-9">{children}</div>
 
             <div className="col-start-9 col-end-11 h-full">
-              <SideBar categories={categories} />
+              <SideBar categoryState={categoryState} categories={categories} />
             </div>
           </div>
         </main>
@@ -68,15 +72,6 @@ const Layout: React.FC<LayoutProps> = function Layout({
       </div>
     </>
   )
-}
-
-export async function getStaticProps() {
-  const categories = await getArticleCategories()
-  return {
-    props: {
-      categories,
-    },
-  }
 }
 
 export default Layout
