@@ -3,16 +3,25 @@ import React from "react"
 import HomeMain from "../components/HomeMain/HomeMain"
 import Meta from "../components/Layout/Meta/Meta"
 import { APIResponseDTO } from "../types/APIResponseDTO"
+import { Category } from "../types/Category"
 import { apiResponseAdapter } from "../use-cases/adapters/apiResponseAdapter"
 import { getArticles } from "../utils/articleUtils"
 import { getArticleCategories } from "../utils/categoriesUtils"
 import fetchJson from "../utils/fetchJson"
 
+interface HomeProps extends InferGetStaticPropsType<typeof getStaticProps> {
+  categoryState: [
+    Category | null,
+    React.Dispatch<React.SetStateAction<Category | null>>
+  ]
+}
+
 const Home = ({
   articles,
   categories,
   techNotes,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  categoryState,
+}: HomeProps) => {
   return (
     <>
       <Meta
@@ -20,6 +29,7 @@ const Home = ({
         ogImageUrl="https://tech-blog-assets.s3.sa-east-1.amazonaws.com/js-ts-ok.png"
       />
       <HomeMain
+        categoryState={categoryState}
         articles={articles}
         categories={categories}
         techNotes={techNotes}
