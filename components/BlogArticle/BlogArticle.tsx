@@ -3,7 +3,6 @@ import { Article } from "../../types/Article"
 import BlogArticleHeader from "./BlogArticleHeader/BlogArticleHeader"
 import BlogArticleBody from "./BlogArticleBody/BlogArticleBody"
 import ProseContainer from "../containers/ProseContainer/ProseContainer"
-import ContentWithSideBarWrapper from "../containers/ContentWithSideBarWrapper/ContentWithSideBarWrapper"
 import { TechNote } from "../../types/TechNote"
 
 interface Props {
@@ -14,15 +13,11 @@ const BlogArticle: React.FC<Props> = ({ article }) => {
   const { body } = article
 
   return (
-    <ContentWithSideBarWrapper
-      content={
-        <ProseContainer>
-          <BlogArticleHeader article={article} />
+    <ProseContainer>
+      <BlogArticleHeader article={article} />
 
-          <BlogArticleBody markdownContent={body} />
-        </ProseContainer>
-      }
-    />
+      <BlogArticleBody markdownContent={body} />
+    </ProseContainer>
   )
 }
 

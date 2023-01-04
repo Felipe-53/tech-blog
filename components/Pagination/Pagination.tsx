@@ -31,7 +31,7 @@ const Pagination: React.FC<Props> = ({
 
           return (
             <Link
-              href={"/#artigos"}
+              href={"/"}
               tabIndex={0}
               onClick={(e) => {
                 e.stopPropagation()

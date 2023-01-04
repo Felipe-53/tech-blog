@@ -5,7 +5,7 @@ interface Props {
 }
 
 const SmallHeading: React.FC<Props> = ({ className, children }) => {
-  let tailwindClassname = "text-darkfont text-xl font-medium"
+  let tailwindClassname = "text-darkfont text-xl font-semibold"
 
   if (className) {
     tailwindClassname += " " + className

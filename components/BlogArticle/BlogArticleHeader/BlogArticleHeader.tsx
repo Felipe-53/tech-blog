@@ -2,6 +2,7 @@ import React from "react"
 import { Article } from "../../../types/Article"
 import { TechNote } from "../../../types/TechNote"
 import parseDatetime from "../../../utils/parseDatetime"
+import CategoryTag from "../../CategoryTag/CategoryTag"
 import { SiteLink } from "../../SiteLink/SiteLink"
 
 interface Props {
@@ -35,16 +36,9 @@ const BlogArticleHeader: React.FC<Props> = ({ article }) => {
         <span> {date}</span>
       </p>
 
-      <div className="flex gap-4">
+      <div className="flex gap-6 text-base">
         {categories.map((cat) => {
-          return (
-            <span
-              key={cat.id}
-              className="text-base bg-primary rounded-full py-2 px-4"
-            >
-              {cat.name}
-            </span>
-          )
+          return <CategoryTag key={cat.id}>{cat.name}</CategoryTag>
         })}
       </div>
     </div>
