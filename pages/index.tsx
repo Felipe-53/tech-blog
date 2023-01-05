@@ -43,7 +43,14 @@ export const getStaticProps = async () => {
   if (!baseUrl) throw new Error("env API_URL not defined")
 
   const response = await fetchJson<APIResponseDTO[]>("/post")
-  const techNotes = response.map((res) => apiResponseAdapter(res))
+  const techNotes = response
+    .map((res) => apiResponseAdapter(res))
+    .sort((a, b) => {
+      if (Date.parse(a.created_at) > Date.parse(b.created_at)) {
+        return -1
+      }
+      return 1
+    })
 
   const articles = await getArticles()
   const categories = await getArticleCategories()
