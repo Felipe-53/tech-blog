@@ -16,7 +16,7 @@ const ArticlePresentation: React.FC<Props> = (props) => {
       href={`/artigos/${slug}`}
       passHref={true}
       onClick={(e) => e.stopPropagation()}
-      className="p-8 hover:border hover:border-secondary rounded-md bg-gray-700 hover:cursor-pointer"
+      className="p-8 hover:outline hover:outline-2 hover:outline-secondary rounded-md bg-gray-700 hover:cursor-pointer"
     >
       <MediumHeading>{title}</MediumHeading>
 
