@@ -24,10 +24,6 @@ const Home = ({
 }: HomeProps) => {
   return (
     <>
-      <Meta
-        ogType="website"
-        ogImageUrl="https://tech-blog-assets.s3.sa-east-1.amazonaws.com/js-ts-ok.png"
-      />
       <HomeMain
         categoryState={categoryState}
         articles={articles}
