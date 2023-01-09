@@ -37,4 +37,8 @@ export const categories: Category[] = [
     id: "9",
     name: "Open Source",
   },
+  {
+    id: "10",
+    name: "Deno",
+  },
 ]

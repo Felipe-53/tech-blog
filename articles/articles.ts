@@ -13,7 +13,7 @@ const articles: Article[] = [
     last_updated: "09/01/2023",
     slug: "minha-primeira-tentativa-de-contribuicao-para-a-comunidade-open-source-parte-1",
     body: "",
-    categories: [categories[8]],
+    categories: [categories[8], categories[9]],
     og_image_url:
       "https://tech-blog-assets.s3.sa-east-1.amazonaws.com/articles-assets/opne-source.png",
     author: {
