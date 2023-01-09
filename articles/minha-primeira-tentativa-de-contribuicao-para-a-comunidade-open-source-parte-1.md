@@ -2,7 +2,7 @@ Eu sou grande fã e entusiasta da comunidade open source.
 
 É incrível a quantidade de ferramentas das quais nós dependemos que são construídas em código aberto pela comunidade.
 
-Depois de ter construído meu blog profissional, eu alimentei por um bom tempo a vontade de ter um blog pessoal. Mas nesse caso, eu não queria construí-lo do zero: eu estava em busca de uma solução simples, fácil, minimalista com uma interface agradável e recursos essenciais.
+Depois de ter construído meu blog profissional, eu alimentei por um bom tempo a vontade de ter um blog pessoal. Mas nesse caso eu não queria construí-lo do zero: eu estava em busca de uma solução simples, fácil, minimalista com uma interface agradável e recursos essenciais.
 
 Pois bem, eu estava explorando o universo do [Deno](https://deno.land/), o novo runtime do JavaScript e descobri um projeto que se encaixava perfeitamente dentro daquilo que eu queria: o [deno_blog](https://github.com/denoland/deno_blog)!
 
