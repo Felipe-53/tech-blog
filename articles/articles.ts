@@ -5,6 +5,23 @@ import { Article } from "../types/Article"
 
 const articles: Article[] = [
   {
+    id: "7",
+    title:
+      "Minha primeira tentativa de contrivuição para a comunidade open source - Parte 1",
+    excerpt: `É incrível a quantidade de ferramentas das quais nós dependemos que são construídas em código aberto pela comunidade.\nAcompanhe o desenrolar da minha primeira tentativa de contribuição! 😅`,
+    created_at: "09/01/2023",
+    last_updated: "09/01/2023",
+    slug: "minha-primeira-tentativa-de-contribuicao-para-a-comunidade-open-source-parte-1",
+    body: "",
+    categories: [categories[7]],
+    og_image_url:
+      "https://tech-blog-assets.s3.sa-east-1.amazonaws.com/tech-notes-assets/list-image.jpg",
+    author: {
+      name: "Felipe Barbosa",
+      href: "/sobre",
+    },
+  },
+  {
     id: "6",
     title: "Minha lista de Tecnologias para 2023",
     excerpt:
