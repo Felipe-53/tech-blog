@@ -1,6 +1,6 @@
 Eu sou grande fã e entusiasta da comunidade open source.
 
-É incrível a quantidade de ferramentas incríveis das quais nós dependemos que são construídas pela comunidade em código aberto.
+É incrível a quantidade de ferramentas das quais nós dependemos que são construídas pela comunidade em código aberto.
 
 Depois de ter construído meu blog técnico, eu alimentei por um bom tempo a vontade de ter um blog pessoal. Mas nesse caso, eu não queria construí-lo do zero: eu estava em busca de uma solução simples, fácil, minimalista com uma interface agradável e recursos essenciais.
 
