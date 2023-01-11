@@ -7,3 +7,27 @@
     @apply px-12;
   }
 }
+
+::-webkit-scrollbar {
+  width: 1vw;
+  height: 0.35em;
+}
+::-webkit-scrollbar-track {
+  /* gray-900 */
+  background: #111827;
+}
+
+::-webkit-scrollbar-thumb {
+  /* gray-500 */
+  background: #6b7280;
+}
+
+::-webkit-scrollbar-thumb {
+  /* gray-500 */
+  background: #6b7280;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  /* gray-400 */
+  background: #94a3b8;
+}
