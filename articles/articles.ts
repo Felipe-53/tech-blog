@@ -5,6 +5,23 @@ import { Article } from "../types/Article"
 
 const articles: Article[] = [
   {
+    id: "8",
+    title:
+      "Minha primeira tentativa de contribuição para a comunidade open source - Parte 2",
+    excerpt: `Acompanhe a segunda parte da minha primeira tentativa de contribuição para a comunidade open source!`,
+    created_at: "12/01/2023",
+    last_updated: "12/01/2023",
+    slug: "minha-primeira-tentativa-de-contribuicao-para-a-comunidade-open-source-parte-2",
+    body: "",
+    categories: [categories[8], categories[9]],
+    og_image_url:
+      "https://tech-blog-assets.s3.sa-east-1.amazonaws.com/articles-assets/opne-source.png",
+    author: {
+      name: "Felipe Barbosa",
+      href: "/sobre",
+    },
+  },
+  {
     id: "7",
     title:
       "Minha primeira tentativa de contribuição para a comunidade open source - Parte 1",
