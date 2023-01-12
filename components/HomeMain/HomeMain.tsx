@@ -53,7 +53,7 @@ const HomeMain: React.FC<Props> = ({ articles, categoryState, techNotes }) => {
             className="flex items-center font-semibold hover:text-secondary"
             onClick={() => set_chosenCategory(null)}
           >
-            <BackspaceIcon className="fill-darkfont" />
+            <BackspaceIcon className="fill-darkfont hover:fill-secondary" />
           </button>
         ) : null}
       </div>
