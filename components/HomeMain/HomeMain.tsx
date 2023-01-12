@@ -29,7 +29,7 @@ const HomeMain: React.FC<Props> = ({ articles, categoryState, techNotes }) => {
 
   return (
     <div
-      className={`max-w-screen-md mx-auto reading-padding
+      className={`max-w-screen-md mx-auto px-7
       flex flex-col gap-14 items-center
       `}
     >
