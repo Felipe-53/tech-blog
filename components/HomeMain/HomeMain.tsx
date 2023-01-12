@@ -7,6 +7,7 @@ import TechNotes from "../TechNotes/TechNotes"
 import { TechNote } from "../../types/TechNote"
 import { Category } from "../../types/Category"
 import CategoryTag from "../CategoryTag/CategoryTag"
+import BackspaceIcon from "../Icons/Backspace"
 
 interface Props {
   articles: Article[]
@@ -32,11 +33,6 @@ const HomeMain: React.FC<Props> = ({ articles, categoryState, techNotes }) => {
       flex flex-col gap-14 items-center
       `}
     >
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,1,0"
-      />
-
       <Introduction />
 
       <MainHeading id="artigos" className="text-center">
@@ -57,12 +53,7 @@ const HomeMain: React.FC<Props> = ({ articles, categoryState, techNotes }) => {
             className="flex items-center font-semibold hover:text-secondary"
             onClick={() => set_chosenCategory(null)}
           >
-            <span
-              style={{ fontSize: "2rem" }}
-              className="material-symbols-outlined"
-            >
-              backspace
-            </span>
+            <BackspaceIcon className="fill-darkfont" />
           </button>
         ) : null}
       </div>
