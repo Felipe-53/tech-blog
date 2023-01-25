@@ -7,7 +7,7 @@ import { Category } from "../types/Category"
 import { apiResponseAdapter } from "../use-cases/adapters/apiResponseAdapter"
 import { getArticles } from "../utils/articleUtils"
 import { getArticleCategories } from "../utils/categoriesUtils"
-import fetchJson from "../utils/fetchJson"
+import { fetchFromTechNoteApi } from "../utils/fetchJson"
 
 interface HomeProps extends InferGetStaticPropsType<typeof getStaticProps> {
   categoryState: [
@@ -38,7 +38,7 @@ export const getStaticProps = async () => {
   const baseUrl = process.env.API_URL
   if (!baseUrl) throw new Error("env API_URL not defined")
 
-  const response = await fetchJson<APIResponseDTO[]>("/post")
+  const response = await fetchFromTechNoteApi<APIResponseDTO[]>("/post")
   const techNotes = response
     .map((res) => apiResponseAdapter(res))
     .sort((a, b) => {
