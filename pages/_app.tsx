@@ -2,13 +2,15 @@ import "../styles/globals.css"
 import "highlight.js/styles/rainbow.css"
 import type { AppProps } from "next/app"
 import Layout from "../components/Layout/Layout"
-import { getArticleCategories } from "../utils/categoriesUtils"
 import { useState } from "react"
 import { Category } from "../types/Category"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
+import { fetchFromArticleApi } from "../utils/fetchJson"
 
-const categories = await getArticleCategories()
+const categories = await fetchFromArticleApi<{ id: string; name: string }[]>(
+  "/category"
+)
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
