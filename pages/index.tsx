@@ -1,13 +1,10 @@
 import type { InferGetStaticPropsType } from "next"
 import React from "react"
 import HomeMain from "../components/HomeMain/HomeMain"
-import Meta from "../components/Layout/Meta/Meta"
 import { APIResponseDTO } from "../types/APIResponseDTO"
 import { Category } from "../types/Category"
 import { apiResponseAdapter } from "../use-cases/adapters/apiResponseAdapter"
-import { getArticles } from "../utils/articleUtils"
-import { getArticleCategories } from "../utils/categoriesUtils"
-import { fetchFromTechNoteApi } from "../utils/fetchJson"
+import { fetchFromArticleApi, fetchFromTechNoteApi } from "../utils/fetchJson"
 
 interface HomeProps extends InferGetStaticPropsType<typeof getStaticProps> {
   categoryState: [
@@ -35,8 +32,10 @@ const Home = ({
 }
 
 export const getStaticProps = async () => {
-  const response = await fetchFromTechNoteApi<APIResponseDTO[]>("/post")
-  const techNotes = response
+  const techNotesresponse = await fetchFromTechNoteApi<APIResponseDTO[]>(
+    "/post"
+  )
+  const techNotes = techNotesresponse
     .map((res) => apiResponseAdapter(res))
     .sort((a, b) => {
       if (Date.parse(a.created_at) > Date.parse(b.created_at)) {
@@ -45,8 +44,19 @@ export const getStaticProps = async () => {
       return 1
     })
 
-  const articles = await getArticles()
-  const categories = await getArticleCategories()
+  const articlesResponse = await fetchFromArticleApi<APIResponseDTO[]>("/post")
+  const articles = articlesResponse
+    .map((res) => apiResponseAdapter(res))
+    .sort((a, b) => {
+      if (Date.parse(a.created_at) > Date.parse(b.created_at)) {
+        return -1
+      }
+      return 1
+    })
+
+  const categories = await fetchFromArticleApi<{ id: string; name: string }[]>(
+    "/category"
+  )
 
   return {
     props: {
