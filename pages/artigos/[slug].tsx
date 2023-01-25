@@ -1,9 +1,11 @@
 import React from "react"
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next"
-import { getArticleFromSlug, getArticles } from "../../utils/articleUtils"
+import { GetStaticPaths } from "next"
 import { Article } from "../../types/Article"
 import BlogArticle from "../../components/BlogArticle/BlogArticle"
 import Meta from "../../components/Layout/Meta/Meta"
+import { fetchFromArticleApi } from "../../utils/fetchJson"
+import { APIResponseDTO } from "../../types/APIResponseDTO"
+import { apiResponseAdapter } from "../../use-cases/adapters/apiResponseAdapter"
 
 interface Props {
   article: Article
@@ -30,22 +32,28 @@ export const getStaticProps = async ({
 }: {
   params: { slug: string }
 }) => {
-  const article = await getArticleFromSlug(params.slug)
+  const response = await fetchFromArticleApi<APIResponseDTO>(
+    `/post/${params.slug}`
+  )
+
+  const article = apiResponseAdapter(response)
 
   return {
     props: {
-      article: article,
+      article,
     },
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = await getArticles()
+  const response = await fetchFromArticleApi<APIResponseDTO[]>("/post")
+
+  const articles = response.map((res) => apiResponseAdapter(res))
 
   return {
-    paths: articles.map((article) => {
+    paths: articles.map((techNote) => {
       return {
-        params: { slug: article.slug },
+        params: { slug: techNote.slug },
       }
     }),
     fallback: false,

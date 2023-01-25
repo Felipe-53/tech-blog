@@ -3,7 +3,7 @@ import { GetStaticPaths } from "next"
 import { TechNote } from "../../types/TechNote"
 import BlogArticle from "../../components/BlogArticle/BlogArticle"
 import Meta from "../../components/Layout/Meta/Meta"
-import fetchJson from "../../utils/fetchJson"
+import { fetchFromTechNoteApi } from "../../utils/fetchJson"
 import { APIResponseDTO } from "../../types/APIResponseDTO"
 import { apiResponseAdapter } from "../../use-cases/adapters/apiResponseAdapter"
 
@@ -27,7 +27,9 @@ export const getStaticProps = async ({
 }: {
   params: { slug: string }
 }) => {
-  const response = await fetchJson<APIResponseDTO>(`/post/${params.slug}`)
+  const response = await fetchFromTechNoteApi<APIResponseDTO>(
+    `/post/${params.slug}`
+  )
 
   const techNote = apiResponseAdapter(response)
 
@@ -39,7 +41,7 @@ export const getStaticProps = async ({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetchJson<APIResponseDTO[]>("/post")
+  const response = await fetchFromTechNoteApi<APIResponseDTO[]>("/post")
 
   const techNotes = response.map((res) => apiResponseAdapter(res))
 
