@@ -35,9 +35,6 @@ const Home = ({
 }
 
 export const getStaticProps = async () => {
-  const baseUrl = process.env.API_URL
-  if (!baseUrl) throw new Error("env API_URL not defined")
-
   const response = await fetchFromTechNoteApi<APIResponseDTO[]>("/post")
   const techNotes = response
     .map((res) => apiResponseAdapter(res))
