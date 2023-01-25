@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Article } from "../../types/Article"
 import MediumHeading from "../typographic/MediumHeading/MediumHeading"
 import CategoryTag from "../CategoryTag/CategoryTag"
+import parseDatetime from "../../utils/parseDatetime"
 
 interface Props extends Article {
   disableDivider?: boolean
@@ -26,7 +27,9 @@ const ArticlePresentation: React.FC<Props> = (props) => {
         })}
       </div>
 
-      <p className="text-gray-300 text-lg mt-4 mb-4">{created_at}</p>
+      <p className="text-gray-300 text-lg mt-4 mb-4">
+        {parseDatetime(created_at).toLocaleDateString("pt-br")}
+      </p>
       <p className="text-darkfont text-lg">{excerpt}</p>
     </Link>
   )

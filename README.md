@@ -12,4 +12,4 @@ Personal web site and blog. I write about Full Stack development with JavaScript
 
 ## Chores
 
-- Hook a database up instead of comitting articles to the project repo. Reason: separation of concerns. Content should be separate from code. A good candidate for database is Firebase Firestore. Serverless and cost efficient.
+1. Hook a database up instead of comitting articles to the project repo. Reason: separation of concerns. Content should be separate from code. A good candidate for database is Firebase Firestore. Serverless and cost efficient. **[DONE 2023-01-25] ✔️**

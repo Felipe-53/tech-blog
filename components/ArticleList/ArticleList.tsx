@@ -62,6 +62,7 @@ const ArticleList: React.FC<Props> = ({
               title,
               excerpt,
               created_at,
+              og_image_url,
               last_updated,
               slug,
               author,
@@ -76,6 +77,7 @@ const ArticleList: React.FC<Props> = ({
                 excerpt={excerpt}
                 created_at={created_at}
                 last_updated={last_updated}
+                og_image_url={og_image_url}
                 disableDivider={index === articles.length - 1}
                 slug={slug}
                 categories={categories}
