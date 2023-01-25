@@ -1,43 +1,57 @@
+import assert from "assert"
+import { env } from "./env"
+
 interface FetchOptions {
   method: "GET" | "POST"
   queryString: object
 }
 
-async function fetchJson<T>(
-  endpoint: string,
-  { method, queryString }: FetchOptions = {
-    method: "GET",
-    queryString: {},
-  }
-) {
-  const baseUrl = process.env.API_URL
-  if (!baseUrl) throw new Error("env API_URL not defined")
+function makeFetchJson(baseUrl: string, token: string) {
+  assert(baseUrl !== "" && token !== "")
 
-  const url = new URL(baseUrl + endpoint)
-
-  if (Object.keys(queryString).length !== 0) {
-    // @ts-ignore
-    url.search = new URLSearchParams(queryString).toString()
-  }
-
-  const response = await fetch(url.toString(), {
-    headers: {
-      Authorization: `Bearer ${process.env.TOKEN}`,
-    },
-    method: method,
-  })
-
-  if (!response.ok) {
-    const responseData = {
-      url: response.url,
-      status: response.status,
-      payload: await response.json(),
+  return async function fetchJson<T>(
+    endpoint: string,
+    { method, queryString }: FetchOptions = {
+      method: "GET",
+      queryString: {},
     }
-    throw Error(`Not ok response: \n ${JSON.stringify(responseData)}`)
-  }
+  ) {
+    const url = new URL(baseUrl + endpoint)
 
-  const payload: T = await response.json()
-  return payload
+    if (Object.keys(queryString).length !== 0) {
+      // @ts-ignore
+      url.search = new URLSearchParams(queryString).toString()
+    }
+
+    const response = await fetch(url.toString(), {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: method,
+    })
+
+    if (!response.ok) {
+      const responseData = {
+        url: response.url,
+        status: response.status,
+        payload: await response.json(),
+      }
+      throw Error(`Not ok response: \n ${JSON.stringify(responseData)}`)
+    }
+
+    const payload: T = await response.json()
+    return payload
+  }
 }
 
-export default fetchJson
+const fetchFromArticleApi = makeFetchJson(
+  env.articleApiUrl,
+  env.articleApiToken
+)
+
+const fetchFromTechNoteApi = makeFetchJson(
+  env.techNoteApiUrl,
+  env.techNoteApiToken
+)
+
+export { makeFetchJson, fetchFromArticleApi, fetchFromTechNoteApi }
