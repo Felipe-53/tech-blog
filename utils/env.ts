@@ -5,6 +5,7 @@ const env = {
   articleApiToken: process.env.ARTICLE_API_TOKEN as string,
   techNoteApiUrl: process.env.TECH_NOTE_API_URL as string,
   techNoteApiToken: process.env.TECH_NOTE_API_TOKEN as string,
+  recipientApiUrl: process.env.RECIPIENT_API_URL as string,
 } as const
 
 for (const key of Object.keys(env)) {
