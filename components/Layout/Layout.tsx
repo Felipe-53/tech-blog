@@ -4,6 +4,7 @@ import Meta from "./Meta/Meta"
 import Script from "next/script"
 import SideBar from "../SideBar/SideBar"
 import { Category } from "../../types/Category"
+import Footer from "./Footer/Footer"
 
 interface LayoutProps {
   categories: Category[]
@@ -64,11 +65,7 @@ const Layout: React.FC<LayoutProps> = function Layout({
           </div>
         </main>
 
-        <footer className="mt-auto text-darkfont bg-primary">
-          <div className="flex items-center justify-evenly h-12">
-            <p className="text-lg">Made with ❤️ by Felipe Barbosa</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   )
