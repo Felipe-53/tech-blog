@@ -2,8 +2,8 @@ import assert from "assert"
 import { env } from "./env"
 
 interface FetchOptions {
-  method: "GET" | "POST"
-  queryString: object
+  method: "GET" | "POST" | "PATCH"
+  queryString?: object
 }
 
 function makeFetchJson(baseUrl: string, token: string) {
@@ -18,7 +18,7 @@ function makeFetchJson(baseUrl: string, token: string) {
   ) {
     const url = new URL(baseUrl + endpoint)
 
-    if (Object.keys(queryString).length !== 0) {
+    if (queryString && Object.keys(queryString).length !== 0) {
       // @ts-ignore
       url.search = new URLSearchParams(queryString).toString()
     }
