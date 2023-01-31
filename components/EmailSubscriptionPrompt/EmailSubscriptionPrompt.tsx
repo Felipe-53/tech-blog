@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 
-const baseUrl = "https://37q7kaizzb.execute-api.sa-east-1.amazonaws.com"
+const baseUrl = "https://6604mo8k0f.execute-api.sa-east-1.amazonaws.com"
 
 interface Props {
   setSuccessfulSubscriptionRequest: React.Dispatch<
