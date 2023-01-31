@@ -1,10 +1,12 @@
-import React, { useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import NavBar from "./NavBar/NavBar"
 import Meta from "./Meta/Meta"
 import Script from "next/script"
 import SideBar from "../SideBar/SideBar"
 import { Category } from "../../types/Category"
 import Footer from "./Footer/Footer"
+import { AppContext } from "../../pages/_app"
+import AlertFeedback from "../AlertFeedback/AlertFeedback"
 
 interface LayoutProps {
   categories: Category[]
@@ -20,6 +22,9 @@ const Layout: React.FC<LayoutProps> = function Layout({
   categoryState,
 }) {
   const [openMenu, set_openMenu] = useState(false)
+  const appContext = useContext(AppContext)
+  const [successfulEmailSubscription, setSuccessfulEmailSubscription] =
+    appContext!.successfulEmailSubscriptionState
 
   return (
     <>
@@ -64,6 +69,18 @@ const Layout: React.FC<LayoutProps> = function Layout({
             </div>
           </div>
         </main>
+
+        {successfulEmailSubscription !== null ? (
+          <AlertFeedback
+            close={() => setSuccessfulEmailSubscription(null)}
+            success={successfulEmailSubscription}
+            messages={{
+              success:
+                "Sucesso! Confira sua caixa de entrega para confirmar a inscrição",
+              failure: "Algo deu errado! Por favor, tente novamente",
+            }}
+          />
+        ) : null}
 
         <Footer />
       </div>
