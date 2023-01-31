@@ -1,9 +1,37 @@
-import { Button, TextField } from "@mui/material"
-import React, { useState } from "react"
-import colors from "tailwindcss/colors"
+import React, { useEffect, useState } from "react"
 
-const EmailSubscriptionPrompt: React.FC = () => {
+const baseUrl = "https://37q7kaizzb.execute-api.sa-east-1.amazonaws.com"
+
+interface Props {
+  setSuccessfulSubscriptionRequest: React.Dispatch<
+    React.SetStateAction<boolean | null>
+  >
+}
+
+const EmailSubscriptionPrompt: React.FC<Props> = ({
+  setSuccessfulSubscriptionRequest,
+}) => {
   const [email, setEmail] = useState("")
+
+  async function sendSubscriptionRequest() {
+    try {
+      const response = await fetch(`${baseUrl}/recipient`, {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+        }),
+      })
+
+      if (response.status !== 201) {
+        console.log(await response.json())
+        throw Error("Failed to create recipient")
+      }
+
+      setSuccessfulSubscriptionRequest(true)
+    } catch {
+      setSuccessfulSubscriptionRequest(false)
+    }
+  }
 
   return (
     <div className="text-lg text-darkfont w-full text-center flex flex-col items-center mb-20">
@@ -33,6 +61,7 @@ const EmailSubscriptionPrompt: React.FC = () => {
       />
 
       <button
+        onClick={sendSubscriptionRequest}
         className="
       bg-primary px-8 py-2 rounded-md
       focus:outline focus:outline-1 focus:outline-secondary
