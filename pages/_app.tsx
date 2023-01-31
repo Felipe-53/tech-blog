@@ -7,6 +7,8 @@ import { useRouter } from "next/router"
 import { useEffect } from "react"
 import { AppProps } from "next/app"
 import { categories } from "../articles/categories"
+import { ThemeProvider } from "@mui/material"
+import { muiTheme } from "../mui-theme/theme"
 
 const MyApp = function ({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -32,9 +34,11 @@ const MyApp = function ({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <Layout categoryState={categoryState} categories={categories}>
-      <Component {...pageProps} />
-    </Layout>
+    <ThemeProvider theme={muiTheme}>
+      <Layout categoryState={categoryState} categories={categories}>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
   )
 }
 
