@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { env } from "../utils/env"
-import { makeFetchJson } from "../utils/fetchJson"
-const fetchJson = makeFetchJson(env.recipientApiUrl, env.recipientApiToken)
 
 type EmailConfirmedState = "loading" | "success" | "failure"
+
+const baseUrl = ""
 
 const EmailSubscription: React.FC = () => {
   const [emailConfirmed, setEmailConfirmed] =
@@ -19,7 +18,7 @@ const EmailSubscription: React.FC = () => {
         return
       }
       try {
-        await fetchJson(`/recipient/${recipientId}/status`, {
+        await fetch(`${baseUrl}/recipient/${recipientId}/status`, {
           method: "PATCH",
         })
         setEmailConfirmed("success")
