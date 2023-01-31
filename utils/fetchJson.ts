@@ -1,8 +1,7 @@
 import assert from "assert"
 import { env } from "./env"
 
-interface FetchOptions {
-  method: "GET" | "POST" | "PATCH"
+interface FetchOptions extends RequestInit {
   queryString?: object
 }
 
@@ -11,9 +10,10 @@ function makeFetchJson(baseUrl: string, token: string) {
 
   return async function fetchJson<T>(
     endpoint: string,
-    { method, queryString }: FetchOptions = {
+    { method, queryString, body }: FetchOptions = {
       method: "GET",
       queryString: {},
+      body: null,
     }
   ) {
     const url = new URL(baseUrl + endpoint)
@@ -28,6 +28,7 @@ function makeFetchJson(baseUrl: string, token: string) {
         Authorization: `Bearer ${token}`,
       },
       method: method,
+      body,
     })
 
     if (!response.ok) {
