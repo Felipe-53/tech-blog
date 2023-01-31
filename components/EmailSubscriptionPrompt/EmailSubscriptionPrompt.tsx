@@ -6,9 +6,11 @@ const EmailSubscriptionPrompt: React.FC = () => {
   const [email, setEmail] = useState("")
 
   return (
-    <div className="text-lg text-darkfont w-full text-center flex flex-col items-center mb-14">
+    <div className="text-lg text-darkfont w-full text-center flex flex-col items-center mb-20">
       <div className="mb-4">
-        <p>Gostou do que viu?</p>
+        <p>
+          <u>Gostou do que viu?</u>
+        </p>
         <p>
           Receba atualizações de conteúdo diretamente na sua caixa de entrada!
         </p>
@@ -22,6 +24,7 @@ const EmailSubscriptionPrompt: React.FC = () => {
           focus:outline-secondary
 
         "
+        placeholder="your@email.com"
         color="secondary"
         value={email}
         onChange={(e) => {
