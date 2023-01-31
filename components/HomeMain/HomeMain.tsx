@@ -8,6 +8,7 @@ import { TechNote } from "../../types/TechNote"
 import { Category } from "../../types/Category"
 import CategoryTag from "../CategoryTag/CategoryTag"
 import BackspaceIcon from "../Icons/Backspace"
+import EmailSubscriptionPrompt from "../EmailSubscriptionPrompt/EmailSubscriptionPrompt"
 
 interface Props {
   articles: Article[]
@@ -65,6 +66,8 @@ const HomeMain: React.FC<Props> = ({ articles, categoryState, techNotes }) => {
       />
 
       <TechNotes techNotes={techNotes} />
+
+      <EmailSubscriptionPrompt />
     </div>
   )
 }
