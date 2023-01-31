@@ -8,10 +8,10 @@ const EmailSubscription: React.FC = () => {
   const [emailConfirmed, setEmailConfirmed] =
     useState<EmailConfirmedState>("loading")
 
-  const params = new URL(document.location.href).searchParams
-  const recipientId = params.get("id")
-
   useEffect(() => {
+    const params = new URL(document.location.href).searchParams
+    const recipientId = params.get("id")
+
     ;(async () => {
       if (!recipientId) {
         setEmailConfirmed("failure")
