@@ -20,12 +20,15 @@ const Divider: React.FC<DividerProps> = ({
 
   const sizes = {
     1: "border-b-[1px]",
-    2: "2",
+    2: "border-b-2",
   }
 
   const tailwindClassName = `block ${sizes[thickness]} ${borders[color]}`
 
-  const finalClassName = tailwindClassName + " " + className
+  let finalClassName = tailwindClassName
+  if (className) {
+    finalClassName += " " + className
+  }
 
   return <span className={finalClassName}></span>
 }
