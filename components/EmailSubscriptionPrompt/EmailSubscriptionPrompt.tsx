@@ -28,7 +28,7 @@ const EmailSubscriptionPrompt: React.FC<Props> = ({
       }
       const result = emailSchema.safeParse(email)
       result.success ? setValidEmail(true) : setValidEmail(false)
-    }, 100)
+    }, 200)
   }, [email])
 
   async function sendSubscriptionRequest() {
@@ -69,42 +69,58 @@ const EmailSubscriptionPrompt: React.FC<Props> = ({
     <div className="text-lg text-darkfont w-full text-center flex flex-col items-center mb-20">
       <div className="mb-4">
         <p>
-          <u>Gostou do que viu?</u>
+          <u>Gostando até aqui?</u> ✍️
         </p>
         <p>
           Receba atualizações de conteúdo diretamente na sua caixa de entrada!
         </p>
       </div>
 
-      <input
-        className={`max-w-md w-full rounded-md mb-3
+      <div
+        className="
+          h-[4.5rem]
+          w-full max-w-md mb-4
+          flex flex-col
+          gap-1
+        "
+      >
+        <input
+          className={`w-full rounded-md 
           bg-gray-700 px-4 py-3
           hover:outline hover:outline-1  hover:outline-secondary
           focus:outline focus:outline-1
           focus:outline-secondary
         `}
-        placeholder="your@email.com"
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value)
-        }}
-      />
+          placeholder="your@email.com"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value)
+          }}
+        />
+
+        {!validEmail ? (
+          <span className="text-red-600 text-sm">Email inválido 😔</span>
+        ) : (
+          <span> </span>
+        )}
+      </div>
 
       <button
-        onClick={sendSubscriptionRequest}
+        onClick={!validEmail ? undefined : sendSubscriptionRequest}
+        tabIndex={!validEmail ? -1 : 0}
         className={`
           min-w-[30%]
           px-8 py-2 rounded-md
           focus:outline focus:outline-1 focus:outline-secondary
           ${
             !validEmail
-              ? "bg-gray-700 cursor-default text-gray-500"
+              ? "bg-gray-700 cursor-default text-gray-500 pointer-events-none"
               : "bg-primary"
           }
         `}
       >
         {loading ? (
-          <CircularProgress size="1rem" color="secondary" />
+          <CircularProgress thickness={5} size="1.3rem" color="inherit" />
         ) : (
           "Inscrever-me"
         )}
