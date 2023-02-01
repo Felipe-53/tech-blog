@@ -1,9 +1,13 @@
-import React, { useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import NavBar from "./NavBar/NavBar"
 import Meta from "./Meta/Meta"
 import Script from "next/script"
 import SideBar from "../SideBar/SideBar"
 import { Category } from "../../types/Category"
+import Footer from "./Footer/Footer"
+import { AppContext } from "../../pages/_app"
+import AlertFeedback from "../AlertFeedback/AlertFeedback"
+import { emailSubscriptionSubmissionState } from "../../types/EmailSubscriptionSubmission"
 
 interface LayoutProps {
   categories: Category[]
@@ -19,6 +23,9 @@ const Layout: React.FC<LayoutProps> = function Layout({
   categoryState,
 }) {
   const [openMenu, set_openMenu] = useState(false)
+  const appContext = useContext(AppContext)
+  const [successfulEmailSubscription, setSuccessfulEmailSubscription] =
+    appContext!.successfulEmailSubscriptionState
 
   return (
     <>
@@ -64,11 +71,33 @@ const Layout: React.FC<LayoutProps> = function Layout({
           </div>
         </main>
 
-        <footer className="mt-auto text-darkfont bg-primary">
-          <div className="flex items-center justify-evenly h-12">
-            <p className="text-lg">Made with ❤️ by Felipe Barbosa</p>
-          </div>
-        </footer>
+        {successfulEmailSubscription !== null ? (
+          <AlertFeedback
+            close={() => setSuccessfulEmailSubscription(null)}
+            currentState={successfulEmailSubscription}
+            states={[
+              {
+                severity: "success",
+                message:
+                  "Sucesso! Confira sua caixa de entrega para confirmar a inscrição",
+                state: emailSubscriptionSubmissionState.success,
+              },
+              {
+                severity: "warning",
+                message:
+                  "Sua inscrição já foi feita! Confira sua caixa de entrada para confirmar. Caso já tenha confirmado, ignore",
+                state: emailSubscriptionSubmissionState.alreadySubscribed,
+              },
+              {
+                severity: "error",
+                message: "Algo deu errado! Por favor, tente novamente",
+                state: emailSubscriptionSubmissionState.failure,
+              },
+            ]}
+          />
+        ) : null}
+
+        <Footer />
       </div>
     </>
   )

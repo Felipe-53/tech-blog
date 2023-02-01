@@ -18,12 +18,12 @@ const BlogArticleBody: React.FC<Props> = ({ markdownContent }) => {
   const html = marked(markdownContent, { gfm: true })
 
   return (
-    <div
+    <article
       dangerouslySetInnerHTML={{
         __html: html,
       }}
       className=""
-    ></div>
+    ></article>
   )
 }
 

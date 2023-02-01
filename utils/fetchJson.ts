@@ -1,9 +1,8 @@
 import assert from "assert"
 import { env } from "./env"
 
-interface FetchOptions {
-  method: "GET" | "POST"
-  queryString: object
+interface FetchOptions extends RequestInit {
+  queryString?: object
 }
 
 function makeFetchJson(baseUrl: string, token: string) {
@@ -11,14 +10,15 @@ function makeFetchJson(baseUrl: string, token: string) {
 
   return async function fetchJson<T>(
     endpoint: string,
-    { method, queryString }: FetchOptions = {
+    { method, queryString, body }: FetchOptions = {
       method: "GET",
       queryString: {},
+      body: null,
     }
   ) {
     const url = new URL(baseUrl + endpoint)
 
-    if (Object.keys(queryString).length !== 0) {
+    if (queryString && Object.keys(queryString).length !== 0) {
       // @ts-ignore
       url.search = new URLSearchParams(queryString).toString()
     }
@@ -28,6 +28,7 @@ function makeFetchJson(baseUrl: string, token: string) {
         Authorization: `Bearer ${token}`,
       },
       method: method,
+      body,
     })
 
     if (!response.ok) {

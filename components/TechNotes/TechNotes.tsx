@@ -11,16 +11,15 @@ interface Props {
 
 const TechNotes: React.FC<Props> = ({ techNotes }) => {
   return (
-    <div className="w-full">
+    <div className="w-full mb-8">
       <div className="mb-10">
         <MainHeading className="text-center">Tech Notes</MainHeading>
         <p className="text-darkfont text-lg text-center mt-2 mb-4">
           Posts concisos sobre problemas, soluções e dicas do dia-a-dia
         </p>
-        <Divider />
       </div>
 
-      <div className="flex flex-col gap-6 mb-28">
+      <div className="flex flex-col gap-6">
         {techNotes.map((techNote) => {
           const { id, slug, title, categories, created_at } = techNote
           return (

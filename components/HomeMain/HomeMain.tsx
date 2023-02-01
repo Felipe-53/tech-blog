@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import ArticleList from "../ArticleList/ArticleList"
 import Introduction from "../Introduction/Introduction"
 import { Article } from "../../types/Article"
@@ -8,6 +8,9 @@ import { TechNote } from "../../types/TechNote"
 import { Category } from "../../types/Category"
 import CategoryTag from "../CategoryTag/CategoryTag"
 import BackspaceIcon from "../Icons/Backspace"
+import EmailSubscriptionPrompt from "../EmailSubscriptionPrompt/EmailSubscriptionPrompt"
+import { AppContext } from "../../pages/_app"
+import Divider from "../decorative/Divider/Divider"
 
 interface Props {
   articles: Article[]
@@ -22,6 +25,9 @@ interface Props {
 const HomeMain: React.FC<Props> = ({ articles, categoryState, techNotes }) => {
   const [chosenCategory, set_chosenCategory] = categoryState
   const [currentPage, set_currentPage] = useState(1)
+  const appContext = useContext(AppContext)
+  const [_, setSuccessfulSubscriptionRequest] =
+    appContext!.successfulEmailSubscriptionState
 
   useEffect(() => {
     set_currentPage(1)
@@ -65,6 +71,12 @@ const HomeMain: React.FC<Props> = ({ articles, categoryState, techNotes }) => {
       />
 
       <TechNotes techNotes={techNotes} />
+
+      <Divider thickness={1} color={"gray"} />
+
+      <EmailSubscriptionPrompt
+        setSuccessfulSubscriptionRequest={setSuccessfulSubscriptionRequest}
+      />
     </div>
   )
 }
