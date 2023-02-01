@@ -23,8 +23,8 @@ const AlertFeedback: React.FC<Props> = ({ currentState, states, close }) => {
     }
   } else {
     styles = {
-      left: "1rem",
-      right: "1rem",
+      left: "1.5rem",
+      right: "1.5rem",
     }
   }
 
@@ -38,9 +38,7 @@ const AlertFeedback: React.FC<Props> = ({ currentState, states, close }) => {
     <Alert
       sx={{
         position: "fixed",
-        bottom: "2rem",
-        left: "1rem",
-        right: "1rem",
+        top: "0.5rem",
         ...styles,
       }}
       variant="filled"

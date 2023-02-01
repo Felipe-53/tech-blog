@@ -85,7 +85,7 @@ const Layout: React.FC<LayoutProps> = function Layout({
               {
                 severity: "warning",
                 message:
-                  "Sua inscrição já foi feita! Confira sua caixa de entrada para confirmar. Caso já tenha confirmado, ignore",
+                  "Sua inscrição já foi feita! Confira sua caixa de entrada para confirmar. Caso já tenha confirmado, ignore 😁",
                 state: emailSubscriptionSubmissionState.alreadySubscribed,
               },
               {
