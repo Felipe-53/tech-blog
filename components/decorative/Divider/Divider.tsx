@@ -23,7 +23,7 @@ const Divider: React.FC<DividerProps> = ({
     2: "border-b-2",
   }
 
-  const tailwindClassName = `block ${sizes[thickness]} ${borders[color]}`
+  const tailwindClassName = `block w-full ${sizes[thickness]} ${borders[color]}`
 
   let finalClassName = tailwindClassName
   if (className) {
