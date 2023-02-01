@@ -121,7 +121,7 @@ const EmailSubscriptionPrompt: React.FC<Props> = ({
         {loading ? (
           <CircularProgress thickness={5} size="1.3rem" color="inherit" />
         ) : (
-          "Inscrever-me"
+          "Inscreva-se"
         )}
       </button>
     </div>
