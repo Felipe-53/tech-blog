@@ -1,18 +1,33 @@
 import React from "react"
 
 interface DividerProps {
-  color?: "primary" | "secondary"
+  color?: "primary" | "secondary" | "darkfont" | "gray"
+  className?: string
+  thickness?: 1 | 2
 }
 
-const Divider: React.FC<DividerProps> = ({ color = "primary" }) => {
+const Divider: React.FC<DividerProps> = ({
+  className,
+  color = "primary",
+  thickness = 2,
+}) => {
   const borders = {
     primary: "border-primary",
     secondary: "border-secondary",
+    darkfont: "border-darkfont",
+    gray: "border-gray-500",
   }
 
-  const tailwindClassName = `block border-b-2 ${borders[color]}`
+  const sizes = {
+    1: "border-b-[1px]",
+    2: "2",
+  }
 
-  return <span className={tailwindClassName}></span>
+  const tailwindClassName = `block ${sizes[thickness]} ${borders[color]}`
+
+  const finalClassName = tailwindClassName + " " + className
+
+  return <span className={finalClassName}></span>
 }
 
 export default Divider
