@@ -66,7 +66,7 @@ const EmailSubscriptionPrompt: React.FC<Props> = ({
   }
 
   return (
-    <div className="text-lg text-darkfont w-full text-center flex flex-col items-center mb-20">
+    <div className="text-lg text-darkfont w-full text-center flex flex-col items-center mb-20 reading-padding">
       <div className="mb-4">
         <p>
           <u>Gostando até aqui?</u> ✍️
@@ -109,7 +109,6 @@ const EmailSubscriptionPrompt: React.FC<Props> = ({
         onClick={!validEmail ? undefined : sendSubscriptionRequest}
         tabIndex={!validEmail ? -1 : 0}
         className={`
-          min-w-[30%]
           px-8 py-2 rounded-md
           focus:outline focus:outline-1 focus:outline-secondary
           ${
