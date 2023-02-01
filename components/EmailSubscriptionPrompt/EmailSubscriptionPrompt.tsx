@@ -1,19 +1,42 @@
+import { CircularProgress } from "@mui/material"
 import React, { useEffect, useState } from "react"
+import { z } from "zod"
+import { EmailSubscriptionSubmission } from "../../types/EmailSubscriptionSubmission"
 
 const baseUrl = "https://6604mo8k0f.execute-api.sa-east-1.amazonaws.com"
 
 interface Props {
   setSuccessfulSubscriptionRequest: React.Dispatch<
-    React.SetStateAction<boolean | null>
+    React.SetStateAction<EmailSubscriptionSubmission>
   >
 }
+
+const emailSchema = z.string().email()
 
 const EmailSubscriptionPrompt: React.FC<Props> = ({
   setSuccessfulSubscriptionRequest,
 }) => {
   const [email, setEmail] = useState("")
+  const [validEmail, setValidEmail] = useState(true)
+  const [loading, setLoading] = useState<boolean>(false)
+
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      if (email === "") {
+        setValidEmail(true)
+        return
+      }
+      const result = emailSchema.safeParse(email)
+      result.success ? setValidEmail(true) : setValidEmail(false)
+    }, 100)
+  }, [email])
 
   async function sendSubscriptionRequest() {
+    if (!validEmail) return
+    if (email === "") return
+
+    setLoading(true)
+
     try {
       const response = await fetch(`${baseUrl}/recipient`, {
         method: "POST",
@@ -25,14 +48,20 @@ const EmailSubscriptionPrompt: React.FC<Props> = ({
         }),
       })
 
-      if (response.status !== 201) {
-        console.log(await response.json())
-        throw Error("Failed to create recipient")
+      switch (response.status) {
+        case 201:
+          setSuccessfulSubscriptionRequest("success")
+          break
+        case 409:
+          setSuccessfulSubscriptionRequest("already-subscribed")
+          break
+        default:
+          setSuccessfulSubscriptionRequest("failure")
       }
 
-      setSuccessfulSubscriptionRequest(true)
+      setLoading(false)
     } catch {
-      setSuccessfulSubscriptionRequest(false)
+      setLoading(false)
     }
   }
 
@@ -48,15 +77,13 @@ const EmailSubscriptionPrompt: React.FC<Props> = ({
       </div>
 
       <input
-        className="max-w-sm w-full rounded-md mb-3
+        className={`max-w-md w-full rounded-md mb-3
           bg-gray-700 px-4 py-3
           hover:outline hover:outline-1  hover:outline-secondary
           focus:outline focus:outline-1
           focus:outline-secondary
-
-        "
+        `}
         placeholder="your@email.com"
-        color="secondary"
         value={email}
         onChange={(e) => {
           setEmail(e.target.value)
@@ -65,12 +92,22 @@ const EmailSubscriptionPrompt: React.FC<Props> = ({
 
       <button
         onClick={sendSubscriptionRequest}
-        className="
-      bg-primary px-8 py-2 rounded-md
-      focus:outline focus:outline-1 focus:outline-secondary
-      "
+        className={`
+          min-w-[30%]
+          px-8 py-2 rounded-md
+          focus:outline focus:outline-1 focus:outline-secondary
+          ${
+            !validEmail
+              ? "bg-gray-700 cursor-default text-gray-500"
+              : "bg-primary"
+          }
+        `}
       >
-        Inscrever-me
+        {loading ? (
+          <CircularProgress size="1rem" color="secondary" />
+        ) : (
+          "Inscrever-me"
+        )}
       </button>
     </div>
   )

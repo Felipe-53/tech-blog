@@ -7,6 +7,7 @@ import { Category } from "../../types/Category"
 import Footer from "./Footer/Footer"
 import { AppContext } from "../../pages/_app"
 import AlertFeedback from "../AlertFeedback/AlertFeedback"
+import { emailSubscriptionSubmissionState } from "../../types/EmailSubscriptionSubmission"
 
 interface LayoutProps {
   categories: Category[]
@@ -73,12 +74,26 @@ const Layout: React.FC<LayoutProps> = function Layout({
         {successfulEmailSubscription !== null ? (
           <AlertFeedback
             close={() => setSuccessfulEmailSubscription(null)}
-            success={successfulEmailSubscription}
-            messages={{
-              success:
-                "Sucesso! Confira sua caixa de entrega para confirmar a inscrição",
-              failure: "Algo deu errado! Por favor, tente novamente",
-            }}
+            currentState={successfulEmailSubscription}
+            states={[
+              {
+                severity: "success",
+                message:
+                  "Sucesso! Confira sua caixa de entrega para confirmar a inscrição",
+                state: emailSubscriptionSubmissionState.success,
+              },
+              {
+                severity: "warning",
+                message:
+                  "Sua inscrição já foi feita! Confira sua caixa de entrada para confirmar. Caso já tenha confirmado, ignore",
+                state: emailSubscriptionSubmissionState.alreadySubscribed,
+              },
+              {
+                severity: "error",
+                message: "Algo deu errado! Por favor, tente novamente",
+                state: emailSubscriptionSubmissionState.failure,
+              },
+            ]}
           />
         ) : null}
 

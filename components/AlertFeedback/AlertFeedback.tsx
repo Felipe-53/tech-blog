@@ -1,17 +1,18 @@
-import { Alert, useMediaQuery } from "@mui/material"
+import { Alert, AlertColor, useMediaQuery } from "@mui/material"
 import { screens } from "tailwindcss/defaultTheme"
 import React from "react"
 
 interface Props {
-  success: boolean
-  messages: {
-    success: string
-    failure: string
-  }
+  currentState: string
+  states: {
+    state: string
+    message: string
+    severity: AlertColor
+  }[]
   close: () => void
 }
 
-const AlertFeedback: React.FC<Props> = ({ success, messages, close }) => {
+const AlertFeedback: React.FC<Props> = ({ currentState, states, close }) => {
   const matches = useMediaQuery(`(min-width: ${screens.lg})`)
   let styles = {}
   if (matches) {
@@ -26,6 +27,13 @@ const AlertFeedback: React.FC<Props> = ({ success, messages, close }) => {
       right: "1rem",
     }
   }
+
+  const render = states.find((msg) => {
+    return msg.state === currentState
+  })
+
+  if (!render) return null
+
   return (
     <Alert
       sx={{
@@ -37,9 +45,9 @@ const AlertFeedback: React.FC<Props> = ({ success, messages, close }) => {
       }}
       variant="filled"
       onClose={close}
-      severity={success ? "success" : "error"}
+      severity={render.severity}
     >
-      {success ? messages.success : messages.failure}
+      {render.message}
     </Alert>
   )
 }
