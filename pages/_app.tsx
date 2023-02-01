@@ -9,11 +9,12 @@ import { AppProps } from "next/app"
 import { categories } from "../articles/categories"
 import { ThemeProvider } from "@mui/material"
 import { muiTheme } from "../mui-theme/theme"
+import { EmailSubscriptionSubmission } from "../types/EmailSubscriptionSubmission"
 
 type AppContext = {
   successfulEmailSubscriptionState: [
-    boolean | null,
-    React.Dispatch<React.SetStateAction<boolean | null>>
+    EmailSubscriptionSubmission,
+    React.Dispatch<React.SetStateAction<EmailSubscriptionSubmission>>
   ]
 } | null
 
@@ -23,12 +24,13 @@ const MyApp = function ({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const categoryState = useState<Category | null>(null)
   const [_, set_chosenCategory] = categoryState
-  const successfulEmailSubscriptionState = useState<boolean | null>(null)
+  const successfulEmailSubscriptionState =
+    useState<EmailSubscriptionSubmission>(null)
   const [successfulEmailSubscription, setSuccessfulEmailSubscription] =
     successfulEmailSubscriptionState
 
   useEffect(() => {
-    if (typeof successfulEmailSubscription === "boolean") {
+    if (successfulEmailSubscription !== null) {
       setTimeout(() => {
         setSuccessfulEmailSubscription(null)
       }, 3000)
