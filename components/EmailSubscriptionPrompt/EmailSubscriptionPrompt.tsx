@@ -91,6 +91,7 @@ const EmailSubscriptionPrompt: React.FC<Props> = ({
           focus:outline focus:outline-1
           focus:outline-secondary
         `}
+          type="email"
           placeholder="seu@email.com"
           value={email}
           onChange={(e) => {
