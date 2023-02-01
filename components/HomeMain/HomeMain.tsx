@@ -10,6 +10,7 @@ import CategoryTag from "../CategoryTag/CategoryTag"
 import BackspaceIcon from "../Icons/Backspace"
 import EmailSubscriptionPrompt from "../EmailSubscriptionPrompt/EmailSubscriptionPrompt"
 import { AppContext } from "../../pages/_app"
+import Divider from "../decorative/Divider/Divider"
 
 interface Props {
   articles: Article[]
@@ -70,6 +71,8 @@ const HomeMain: React.FC<Props> = ({ articles, categoryState, techNotes }) => {
       />
 
       <TechNotes techNotes={techNotes} />
+
+      <Divider thickness={1} color={"gray"} />
 
       <EmailSubscriptionPrompt
         setSuccessfulSubscriptionRequest={setSuccessfulSubscriptionRequest}
