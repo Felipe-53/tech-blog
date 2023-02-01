@@ -110,6 +110,7 @@ const EmailSubscriptionPrompt: React.FC<Props> = ({
         onClick={!validEmail ? undefined : sendSubscriptionRequest}
         tabIndex={!validEmail ? -1 : 0}
         className={`
+          w-40
           px-8 py-2 rounded-md
           focus:outline focus:outline-1 focus:outline-secondary
           ${
