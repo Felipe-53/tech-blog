@@ -33,7 +33,7 @@ const MyApp = function ({ Component, pageProps }: AppProps) {
     if (successfulEmailSubscription !== null) {
       setTimeout(() => {
         setSuccessfulEmailSubscription(null)
-      }, 3000)
+      }, 5000)
     }
   }, [successfulEmailSubscription, setSuccessfulEmailSubscription])
 
