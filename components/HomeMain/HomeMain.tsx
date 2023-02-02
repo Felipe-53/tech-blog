@@ -22,6 +22,8 @@ interface Props {
   ]
 }
 
+export const mainScreenPositioningStyles = "max-w-screen-md mx-auto px-7"
+
 const HomeMain: React.FC<Props> = ({ articles, categoryState, techNotes }) => {
   const [chosenCategory, set_chosenCategory] = categoryState
   const [currentPage, set_currentPage] = useState(1)
@@ -35,8 +37,9 @@ const HomeMain: React.FC<Props> = ({ articles, categoryState, techNotes }) => {
 
   return (
     <div
-      className={`max-w-screen-md mx-auto px-7
-      flex flex-col gap-14 items-center
+      className={`
+        ${mainScreenPositioningStyles}
+        flex flex-col gap-14 items-center
       `}
     >
       <Introduction />
