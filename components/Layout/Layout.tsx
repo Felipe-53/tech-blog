@@ -79,7 +79,7 @@ const Layout: React.FC<LayoutProps> = function Layout({
               {
                 severity: "success",
                 message:
-                  "Sucesso! Confira sua caixa de entrega para confirmar a inscrição",
+                  "Sucesso! Confira sua caixa de entrada para confirmar a inscrição",
                 state: emailSubscriptionSubmissionState.success,
               },
               {
