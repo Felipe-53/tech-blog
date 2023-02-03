@@ -66,7 +66,10 @@ const EmailSubscriptionPrompt: React.FC<Props> = ({
   }
 
   return (
-    <div className="text-lg text-darkfont w-full text-center flex flex-col items-center mb-20 reading-padding">
+    <div
+      id="inscreva-se"
+      className="text-lg text-darkfont w-full text-center flex flex-col items-center mb-20 reading-padding"
+    >
       <div className="mb-4">
         <p>
           <u>Gostando até aqui?</u> ✍️
