@@ -61,6 +61,7 @@ const EmailSubscriptionPrompt: React.FC<Props> = ({
 
       setLoading(false)
     } catch {
+      setSuccessfulSubscriptionRequest("failure")
       setLoading(false)
     }
   }
