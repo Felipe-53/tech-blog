@@ -16,14 +16,14 @@ const BlogArticleHeader: React.FC<Props> = ({ article }) => {
 
   return (
     <div className="mb-8">
-      <h1
+      <h2
         style={{
           marginTop: 0,
           marginBottom: 4,
         }}
       >
         {article.title}
-      </h1>
+      </h2>
 
       <p
         style={{
