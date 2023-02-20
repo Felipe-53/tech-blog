@@ -12,4 +12,5 @@ export const categories: Category[] = [
   { name: "Open Source", id: "79c55dea-57dc-485c-948b-1f8f4b875a3f" },
   { name: "Deno", id: "a7e9baf8-07e9-4eab-a820-ce500d3ab414" },
   { name: "DevOps", id: "b556ad92-59e1-4717-917a-ba5e78f1eebe" },
+  { name: "Microservices", id: "3d77acb9-d64b-487f-a81c-0c308cb93e7b" },
 ]
