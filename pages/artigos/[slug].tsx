@@ -3,7 +3,7 @@ import { GetStaticPaths } from "next"
 import { Article } from "../../types/Article"
 import BlogArticle from "../../components/BlogArticle/BlogArticle"
 import Meta from "../../components/Layout/Meta/Meta"
-import { fetchFromArticleApi } from "../../utils/fetchJson"
+import { fetchArticle } from "../../utils/fetchJson"
 import { APIResponseDTO } from "../../types/APIResponseDTO"
 import { apiResponseAdapter } from "../../use-cases/adapters/apiResponseAdapter"
 
@@ -32,9 +32,7 @@ export const getStaticProps = async ({
 }: {
   params: { slug: string }
 }) => {
-  const response = await fetchFromArticleApi<APIResponseDTO>(
-    `/post/${params.slug}`
-  )
+  const response = await fetchArticle<APIResponseDTO>(`/post/${params.slug}`)
 
   const article = apiResponseAdapter(response)
 
@@ -46,7 +44,7 @@ export const getStaticProps = async ({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetchFromArticleApi<APIResponseDTO[]>("/post")
+  const response = await fetchArticle<APIResponseDTO[]>("/post")
 
   const articles = response.map((res) => apiResponseAdapter(res))
 
