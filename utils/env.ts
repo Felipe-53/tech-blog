@@ -8,8 +8,11 @@ const env = {
 } as const
 
 for (const key of Object.keys(env)) {
-  // @ts-ignore
-  assert(typeof env[key] === "string" && env[key] !== "")
+  assert(
+    // @ts-ignore
+    typeof env[key] === "string" && env[key] !== "",
+    `Missing environment variable ${key}`
+  )
 }
 
 export { env }
