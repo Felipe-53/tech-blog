@@ -4,7 +4,7 @@ import HomeMain from "../components/HomeMain/HomeMain"
 import { APIResponseDTO } from "../types/APIResponseDTO"
 import { Category } from "../types/Category"
 import { apiResponseAdapter } from "../use-cases/adapters/apiResponseAdapter"
-import { fetchFromArticleApi, fetchFromTechNoteApi } from "../utils/fetchJson"
+import { fetchArticle, fetchTechNote } from "../utils/fetchJson"
 
 interface HomeProps extends InferGetStaticPropsType<typeof getStaticProps> {
   categoryState: [
@@ -32,9 +32,7 @@ const Home = ({
 }
 
 export const getStaticProps = async () => {
-  const techNotesresponse = await fetchFromTechNoteApi<APIResponseDTO[]>(
-    "/post"
-  )
+  const techNotesresponse = await fetchTechNote<APIResponseDTO[]>("/post")
   const techNotes = techNotesresponse
     .map((res) => apiResponseAdapter(res))
     .sort((a, b) => {
@@ -44,7 +42,7 @@ export const getStaticProps = async () => {
       return 1
     })
 
-  const articlesResponse = await fetchFromArticleApi<APIResponseDTO[]>("/post")
+  const articlesResponse = await fetchArticle<APIResponseDTO[]>("/post")
   const articles = articlesResponse
     .map((res) => apiResponseAdapter(res))
     .sort((a, b) => {
@@ -54,7 +52,7 @@ export const getStaticProps = async () => {
       return 1
     })
 
-  const categories = await fetchFromArticleApi<{ id: string; name: string }[]>(
+  const categories = await fetchArticle<{ id: string; name: string }[]>(
     "/category"
   )
 

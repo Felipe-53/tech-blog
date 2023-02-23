@@ -2,10 +2,13 @@ import assert from "assert"
 import { env } from "./env"
 
 interface FetchOptions extends RequestInit {
-  queryString?: object
+  queryString?: Record<string, string>
 }
 
-function makeFetchJson(baseUrl: string, token: string) {
+const baseUrl = env.articleApiUrl
+const token = env.articleApiToken
+
+function makeFetchJson({ techNotes }: { techNotes: boolean }) {
   assert(baseUrl !== "" && token !== "")
 
   return async function fetchJson<T>(
@@ -18,10 +21,12 @@ function makeFetchJson(baseUrl: string, token: string) {
   ) {
     const url = new URL(baseUrl + endpoint)
 
-    if (queryString && Object.keys(queryString).length !== 0) {
-      // @ts-ignore
-      url.search = new URLSearchParams(queryString).toString()
+    queryString = {
+      ...queryString,
+      note: techNotes.toString(),
     }
+
+    url.search = new URLSearchParams(queryString).toString()
 
     const response = await fetch(url.toString(), {
       headers: {
@@ -45,14 +50,8 @@ function makeFetchJson(baseUrl: string, token: string) {
   }
 }
 
-const fetchFromArticleApi = makeFetchJson(
-  env.articleApiUrl,
-  env.articleApiToken
-)
+const fetchArticle = makeFetchJson({ techNotes: false })
 
-const fetchFromTechNoteApi = makeFetchJson(
-  env.techNoteApiUrl,
-  env.techNoteApiToken
-)
+const fetchTechNote = makeFetchJson({ techNotes: true })
 
-export { makeFetchJson, fetchFromArticleApi, fetchFromTechNoteApi }
+export { makeFetchJson, fetchArticle, fetchTechNote }
