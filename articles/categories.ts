@@ -13,4 +13,6 @@ export const categories: Category[] = [
   { name: "Deno", id: "a7e9baf8-07e9-4eab-a820-ce500d3ab414" },
   { name: "DevOps", id: "b556ad92-59e1-4717-917a-ba5e78f1eebe" },
   { name: "Microservices", id: "3d77acb9-d64b-487f-a81c-0c308cb93e7b" },
+  { name: "Backend", id: "809b8f8c-790b-48dd-8ac5-e9140445598c" },
+  { name: "API", id: "18e91ba9-c732-474a-84f6-876a39473da0" },
 ]
