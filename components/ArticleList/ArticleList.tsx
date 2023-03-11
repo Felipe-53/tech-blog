@@ -10,7 +10,7 @@ interface Props {
   currentPageState: [number, React.Dispatch<React.SetStateAction<number>>]
 }
 
-const ARTICLES_PER_PEGE = 3
+const ARTICLES_PER_PAGE = 3
 
 const ArticleList: React.FC<Props> = ({
   articles,
@@ -36,7 +36,7 @@ const ArticleList: React.FC<Props> = ({
   const manager = new PaginationManager<Article>({
     items: filteredArticles,
     currentPage,
-    itemsPerPage: ARTICLES_PER_PEGE,
+    itemsPerPage: ARTICLES_PER_PAGE,
     setPage: set_currentPage,
   })
 

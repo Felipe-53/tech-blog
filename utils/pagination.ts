@@ -16,10 +16,10 @@ class PaginationManager<T> {
     currentPage: number
     setPage: (page: number) => void
   }) {
-    ;(this.items = items),
-      (this.itemsPerPage = itemsPerPage),
-      (this.currentPage = currentPage),
-      (this.setPage = setPage)
+    this.items = items
+    this.itemsPerPage = itemsPerPage
+    this.currentPage = currentPage
+    this.setPage = setPage
 
     this.updateNumberOfPages()
   }
@@ -42,10 +42,40 @@ class PaginationManager<T> {
   }
 
   getPages() {
-    const pages = []
-    for (let i = 1; i <= this.numberOfPages; i++) {
-      pages.push(i)
+    const MAX_DISPLAYED_PAGES = 4
+
+    const pages: number[] = []
+
+    if (this.numberOfPages < MAX_DISPLAYED_PAGES) {
+      for (let i = 1; i <= this.numberOfPages; i++) {
+        pages.push(i)
+      }
+      return pages
     }
+
+    let numberOfPagesAhead = 2
+    let numberOfPagesBehind = 1
+
+    while (this.currentPage + numberOfPagesAhead > this.numberOfPages) {
+      numberOfPagesAhead--
+      numberOfPagesBehind++
+    }
+
+    if (this.currentPage - 1 === 0) {
+      numberOfPagesAhead++
+      numberOfPagesBehind--
+    }
+
+    for (let i = numberOfPagesBehind; i >= 1; i--) {
+      pages.push(this.currentPage - i)
+    }
+
+    pages.push(this.currentPage)
+
+    for (let i = 1; i <= numberOfPagesAhead; i++) {
+      pages.push(this.currentPage + i)
+    }
+
     return pages
   }
 
