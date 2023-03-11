@@ -1,15 +1,17 @@
 import Link from "next/link"
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai"
 interface Props {
-  pages: number[]
+  displayablePageOptions: number[]
   currentPageState: [number, React.Dispatch<React.SetStateAction<number>>]
+  totalNumberOfPages: number
   className?: string
 }
 
 const Pagination: React.FC<Props> = ({
-  pages,
+  displayablePageOptions,
   currentPageState,
   className,
+  totalNumberOfPages,
 }) => {
   const [currentPage, set_currentPage] = currentPageState
 
@@ -24,7 +26,7 @@ const Pagination: React.FC<Props> = ({
           set_currentPage={set_currentPage}
         />
 
-        {pages.map((page) => {
+        {displayablePageOptions.map((page) => {
           let textColor = ""
           if (page === currentPage)
             textColor = "border border-2 border-secondary"
@@ -55,7 +57,7 @@ const Pagination: React.FC<Props> = ({
 
         <ArrowBtn
           direction="right"
-          disabled={currentPage === pages.length}
+          disabled={currentPage === totalNumberOfPages}
           set_currentPage={set_currentPage}
         />
       </>
@@ -74,10 +76,10 @@ const ArrowBtn: React.FC<ArrowBtnProps> = ({
   disabled,
   set_currentPage,
 }) => {
-  const baseStyles = "text-3xl text-primary hover:cursor-pointer"
+  const baseStyles = "text-3xl hover:cursor-pointer"
   const disabledText = "text-gray-500"
 
-  const className = `${baseStyles} ${disabled ? disabledText : ""}`
+  const className = `${baseStyles} ${disabled ? disabledText : "text-primary"}`
 
   function selectHandler(e: React.MouseEvent | React.KeyboardEvent) {
     e.stopPropagation()

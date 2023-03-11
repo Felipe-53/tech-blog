@@ -41,7 +41,8 @@ const ArticleList: React.FC<Props> = ({
   })
 
   const pageArticles = manager.getCurrentPageItems()
-  const pages = manager.getPages()
+  const displayablePageOptions = manager.getDisplayablePageOptions()
+  const totalNumberOfPages = manager.getNumberOfPages()
 
   let render
   if (filteredArticles.length === 0) {
@@ -90,8 +91,9 @@ const ArticleList: React.FC<Props> = ({
 
         <Pagination
           className="w-full mt-12 p-2 rounded-md"
-          pages={pages}
+          displayablePageOptions={displayablePageOptions}
           currentPageState={[currentPage, set_currentPage]}
+          totalNumberOfPages={totalNumberOfPages}
         />
       </>
     )

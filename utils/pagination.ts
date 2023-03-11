@@ -41,7 +41,7 @@ class PaginationManager<T> {
     )
   }
 
-  getPages() {
+  getDisplayablePageOptions() {
     const MAX_DISPLAYED_PAGES = 4
 
     const pages: number[] = []
