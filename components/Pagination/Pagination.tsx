@@ -34,7 +34,7 @@ const Pagination: React.FC<Props> = ({
 
           return (
             <Link
-              href={"/"}
+              href={"/#artigos"}
               onClick={(e) => {
                 e.stopPropagation()
                 set_currentPage(page)
@@ -85,7 +85,7 @@ const ArrowBtn: React.FC<ArrowBtnProps> = ({
     } else {
       set_currentPage((current) => current + 1)
     }
-    router.push("/")
+    router.push("/#artigos")
   }
 
   function clickHandler(e: React.MouseEvent) {
