@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai"
 interface Props {
   displayablePageOptions: number[]
@@ -34,13 +35,8 @@ const Pagination: React.FC<Props> = ({
           return (
             <Link
               href={"/"}
-              tabIndex={0}
               onClick={(e) => {
                 e.stopPropagation()
-                set_currentPage(page)
-              }}
-              onKeyDown={(e) => {
-                if (e.key !== "Enter") return
                 set_currentPage(page)
               }}
               key={page}
@@ -76,44 +72,38 @@ const ArrowBtn: React.FC<ArrowBtnProps> = ({
   disabled,
   set_currentPage,
 }) => {
-  const baseStyles = "text-3xl hover:cursor-pointer"
+  const baseStyles = "text-3xl"
   const disabledText = "text-gray-500"
 
   const className = `${baseStyles} ${disabled ? disabledText : "text-primary"}`
+  const router = useRouter()
 
-  function selectHandler(e: React.MouseEvent | React.KeyboardEvent) {
-    e.stopPropagation()
-    // @ts-ignore
-    if (e.key !== undefined && e.key !== "Enter") return
-    if (disabled) return
+  function handler() {
+    console.log("ran")
     if (direction === "left") {
       set_currentPage((current) => current - 1)
     } else {
       set_currentPage((current) => current + 1)
     }
+    router.push("/")
+  }
+
+  function clickHandler(e: React.MouseEvent) {
+    if (disabled) return
+    handler()
   }
 
   const map = {
-    left: (
-      <AiOutlineLeft
-        tabIndex={0}
-        className={className}
-        onClick={selectHandler}
-        onKeyDown={selectHandler}
-      />
-    ),
+    left: <AiOutlineLeft className={className} />,
 
-    right: (
-      <AiOutlineRight
-        tabIndex={0}
-        className={className}
-        onClick={selectHandler}
-        onKeyDown={selectHandler}
-      />
-    ),
+    right: <AiOutlineRight className={className} />,
   }
 
-  return <Link href={"/#artigos"}>{map[direction]}</Link>
+  return (
+    <button disabled={disabled} onClick={clickHandler}>
+      {map[direction]}
+    </button>
+  )
 }
 
 export default Pagination
