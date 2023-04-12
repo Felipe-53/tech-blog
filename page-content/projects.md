@@ -2,6 +2,17 @@
 
 Alguns dos projetos que construí, do mais recente para o mais antigo.
 
+<h3 style="margin-bottom: 0;">Microsserviço de envio de e-mail</h3>
+<a href="https://github.com/Felipe-53/tech-blog-email-service" target="_blank">Repositório</a>
+
+Microsserviço de arquitetura serverless desenvolvido para o envio automático de e-mails.
+
+A ideia foi a de implementar um sistema de notificações via e-mail para o conteúdo produzido aqui no blog. Uma espécie de newsletter, mas que, ao invés de trazer o conteúdo no corpo do e-mail, direciona para o post recém publicado ao qual o e-mail se refere.
+
+O intuito no nível técnico foi o de construir um microsserviço de primeira classe, com banco de dados próprio e comunicação assíncrona utilizando filas.
+
+Confira todos os detalhes [nesse post](https://www.felipebarbosa.dev/artigos/comunicacao-assincrona-entre-microsservicos:-filas)!
+
 <h3 style="margin-bottom: 0;">Tech Blog CMS API</h3>
 <a href="https://github.com/Felipe-53/tech-blog-cms-api" target="_blank">Repositório</a>
 
