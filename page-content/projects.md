@@ -2,6 +2,15 @@
 
 Alguns dos projetos que construí, do mais recente para o mais antigo.
 
+<h3 style="margin-bottom: 0;">Stone Automata Maze Challenge</h3>
+<a href="https://github.com/Felipe-53/stone-automata-maze-challenge" target="_blank">Repositório</a>
+
+Primeiro desafio de programação do qual participei, promovido pela Stone em parceria com a Sigma Geek. Foi também o primeiro projeto expressivo que construí usando Rust.
+
+O desafio foi o de encontrar os melhores caminhos para labirintos dinâmicos formados por autômatas celulares.
+
+Confira os detalhes no repositório, que inclui uma pequena animação para dar um gostinho de como funcionam esses labirintos e das soluções encontradas.
+
 <h3 style="margin-bottom: 0;">Microsserviço de envio de e-mail</h3>
 <a href="https://github.com/Felipe-53/tech-blog-email-service" target="_blank">Repositório</a>
 
@@ -17,7 +26,7 @@ Confira todos os detalhes [nesse post](https://www.felipebarbosa.dev/artigos/com
 <a href="https://github.com/Felipe-53/tech-blog-cms-api" target="_blank">Repositório</a>
 
 API de gerenciamento de conteúdo do Blog. Construído com testes, SOLID e DDD em mente.
-Juntei a necessidade de ter um Headless CMS para o site com a vontade de explorar boas práticas de arquitetura de sofware, além de incorporar pipelines de CI/CD. O projeto conta com:
+Juntei a necessidade de ter um Headless CMS para o site com a vontade de explorar boas práticas de arquitetura de software, além de incorporar pipelines de CI/CD. O projeto conta com:
 
 - Testes;
 - SOLID;
