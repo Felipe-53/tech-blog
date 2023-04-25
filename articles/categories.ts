@@ -16,4 +16,5 @@ export const categories: Category[] = [
   { name: "Backend", id: "809b8f8c-790b-48dd-8ac5-e9140445598c" },
   { name: "API", id: "18e91ba9-c732-474a-84f6-876a39473da0" },
   { name: "Arquitetura", id: "5a9f2ec6-6e2b-41e1-b033-100d8a12b33f" },
+  { name: "Clean Architecture", id: "84d5760f-696c-47ec-8537-4631f9934e55" },
 ]
