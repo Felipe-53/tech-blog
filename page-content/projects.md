@@ -3,7 +3,7 @@
 Alguns dos projetos que construí, do mais recente para o mais antigo.
 
 <h3 style="margin-bottom: 0;">Chess Implementation</h3>
-<span><a href="https://chess-game-52k.pages.dev/" target="_blank">Site</a> | <a href="https://github.com/Felipe-53/chess-game" target="_blank">Repositório</a></span>
+<span><a href="https://chess-game-52k.pages.dev/" target="_blank">Demo</a> | <a href="https://github.com/Felipe-53/chess-game" target="_blank">Repositório</a></span>
 
 Uma implementação do jogo clássico do xadrez, feito em TypeScript.
 
