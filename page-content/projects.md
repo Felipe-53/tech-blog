@@ -7,11 +7,11 @@ Alguns dos projetos que construí, do mais recente para o mais antigo.
 
 Uma implementação do jogo clássico do xadrez, feito em TypeScript.
 
-A qualquer momento dado, existe uma grande probabilidade de eu estar trabalhando em ou procurando pequenos projetos que sejam interessantes, divertidos, úteis ou (potencialmente) lucrativos 👀. A preferência sempre é para aqueles que estão exatamente na interseção dessas características, claro. Entretanto, é uma tarefa não-trivial pensar em um projeto com todos esses requisitos.
+De forma geral, estou sempre em busca de pequenos projetos que sejam interessantes, divertidos, úteis ou (potencialmente) lucrativos 👀. A preferência é para aqueles que estão exatamente na interseção dessas características, claro. Entretanto, é uma tarefa não-trivial pensar em um projeto com todos esses requisitos.
 
-Esse se enquadra mais na categoria "interessante e diverto" do que "útil / (potencialmente) lucrativo" 🤣. Mas se pensarmos no aprendizado e no conhecimento, indiretamente podemos entendê-lo como útil 🤔.
+Esse se enquadra mais na categoria "interessante e diverto" do que "útil / (potencialmente) lucrativo" 🤣. Mas pensando no aprendizado e no conhecimento, indiretamente pode-se entendê-lo como útil 🤔.
 
-O foco foi no backend e eu me propus buscar uma implementação das regras que fosse a mais clara e legível possível. Não utilizei TDD na sua forma pura, mas os testes guiaram o desenvolvimento, especialmente na ausência de uma interface gráfica, que apareceu apenas no final.
+O foco foi no backend e eu me propus buscar uma implementação das regras do jogo que fosse a mais clara e legível possível. Não utilizei TDD na sua forma pura, mas os testes guiaram o desenvolvimento, especialmente na ausência de uma interface gráfica, que apareceu apenas no final.
 
 <h3 style="margin-bottom: 0;">Stone Automata Maze Challenge</h3>
 <a href="https://github.com/Felipe-53/stone-automata-maze-challenge" target="_blank">Repositório</a>
